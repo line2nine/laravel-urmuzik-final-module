@@ -5,6 +5,7 @@ namespace App\Http\Services;
 
 
 use App\Http\Controllers\Role;
+use App\Http\Controllers\Status;
 use App\Http\Repositories\UserRepository;
 use App\User;
 use Illuminate\Support\Facades\Auth;
@@ -36,6 +37,8 @@ class UserService
         $user->email = $request->email;
         $user->phone = $request->phone;
         $user->address = $request->address;
+        $user->role = Role::USER;
+        $user->status = Status::ACTIVE;
         $user->password = Hash::make($request->password);
         if ($request->hasFile('image')) {
             $user->avatar = $request->image->store('images', 'public');

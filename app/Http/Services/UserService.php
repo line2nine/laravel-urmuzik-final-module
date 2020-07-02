@@ -31,7 +31,18 @@ class UserService
 
     public function create($request)
     {
-
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->address = $request->address;
+        $user->password = Hash::make($request->password);
+        if ($request->hasFile('image')) {
+            $user->avatar = $request->image->store('images', 'public');
+        } else {
+            $user->avatar = 'images/default-avatar.png';
+        }
+        $this->userRepo->save($user);
     }
 
     public function update($user, $request)
@@ -56,7 +67,7 @@ class UserService
     public function searchByKeyword($request)
     {
         $keyword = $request->keyword;
-        if ($keyword){
+        if ($keyword) {
             return $this->userRepo->searchUser($keyword);
         }
         return false;

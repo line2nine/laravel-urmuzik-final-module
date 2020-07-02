@@ -23,3 +23,9 @@ Route::post('login', 'Auth\LoginController@login');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('register', 'UserController@create')->name('register');
 Route::post('register', 'UserController@store');
+
+Route::prefix('admin')->group(function () {
+    Route::get('dashboard','Admin\AdminController@dashboard')->name('admin.dashboard');
+    Route::get('setting','Admin\AdminController@showFormUpdateInfo')->name('admin.editInfo');
+});
+

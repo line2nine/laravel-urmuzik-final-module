@@ -51,9 +51,9 @@
                 @foreach($playlists as $key => $playlist)
                     <div class="col-12 col-sm-4 col-md-3 col-lg-2 single-album-item t c p">
                         <div class="single-album">
-                            <img src="img/bg-img/a{{random_int(1,12)}}.jpg" alt="">
+                            <img src="{{asset('img/bg-img/a'.random_int(1,12).'.jpg')}}" alt="">
                             <div class="album-info">
-                                <a href="{{route('playlist.detail', ['id' => $playlist->id])}}">
+                                <a href="{{route('playlist.detail', ['playlist_id' => $playlist->id])}}">
                                     <h5>{{$playlist->title}}</h5>
                                 </a>
                                 <p>{{$playlist->user->name}}</p>

@@ -23,3 +23,16 @@ Route::post('login', 'Auth\LoginController@login');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('register', 'UserController@create')->name('register');
 Route::post('register', 'UserController@store');
+
+Route::group(['prefix'=>'user'],function (){
+    Route::middleware(['auth'])->group(function (){
+        Route::get('upload','SongController@create')->name('music.upload');  // co van de gi do o day
+        Route::post('upload','SongController@store')->name('music.store'); // van de nay la lung
+    });
+});
+
+Route::group(['prefix'=>'songs'], function (){
+    Route::get('/','SongController@index')->name('music.index');
+    Route::get('/{id}','SongController@show')->name('music.play');
+});
+

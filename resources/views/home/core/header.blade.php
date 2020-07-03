@@ -59,6 +59,8 @@
                                 <li><a href="event.html">Events</a></li>
                                 <li><a href="blog.html">News</a></li>
                                 <li><a href="contact.html">Contact</a></li>
+                                <li><a href="{{route('music.index')}}"><i class="fa fa-music"></i> Song</a></li>
+                                <li><a href="{{route('music.upload')}}"><i class="fa fa-arrow-circle-up"></i> Upload</a></li>
                             </ul>
 
                             <!-- Login/Register & Cart Button -->

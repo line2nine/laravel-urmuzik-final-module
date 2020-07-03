@@ -10,6 +10,7 @@ use App\Http\Repositories\UserRepository;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class UserService
 {
@@ -48,9 +49,47 @@ class UserService
         $this->userRepo->save($user);
     }
 
+    public function createNew($request)
+    {
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->address = $request->address;
+        $user->status = Status::ACTIVE;
+        $user->password = Hash::make($request->password);
+        if ($request->hasFile('image')) {
+            $user->avatar = $request->image->store('images', 'public');
+        } else {
+            $user->avatar = 'images/default-avatar.png';
+        }
+        $this->userRepo->save($user);
+    }
+
     public function update($user, $request)
     {
 
+    }
+
+    public function updateNew($user, $request)
+    {
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->address = $request->address;
+        $oldFilePath = $user->avatar;
+        $newFilePath = $request->image;
+        if ($oldFilePath !== 'images/default-avatar.png' && $newFilePath !== null) {
+            Storage::delete("public/" . $oldFilePath);
+        }
+        if ($request->hasFile('image')) {
+            $user->avatar = $request->image->store('images', 'public');
+        }
+        if (Auth::user()->role == Role::ADMIN) {
+            $user->role = $request->role;
+            $user->status = $request->status;
+        }
+        $this->userRepo->save($user);
     }
 
     public function changePass($user, $request)

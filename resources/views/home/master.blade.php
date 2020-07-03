@@ -28,6 +28,7 @@
 @yield('content')
 @yield('login')
 @yield('register')
+@yield('playlist')
 
 @include('home.core.footer')
 

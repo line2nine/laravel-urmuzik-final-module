@@ -24,6 +24,23 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('register', 'UserController@create')->name('register');
 Route::post('register', 'UserController@store');
 
+Route::group(['prefix' => 'user'], function () {
+    Route::middleware(['auth'])->group(function () {
+        Route::get('upload', 'Music\SongController@create')->name('music.upload');  // co van de gi do o day
+        Route::post('upload', 'Music\SongController@store')->name('music.store'); // van de nay la lung
+        Route::post('playlist/add', 'Home\PlaylistController@create')->name('playlist.add');
+    });
+});
+
+Route::group(['prefix' => 'playlist'], function () {
+   Route::get('/', 'Home\PlaylistController@index')->name('playlist.index');
+});
+
+Route::group(['prefix' => 'songs'], function () {
+    Route::get('/', 'Music\SongController@index')->name('music.index');
+    Route::get('/{id}', 'Music\SongController@show')->name('music.play');
+});
+  
 Route::middleware(['auth', 'check.role'])->group(function () {
     Route::group(['prefix' => 'admin'], function () {
         Route::get('dashboard', 'UserController@index')->name('admin.dashboard');
@@ -40,18 +57,4 @@ Route::middleware(['auth', 'check.role'])->group(function () {
             Route::post('{id}/change-password', 'UserController@updatePass');
         });
     });
-});
-
-Route::group(['prefix' => 'user'], function () {
-    Route::middleware(['auth'])->group(function () {
-        Route::get('upload', 'Music\SongController@create')->name('music.upload');  // co van de gi do o day
-        Route::post('upload', 'Music\SongController@store')->name('music.store'); // van de nay la lung
-    });
-});
-
-Route::group(['prefix' => 'songs'], function () {
-    Route::get('/', 'Music\SongController@index')->name('music.index');
-    Route::get('/{id}', 'Music\SongController@show')->name('music.play');
-});
-
-
+});  

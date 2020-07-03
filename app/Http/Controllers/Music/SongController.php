@@ -41,7 +41,8 @@ class SongController extends Controller
     public function show($id)
     {
         $song = $this->songService->find($id);
-        return view('song.play',compact('song'));
+        $url = $song->type;
+        return view('song.play',compact('song','url'));
     }
 
 

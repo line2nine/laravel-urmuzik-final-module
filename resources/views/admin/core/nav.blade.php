@@ -21,7 +21,7 @@
                 </a>
                 <ul id="ui" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
                     <li class="sidebar-item"><a class="sidebar-link" href="{{route('user.list')}}">List</a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="ui-buttons.html">Create New</a></li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="{{route('user.create')}}">Create New</a></li>
                 </ul>
             </li>
 

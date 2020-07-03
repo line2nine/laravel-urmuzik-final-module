@@ -11,9 +11,10 @@
 
     <link rel="shortcut icon" href="{{asset('img/icons/icon-48x48.png')}}"/>
 
-    <title>URMUZIK &amp; Dashboard</title>
+    <title>Admin Dashboard</title>
 
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
+    <link href="{{asset('css/font-awesome.min.css')}}" rel="stylesheet">
 </head>
 
 <body>
@@ -22,9 +23,14 @@
 
     <div class="main">
         @include('admin.core.header')
-        @yield('content')
+        <main class="content">
+            <div class="container-fluid p-0">
+                @yield('content')
+            </div>
+        </main>
         @include('admin.core.footer')
     </div>
+
 </div>
 
 <script src="{{asset('js/vendor.js')}}"></script>

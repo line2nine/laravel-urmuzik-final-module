@@ -1,6 +1,6 @@
 @extends('admin.dashboard')
 @section('content')
-    <div>
+    <div class="col-12">
         <div class="card">
             <div class="card-header">
                 <h1>Users List</h1>
@@ -30,7 +30,7 @@
                         </td>
                         <td class="table-action">
                             <a href="#"><i class="align-middle" data-feather="edit-2"></i></a>
-                            <a href="#"><i class="align-middle" data-feather="trash"></i></a>
+                            <a href="{{route('user.delete', $user->id)}}"><i class="align-middle" data-feather="trash"></i></a>
                         </td>
                     </tr>
                 @empty

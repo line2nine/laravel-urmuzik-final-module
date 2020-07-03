@@ -29,8 +29,8 @@ Route::group(['prefix' => 'admin'], function () {
     Route::group(['prefix' => 'user'], function () {
         Route::get('list', 'UserController@getAll')->name('user.list');
         Route::get('search', 'UserController@search')->name('user.search');
-        Route::get('create-new', 'UserController@create')->name('user.create');
-        Route::post('create-new', 'UserController@store');
+        Route::get('create-new', 'UserController@createNew')->name('user.create');
+        Route::post('create-new', 'UserController@storeNew');
         Route::get('{id}/delete', 'UserController@delete')->name('user.delete');
         Route::get('{id}/edit', 'UserController@edit')->name('user.edit');
         Route::post('{id}/edit', 'UserController@update');

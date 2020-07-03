@@ -8,7 +8,13 @@ class Playlist extends Model
 {
     protected $table = 'playlists';
 
-    function user(){
+    function user()
+    {
         return $this->belongsTo('App\User', 'user_id');
+    }
+
+    function song()
+    {
+        return $this->belongsToMany('App\Song','detail_playlist');
     }
 }

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateUserRequest;
+use App\Http\Requests\EditUserRequest;
 use App\Http\Services\UserService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
@@ -38,12 +40,12 @@ class UserController extends Controller
         return redirect()->route('index');
     }
 
-    public function createNew()
+    public function createAtDashboard()
     {
         return view('user.create');
     }
 
-    public function storeNew(CreateUserRequest $request)
+    public function storeAtDashboard(CreateUserRequest $request)
     {
         $this->userService->createNew($request);
         return redirect()->route('user.list');
@@ -58,9 +60,26 @@ class UserController extends Controller
     {
         //
     }
+
     public function update(Request $request, $id)
     {
         //
+    }
+
+    public function editAtDashboard($id)
+    {
+        $user = $this->userService->find($id);
+        if (Auth::user()->id == $user->id || Auth::user()->role == Role::ADMIN) {
+            return view('user.edit', compact('user'));
+        }
+        return abort(403);
+    }
+
+    public function updateAtDashboard(EditUserRequest $request, $id)
+    {
+        $user = $this->userService->find($id);
+        $this->userService->updateNew($user, $request);
+        return redirect()->route('user.list');
     }
 
     public function destroy($id)
@@ -70,6 +89,15 @@ class UserController extends Controller
         $user->delete();
         if ($filePath !== 'images/default-avatar.png') {
             Storage::delete("public/" . $filePath);
+        }
+        return redirect()->route('user.list');
+    }
+
+    function search(Request $request)
+    {
+        if ($this->userService->searchByKeyword($request)) {
+            $users = $this->userService->searchByKeyword($request);
+            return view('user.list', compact('users'));
         }
         return redirect()->route('user.list');
     }

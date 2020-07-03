@@ -1,6 +1,6 @@
 <nav id="sidebar" class="sidebar">
     <div class="sidebar-content js-simplebar">
-        <a class="sidebar-brand" href="index.html">
+        <a class="sidebar-brand" href="{{route('index')}}">
             <span class="align-middle">URMUZIK</span>
         </a>
 

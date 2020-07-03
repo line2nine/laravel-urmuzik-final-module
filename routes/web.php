@@ -34,13 +34,14 @@ Route::group(['prefix' => 'user'], function () {
 
 Route::group(['prefix' => 'playlist'], function () {
    Route::get('/', 'Home\PlaylistController@index')->name('playlist.index');
+   Route::get('/{playlist_id}/detail', 'Home\DetailPlaylistController@index')->name('playlist.detail');
 });
 
 Route::group(['prefix' => 'songs'], function () {
     Route::get('/', 'Music\SongController@index')->name('music.index');
     Route::get('/{id}', 'Music\SongController@show')->name('music.play');
 });
-  
+
 Route::middleware(['auth', 'check.role'])->group(function () {
     Route::group(['prefix' => 'admin'], function () {
         Route::get('dashboard', 'UserController@index')->name('admin.dashboard');
@@ -57,4 +58,4 @@ Route::middleware(['auth', 'check.role'])->group(function () {
             Route::post('{id}/change-password', 'UserController@updatePass');
         });
     });
-});  
+});

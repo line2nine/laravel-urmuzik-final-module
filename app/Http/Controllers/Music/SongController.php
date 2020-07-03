@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Music;
 
 use App\Artist;
 use App\Category;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\SongRequest;
 use App\Http\Services\SongService;
 use Illuminate\Http\Request;

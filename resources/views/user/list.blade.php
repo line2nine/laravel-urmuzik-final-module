@@ -1,5 +1,25 @@
 @extends('admin.dashboard')
 @section('content')
+    <form class="form-inline d-none d-sm-inline-block" method="get" action="{{route('user.search')}}">
+        @csrf
+        <div class="input-group input-group-navbar">
+            <input type="text" class="form-control" placeholder="Search…"
+                   name="keyword" aria-label="Search"
+                   value="{{request('keyword')?request('keyword'):''}}">
+            <div class="input-group-append">
+                <button class="btn" type="button">
+                    <i class="align-middle" data-feather="search"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+    @if(request('keyword'))
+        @if($users->count() >= 2)
+            <p class="text-primary">Found {{$users->count()}} results matched with "{{request('keyword')}}"</p>
+        @else
+            <p class="text-primary">Found {{$users->count()}} result matched with "{{request('keyword')}}"</p>
+        @endif
+    @endif
     <div class="col-12">
         <div class="card">
             <div class="card-header">
@@ -29,8 +49,10 @@
                             @endif
                         </td>
                         <td class="table-action">
-                            <a href="#"><i class="align-middle" data-feather="edit-2"></i></a>
-                            <a href="{{route('user.delete', $user->id)}}"><i class="align-middle" data-feather="trash"></i></a>
+                            <a href="{{route('user.edit', $user->id)}}"><i class="align-middle"
+                                                                           data-feather="edit-2"></i></a>
+                            <a href="{{route('user.delete', $user->id)}}"><i class="align-middle"
+                                                                             data-feather="trash"></i></a>
                         </td>
                     </tr>
                 @empty

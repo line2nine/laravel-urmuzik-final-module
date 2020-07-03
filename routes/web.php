@@ -40,20 +40,21 @@ Route::group(['prefix' => 'songs'], function () {
     Route::get('/', 'Music\SongController@index')->name('music.index');
     Route::get('/{id}', 'Music\SongController@show')->name('music.play');
 });
-
-Route::group(['prefix' => 'admin'], function () {
-    Route::get('dashboard', 'UserController@index')->name('admin.dashboard');
-    Route::group(['prefix' => 'user'], function () {
-        Route::get('list', 'UserController@getAll')->name('user.list');
-        Route::get('search', 'UserController@search')->name('user.search');
-        Route::get('create-new', 'UserController@createNew')->name('user.create');
-        Route::post('create-new', 'UserController@storeNew');
-        Route::get('{id}/delete', 'UserController@delete')->name('user.delete');
-        Route::get('{id}/edit', 'UserController@edit')->name('user.edit');
-        Route::post('{id}/edit', 'UserController@update');
-        Route::get('{id}/detail', 'UserController@userDetail')->name('user.detail');
-        Route::get('{id}/change-password', 'UserController@changePass')->name('user.changePass');
-        Route::post('{id}/change-password', 'UserController@updatePass');
+  
+Route::middleware(['auth', 'check.role'])->group(function () {
+    Route::group(['prefix' => 'admin'], function () {
+        Route::get('dashboard', 'UserController@index')->name('admin.dashboard');
+        Route::group(['prefix' => 'user'], function () {
+            Route::get('list', 'UserController@getAll')->name('user.list');
+            Route::get('search', 'UserController@search')->name('user.search');
+            Route::get('create-new', 'UserController@createAtDashboard')->name('user.create');
+            Route::post('create-new', 'UserController@storeAtDashboard');
+            Route::get('{id}/delete', 'UserController@destroy')->name('user.delete');
+            Route::get('{id}/edit', 'UserController@editAtDashboard')->name('user.edit');
+            Route::post('{id}/edit', 'UserController@updateAtDashboard');
+            Route::get('{id}/detail', 'UserController@userDetail')->name('user.detail');
+            Route::get('{id}/change-password', 'UserController@changePass')->name('user.changePass');
+            Route::post('{id}/change-password', 'UserController@updatePass');
+        });
     });
 });  
-  

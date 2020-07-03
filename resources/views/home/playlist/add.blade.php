@@ -14,7 +14,15 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Name playlist</label>
-                        <input type="text" class="form-control" name="title">
+                        <input type="text" class="form-control
+                        @if($errors->first('title'))
+                            is-invalid
+                        @endif
+                            " value="{{ old('title') }}" name="title" required minlength="2" maxlength="15">
+                        @if($errors->first('title'))
+                            <p class="text-danger">{{ $errors->first('title') }}</p>
+                        @endif
+
                     </div>
                 </div>
                 <div class="modal-footer">

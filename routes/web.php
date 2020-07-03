@@ -28,6 +28,10 @@ Route::group(['prefix'=>'user'],function (){
     Route::middleware(['auth'])->group(function (){
         Route::get('upload','SongController@create')->name('music.upload');  // co van de gi do o day
         Route::post('upload','SongController@store')->name('music.store'); // van de nay la lung
+        Route::get('{id}/list-song-user','SongController@listSongUser')->name('music.list.user');
+        Route::get('{id}/edit-song', 'SongController@edit')->name('music.edit');
+        Route::post('{id}/edit-song', 'SongController@update')->name('music.update');
+        Route::get('{id}/delete-song', 'SongController@destroy')->name('music.delete');
     });
 });
 

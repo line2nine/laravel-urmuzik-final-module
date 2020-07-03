@@ -56,23 +56,28 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li><a href="event.html">Events</a></li>
-                                <li><a href="blog.html">News</a></li>
+
                                 <li><a href="contact.html">Contact</a></li>
                                 <li><a href="{{route('music.index')}}"><i class="fa fa-music"></i> Song</a></li>
-                                <li><a href="{{route('music.upload')}}"><i class="fa fa-arrow-circle-up"></i> Upload</a></li>
+                                <li><a href="{{route('music.upload')}}"><i class="fa fa-arrow-circle-up"></i> Upload</a>
+                                </li>
                             </ul>
 
                             <!-- Login/Register & Cart Button -->
                             <div class="login-register-cart-button d-flex align-items-center">
                                 <!-- Login -->
                                 <div class="login-register-btn mr-50">
-                                    @if(\Illuminate\Support\Facades\Auth::user())
-                                        <a href="#" id="loginBtn">{{auth()->user()->name}}</a>
-                                        &nbsp
-                                        <a href="#" id="loginBtn">|</a>
-                                        &nbsp
-                                        <a href="{{route('logout')}}" id="loginBtn"><i class="fa fa-sign-out"></i></a>
+                                    <div class="classynav">
+                                        @if(\Illuminate\Support\Facades\Auth::user())
+                                            <ul>
+                                                <li><a href="#" id="loginBtn">{{auth()->user()->name}}</a>
+                                                    <ul class="dropdown">
+                                                        <li><a href="{{ route('music.list.user',['id'=>auth()->user()->id]) }}">List Songs</a></li>
+                                                        <li><a href="{{route('logout')}}"><i class="fa fa-sign-out"></i> Logout</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                    </div>
                                     @else
                                         <a href="{{route('login')}}" id="loginBtn">Login</a>
                                         &nbsp

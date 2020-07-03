@@ -16,21 +16,41 @@
             </li>
 
             <li class="sidebar-item">
-                <a href="#ui" data-toggle="collapse" class="sidebar-link collapsed">
-                    <i class="align-middle" data-feather="users"></i> <span class="align-middle">Users</span>
+                <a href="#users" data-toggle="collapse" class="sidebar-link collapsed">
+                    <i class="align-middle" data-feather="users"></i> <span class="align-middle">User</span>
                 </a>
-                <ul id="ui" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
+                <ul id="users" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
                     <li class="sidebar-item"><a class="sidebar-link" href="{{route('user.list')}}">List</a></li>
                     <li class="sidebar-item"><a class="sidebar-link" href="{{route('user.create')}}">Create New</a></li>
                 </ul>
             </li>
 
             <li class="sidebar-item">
-                <a href="#forms" data-toggle="collapse" class="sidebar-link collapsed">
-                    <i class="align-middle" data-feather="music"></i> <span class="align-middle">Songs</span>
+                <a href="#songs" data-toggle="collapse" class="sidebar-link collapsed">
+                    <i class="align-middle" data-feather="music"></i> <span class="align-middle">Song</span>
                 </a>
-                <ul id="forms" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
+                <ul id="songs" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
                     <li class="sidebar-item"><a class="sidebar-link" href="ui-alerts.html">List</a></li>
+                </ul>
+            </li>
+
+            <li class="sidebar-item">
+                <a href="#categories" data-toggle="collapse" class="sidebar-link collapsed">
+                    <i class="align-middle" data-feather="book"></i> <span class="align-middle">Category</span>
+                </a>
+                <ul id="categories" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
+                    <li class="sidebar-item"><a class="sidebar-link" href="ui-alerts.html">List</a></li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="ui-alerts.html">Create New</a></li>
+                </ul>
+            </li>
+
+            <li class="sidebar-item">
+                <a href="#artists" data-toggle="collapse" class="sidebar-link collapsed">
+                    <i class="align-middle" data-feather="star"></i> <span class="align-middle">Artist</span>
+                </a>
+                <ul id="artists" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
+                    <li class="sidebar-item"><a class="sidebar-link" href="ui-alerts.html">List</a></li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="ui-alerts.html">Create New</a></li>
                 </ul>
             </li>
 

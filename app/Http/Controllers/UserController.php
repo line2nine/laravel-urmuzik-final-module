@@ -16,7 +16,13 @@ class UserController extends Controller
 
     public function index()
     {
-        //
+        return view('admin.dashboard');
+    }
+
+    function getAll()
+    {
+        $users = $this->userService->getAll();
+        return view('user.list', compact('users'));
     }
 
     public function create()

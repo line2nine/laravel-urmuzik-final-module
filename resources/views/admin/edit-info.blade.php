@@ -72,7 +72,7 @@
                                                 <div class="col-md-4">
                                                     <div class="text-center">
                                                         <img alt="Charles Hall"
-                                                             src="{{asset('img/avatars/avatar.jpg')}}"
+                                                             src="{{asset('storage/' . auth()->user()->avatar)}}"
                                                              class="rounded-circle img-responsive mt-2" width="128"
                                                              height="128"/>
                                                         <div class="mt-2">

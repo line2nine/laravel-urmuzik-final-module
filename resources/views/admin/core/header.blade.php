@@ -160,7 +160,7 @@
                     <a class="dropdown-item" href="pages-profile.html"><i class="align-middle mr-1" data-feather="user"></i> Profile</a>
                     <a class="dropdown-item" href="#"><i class="align-middle mr-1" data-feather="pie-chart"></i> Analytics</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{{route('admin.editInfo')}}l"><i class="align-middle mr-1" data-feather="settings"></i> Settings & Privacy</a>
+                    <a class="dropdown-item" href="#"><i class="align-middle mr-1" data-feather="settings"></i> Settings & Privacy</a>
                     <a class="dropdown-item" href="#"><i class="align-middle mr-1" data-feather="help-circle"></i> Help Center</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#">Log out</a>

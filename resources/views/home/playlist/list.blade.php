@@ -2,11 +2,11 @@
 @section('playlist')
     <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(img/bg-img/breadcumb3.jpg);">
         <div class="bradcumbContent">
-            <p>See what’s new</p>
+            <a data-toggle="modal" data-target="#exampleModal"><p>See what’s new</p></a>
             <h2>My playlist</h2>
         </div>
     </section>
-
+@include('home.playlist.add')
     <!-- ##### Album Catagory Area Start ##### -->
     <section class="album-catagory section-padding-100-0">
         <div class="container">

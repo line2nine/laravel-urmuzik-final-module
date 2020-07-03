@@ -48,6 +48,23 @@ class UserService
         $this->userRepo->save($user);
     }
 
+    public function createNew($request)
+    {
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->address = $request->address;
+        $user->status = Status::ACTIVE;
+        $user->password = Hash::make($request->password);
+        if ($request->hasFile('image')) {
+            $user->avatar = $request->image->store('images', 'public');
+        } else {
+            $user->avatar = 'images/default-avatar.png';
+        }
+        $this->userRepo->save($user);
+    }
+
     public function update($user, $request)
     {
 

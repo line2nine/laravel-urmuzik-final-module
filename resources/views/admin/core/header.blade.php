@@ -16,15 +16,10 @@
                     <span class="text-dark">{{strtoupper(auth()->user()->name)}}</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="pages-profile.html"><i class="align-middle mr-1"
+                    <a class="dropdown-item" href="{{route('user.detail', auth()->user()->id)}}"><i class="align-middle mr-1"
                                                                           data-feather="user"></i> Profile</a>
-                    <a class="dropdown-item" href="#"><i class="align-middle mr-1" data-feather="pie-chart"></i>
-                        Analytics</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#"><i class="align-middle mr-1" data-feather="settings"></i> Settings
-                        & Privacy</a>
-                    <a class="dropdown-item" href="#"><i class="align-middle mr-1" data-feather="help-circle"></i> Help
-                        Center</a>
+                    <a class="dropdown-item" href="{{route('user.changePass', auth()->user()->id)}}"><i class="align-middle mr-1" data-feather="code"></i>
+                        Change Password</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="{{route('logout')}}"><i class="fa fa-sign-out mr-1"></i> Log out</a>
                 </div>

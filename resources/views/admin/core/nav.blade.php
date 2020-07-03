@@ -63,7 +63,7 @@
                     <i class="align-middle" data-feather="settings"></i> <span class="align-middle">Settings</span>
                 </a>
                 <ul id="changePass" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
-                    <li class="sidebar-item"><a class="sidebar-link" href="ui-alerts.html">User Profile</a></li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="{{route('user.detail', auth()->user()->id)}}">User Profile</a></li>
                     <li class="sidebar-item"><a class="sidebar-link" href="{{route('user.changePass', auth()->user()->id)}}">Change Password</a></li>
                 </ul>
             </li>

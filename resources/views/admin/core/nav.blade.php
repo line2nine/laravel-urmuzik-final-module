@@ -39,8 +39,8 @@
                     <i class="align-middle" data-feather="book"></i> <span class="align-middle">Category</span>
                 </a>
                 <ul id="categories" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
-                    <li class="sidebar-item"><a class="sidebar-link" href="ui-alerts.html">List</a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="ui-alerts.html">Create New</a></li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="{{route('category.list')}}">List</a></li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="{{route('category.create')}}">Create New</a></li>
                 </ul>
             </li>
 

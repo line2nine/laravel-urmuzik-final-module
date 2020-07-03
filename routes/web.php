@@ -60,5 +60,14 @@ Route::middleware(['auth', 'check.role'])->group(function () {
             Route::get('{id}/change-password', 'UserController@changePass')->name('user.changePass');
             Route::post('{id}/change-password', 'UserController@updatePass');
         });
+        Route::group(['prefix' => 'category'], function () {
+            Route::get('list', 'Music\CategoryController@index')->name('category.list');
+            Route::get('create-new', 'Music\CategoryController@create')->name('category.create');
+            Route::post('create-new', 'Music\CategoryController@store');
+            Route::get('{id}/delete', 'Music\CategoryController@destroy')->name('category.delete');
+            Route::get('{id}/edit', 'Music\CategoryController@edit')->name('category.edit');
+            Route::post('{id}/edit', 'Music\CategoryController@update');
+            Route::get('{id}/detail', 'Music\CategoryController@userDetail')->name('category.detail');
+        });
     });
 });

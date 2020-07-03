@@ -11,4 +11,9 @@ class Song extends Model
     function artist() {
         return $this->belongsTo('App\Artist','artist_id');
     }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class,'category_id');
+    }
 }

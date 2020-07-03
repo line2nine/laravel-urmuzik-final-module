@@ -3,7 +3,8 @@
      aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form>
+            <form method="post" action="{{route('playlist.add')}}">
+                @csrf
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">ADD NEW PLAYLIST</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -13,7 +14,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Name playlist</label>
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" name="title">
                     </div>
                 </div>
                 <div class="modal-footer">

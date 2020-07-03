@@ -27,7 +27,12 @@
                         <div class="classynav">
                             <ul>
                                 <li><a href="index.html">Home</a></li>
-                                <li><a href="albums-store.html">Albums</a></li>
+                                <li><a>Albums</a>
+                                    <ul class="dropdown">
+                                        <li><a href="#">List</a></li>
+                                        <li><a data-toggle="modal" data-target="#exampleModal">Add new</a></li>
+                                    </ul>
+                                </li>
                                 <li><a href="#">Pages</a>
                                     <ul class="dropdown">
                                         <li><a href="index.html">Home</a></li>
@@ -92,3 +97,4 @@
     </div>
 </header>
 <!-- ##### Header Area End ##### -->
+@include('home.playlist.add')

@@ -29,7 +29,7 @@
                                 <li><a href="index.html">Home</a></li>
                                 <li><a>Albums</a>
                                     <ul class="dropdown">
-                                        <li><a href="#">List</a></li>
+                                        <li><a href="{{route('playlist.index')}}">List</a></li>
                                         <li><a data-toggle="modal" data-target="#exampleModal">Add new</a></li>
                                     </ul>
                                 </li>

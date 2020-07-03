@@ -1,6 +1,6 @@
 @extends('home.master')
 @section('playlist')
-    <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(img/bg-img/breadcumb3.jpg);">
+    <section class="breadcumb-area bg-img bg-overlay" style="background-image: url({{asset('img/bg-img/breadcumb3.jpg')}});">
         <div class="bradcumbContent">
             <a data-toggle="modal" data-target="#exampleModal"><p>See what’s new</p></a>
             <h2>My playlist</h2>
@@ -53,7 +53,7 @@
                         <div class="single-album">
                             <img src="img/bg-img/a{{random_int(1,12)}}.jpg" alt="">
                             <div class="album-info">
-                                <a href="#">
+                                <a href="{{route('playlist.detail', ['id' => $playlist->id])}}">
                                     <h5>{{$playlist->title}}</h5>
                                 </a>
                                 <p>{{$playlist->user->name}}</p>

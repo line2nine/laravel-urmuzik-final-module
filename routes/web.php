@@ -24,6 +24,11 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('register', 'UserController@create')->name('register');
 Route::post('register', 'UserController@store');
 
+
+Route::prefix('admin')->group(function () {
+    Route::get('dashboard','Admin\AdminController@dashboard')->name('admin.dashboard');
+    Route::get('setting','Admin\AdminController@showFormUpdateInfo')->name('admin.editInfo');
+
 Route::group(['prefix'=>'user'],function (){
     Route::middleware(['auth'])->group(function (){
         Route::get('upload','SongController@create')->name('music.upload');  // co van de gi do o day
@@ -34,5 +39,6 @@ Route::group(['prefix'=>'user'],function (){
 Route::group(['prefix'=>'songs'], function (){
     Route::get('/','SongController@index')->name('music.index');
     Route::get('/{id}','SongController@show')->name('music.play');
+
 });
 

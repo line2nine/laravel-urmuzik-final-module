@@ -9,34 +9,29 @@
                 Pages
             </li>
 
-            <li class="sidebar-item active">
-                <a class="sidebar-link" href="index.html">
+            <li class="sidebar-item">
+                <a class="sidebar-link" href="{{route('admin.dashboard')}}">
                     <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
                 </a>
             </li>
 
             <li class="sidebar-item">
-                <a class="sidebar-link" href="pages-profile.html">
+                <a href="#ui" data-toggle="collapse" class="sidebar-link collapsed">
                     <i class="align-middle" data-feather="users"></i> <span class="align-middle">Users</span>
                 </a>
+                <ul id="ui" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
+                    <li class="sidebar-item"><a class="sidebar-link" href="{{route('user.list')}}">List</a></li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="{{route('user.create')}}">Create New</a></li>
+                </ul>
             </li>
 
             <li class="sidebar-item">
-                <a class="sidebar-link" href="pages-invoice.html">
+                <a href="#forms" data-toggle="collapse" class="sidebar-link collapsed">
                     <i class="align-middle" data-feather="music"></i> <span class="align-middle">Songs</span>
                 </a>
-            </li>
-
-            <li class="sidebar-item">
-                <a class="sidebar-link" href="pages-blank.html">
-                    <i class="align-middle" data-feather="award"></i> <span class="align-middle">Kind Of Music</span>
-                </a>
-            </li>
-
-            <li class="sidebar-item">
-                <a class="sidebar-link" href="pages-blank.html">
-                    <i class="align-middle" data-feather="user"></i> <span class="align-middle">Singer</span>
-                </a>
+                <ul id="forms" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
+                    <li class="sidebar-item"><a class="sidebar-link" href="ui-alerts.html">List</a></li>
+                </ul>
             </li>
 
             <li class="sidebar-header">
@@ -45,32 +40,8 @@
 
 
             <li class="sidebar-item">
-                <a class="sidebar-link" href="{{route('admin.editInfo')}}">
+                <a class="sidebar-link" href="#">
                     <i class="align-middle" data-feather="settings"></i> <span class="align-middle">Settings</span>
-                </a>
-            </li>
-
-
-
-            <li class="sidebar-item">
-                <a class="sidebar-link" href="tables-bootstrap.html">
-                    <i class="align-middle" data-feather="list"></i> <span class="align-middle">Tables</span>
-                </a>
-            </li>
-
-            <li class="sidebar-header">
-                Plugins & Addons
-            </li>
-
-            <li class="sidebar-item">
-                <a class="sidebar-link" href="charts-chartjs.html">
-                    <i class="align-middle" data-feather="bar-chart-2"></i> <span class="align-middle">Charts</span>
-                </a>
-            </li>
-
-            <li class="sidebar-item">
-                <a class="sidebar-link" href="maps-google.html">
-                    <i class="align-middle" data-feather="map"></i> <span class="align-middle">Maps</span>
                 </a>
             </li>
         </ul>

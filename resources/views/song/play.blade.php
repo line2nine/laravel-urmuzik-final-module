@@ -1,7 +1,6 @@
 @extends('home.master')
 @section('content')
-    <!-- ##### Featured Artist Area Start ##### -->
-    <section class="featured-artist-area section-padding-100 bg-img bg-overlay bg-fixed" style="background-image: url({{ asset('img/bg-img/bg-4.jpg') }});">
+    <section class="featured-artist-area section-padding-100 bg-img bg-overlay bg-fixed" style="background-image: url( {{ asset('img/bg-img/bg-4.jpg') }} );">
         <div class="container">
             <div class="row align-items-end">
                 <div class="col-12 col-md-5 col-lg-4">
@@ -21,8 +20,10 @@
                             <div class="song-name">
                                 <p>{{ $song->name }}</p>
                             </div>
-                            <audio preload="auto" controls>
-                                <source src="{{ asset('storage/'.$song->type) }}">
+                            <audio autoplay>
+                                <source src="{{ asset('/storage/' . $song->type) }}" type="audio/ogg">
+                                <source src="horse.mp3" type="audio/mpeg">
+                                Your browser does not support the audio element.
                             </audio>
                         </div>
                     </div>
@@ -30,5 +31,4 @@
             </div>
         </div>
     </section>
-    <!-- ##### Featured Artist Area End ##### -->
 @endsection

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ChangePasswordUserRequest;
 use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\EditUserRequest;
 use App\Http\Services\UserService;
@@ -100,5 +101,21 @@ class UserController extends Controller
             return view('user.list', compact('users'));
         }
         return redirect()->route('user.list');
+    }
+
+    function changePass($id)
+    {
+        $user = $this->userService->find($id);
+        return view('user.changePass', compact('user'));
+    }
+
+    function updatePass(ChangePasswordUserRequest $request, $id)
+    {
+        $user = $this->userService->find($id);
+        if ($this->userService->checkPass($request)) {
+            $this->userService->changePass($user, $request);
+            return redirect()->route('admin.dashboard');
+        }
+        return back()->with('error', 'Wrong current password, try again');
     }
 }

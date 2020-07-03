@@ -43,4 +43,8 @@ Route::group(['prefix' => 'songs'], function () {
 
 });
 
+Route::group(['prefix' => 'playlist'], function () {
+   Route::get('/', 'Home\PlaylistController@index')->name('playlist.index');
+});
+
 

@@ -19,7 +19,7 @@
                         <td>{{$song->name}}</td>
                         <td>
                             <a href="{{ route('music.play',['id'=>$song->id]) }}" title="play"><i class="fa fa-play-circle"></i></a> &emsp;
-                            <a href="#" target="_blank" title="open new window"><i class="fa fa-plus-square-o"></i></a>
+                            <a href="{{ route('music.play',['id'=>$song->id]) }}" target="_blank" title="open new window"><i class="fa fa-plus-square-o"></i></a>
                         </td>
                     </tr>
                     @empty

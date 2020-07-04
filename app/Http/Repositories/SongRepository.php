@@ -39,4 +39,9 @@ class SongRepository
     {
         return $this->song->where('name', 'LIKE', '%' . $keyword . '%')->get();
     }
+
+    public function view($id)
+    {
+        return $this->find($id)->increment('view');
+    }
 }

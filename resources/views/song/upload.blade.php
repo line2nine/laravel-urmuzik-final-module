@@ -18,6 +18,11 @@
                             <p class="text-success">
                                 <i class="fa fa-check" aria-hidden="true"></i>{{ Session::get('success') }}
                             </p>
+                        @endif
+                        @if(\Illuminate\Support\Facades\Session::has('size'))
+                            <p class="text-success">
+                                <i class="fa fa-check" aria-hidden="true"></i>{{ Session::get('size') }}
+                            </p>
                     @endif
                         <!-- Login Form -->
                         <div class="login-form">

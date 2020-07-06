@@ -1,9 +1,10 @@
 @extends('home.master')
 @section('playlist')
-    <section class="breadcumb-area bg-img bg-overlay" style="background-image: url({{asset('img/bg-img/breadcumb3.jpg')}});">
+    <section class="breadcumb-area bg-img bg-overlay"
+             style="background-image: url({{asset('img/bg-img/breadcumb3.jpg')}});">
         <div class="bradcumbContent">
-            <a data-toggle="modal" data-target="#exampleModal"><p>See what’s new</p></a>
-            <h2>My playlist</h2>
+            <a><p>See what’s new</p></a>
+            <h2>Playlist</h2>
         </div>
     </section>
 
@@ -51,13 +52,13 @@
                 @foreach($playlists as $key => $playlist)
                     <div class="col-12 col-sm-4 col-md-3 col-lg-2 single-album-item t c p">
                         <div class="single-album">
-                            <img src="{{asset('img/bg-img/a'.random_int(1,12).'.jpg')}}" alt="">
-                            <div class="album-info">
-                                <a href="{{route('playlist.detail', ['playlist_id' => $playlist->id])}}">
+                            <a href="{{route('playlist.detail', ['playlist_id' => $playlist->id])}}">
+                                <img src="{{asset('img/bg-img/a'.random_int(1,12).'.jpg')}}" alt="">
+                                <div class="album-info">
                                     <h5>{{$playlist->title}}</h5>
-                                </a>
-                                <p>{{$playlist->user->name}}</p>
-                            </div>
+                                    <p>{{$playlist->user->name}}</p>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 @endforeach

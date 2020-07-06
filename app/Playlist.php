@@ -13,8 +13,8 @@ class Playlist extends Model
         return $this->belongsTo('App\User', 'user_id');
     }
 
-    function song()
+    function songs()
     {
-        return $this->belongsToMany('App\Song','detail_playlist');
+        return $this->belongsToMany('App\Song', 'detail_playlists');
     }
 }

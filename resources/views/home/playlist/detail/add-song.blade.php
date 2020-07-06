@@ -16,10 +16,9 @@
                 <div class="container">
                     <form method="post" action="{{route('playlist.store-song', ['playlist_id' => $playlist->id])}}">
                         @csrf
-                        <input type="hidden" name="count" value="{{count($songs)}}">
                         @forelse($songs as $key => $song)
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="{{$song->id}}" name="song{{$key}}">
+                                <input class="form-check-input" type="checkbox" value="{{$song->id}}" name="song[{{$song->id}}]">
                                 <label class="form-check-label" for="defaultCheck1">
                                         <span><img src="{{asset('storage/'.$song->image)}}" style="width: 70px;">
                                         </span>

@@ -28,7 +28,11 @@ Route::group(['prefix' => 'user'], function () {
     Route::middleware(['auth'])->group(function () {
         Route::get('upload', 'Music\SongController@create')->name('music.upload');  // co van de gi do o day
         Route::post('upload', 'Music\SongController@store')->name('music.store'); // van de nay la lung
-        Route::post('playlist/add', 'Home\PlaylistController@create')->name('playlist.add');
+        Route::group(['prefix' => 'playlist'], function () {
+            Route::post('add', 'Home\PlaylistController@create')->name('playlist.add');
+            Route::get('detail/{playlist_id}/add-song', 'Home\DetailPlaylistController@addSong')->name('playlist.add-song');
+            Route::post('detail/{playlist_id}/add-song', 'Home\DetailPlaylistController@storeSong')->name('playlist.store-song');
+        });
     });
 });
 

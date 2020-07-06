@@ -26,8 +26,8 @@ Route::post('register', 'UserController@store');
 
 Route::group(['prefix' => 'user'], function () {
     Route::middleware(['auth'])->group(function () {
-        Route::get('upload', 'Music\SongController@create')->name('music.upload');  // co van de gi do o day
-        Route::post('upload', 'Music\SongController@store')->name('music.store'); // van de nay la lung
+        Route::get('upload', 'Music\SongController@create')->name('music.upload');
+        Route::post('upload', 'Music\SongController@store')->name('music.store');
         Route::get('{id}/list-song-user', 'Music\SongController@listSongUser')->name('music.list.user');
         Route::get('{id}/edit-song', 'Music\SongController@edit')->name('music.edit');
         Route::post('{id}/edit-song', 'Music\SongController@update')->name('music.update');
@@ -42,7 +42,7 @@ Route::group(['prefix' => 'playlist'], function () {
 
 Route::group(['prefix' => 'songs'], function () {
     Route::get('/', 'Music\SongController@index')->name('music.index');
-    Route::get('/{id}', 'Music\SongController@show')->name('music.play');
+    Route::get('/{id}/play', 'Music\SongController@show')->name('music.play');
 });
 
 Route::middleware(['auth', 'check.role'])->group(function () {

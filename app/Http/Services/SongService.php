@@ -9,6 +9,8 @@ use App\Song;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use MongoDB\Driver\Session;
+use Symfony\Component\Console\Input\Input;
 
 class SongService
 {
@@ -36,6 +38,7 @@ class SongService
 
     public function create($request)
     {
+//        dd($request->type);
         $user = Auth::user();
         $songRepo = new Song();
         $songRepo->name = $request->name;

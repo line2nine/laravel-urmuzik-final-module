@@ -32,12 +32,18 @@ Route::group(['prefix' => 'user'], function () {
         Route::get('{id}/edit-song', 'Music\SongController@edit')->name('music.edit');
         Route::post('{id}/edit-song', 'Music\SongController@update')->name('music.update');
         Route::get('{id}/delete-song', 'Music\SongController@destroy')->name('music.delete');
-        Route::post('playlist/add', 'Home\PlaylistController@create')->name('playlist.add');
+        Route::group(['prefix' => 'playlist'], function () {
+            Route::post('add', 'Home\PlaylistController@create')->name('playlist.add');
+            Route::get('detail/{playlist_id}/add-song', 'Home\DetailPlaylistController@addSong')->name('playlist.add-song');
+            Route::post('detail/{playlist_id}/add-song', 'Home\DetailPlaylistController@storeSong')->name('playlist.store-song');
+            Route::get('detail/{playlist_id}{song_id}/delete', 'Home\DetailPlaylistController@deleteSong')->name('playlist.delete-song');
+        });
     });
 });
 
 Route::group(['prefix' => 'playlist'], function () {
-    Route::get('/', 'Home\PlaylistController@index')->name('playlist.index');
+   Route::get('/', 'Home\PlaylistController@index')->name('playlist.index');
+   Route::get('/{playlist_id}/detail', 'Home\DetailPlaylistController@index')->name('playlist.detail');
 });
 
 Route::group(['prefix' => 'songs'], function () {

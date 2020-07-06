@@ -22,16 +22,13 @@ class DetailPlaylistService
         return $this->detailPlaylistRepository->getSongByPlaylistId($playlist_id);
     }
 
-    public function addSongPlaylist($request, $playlist_id)
+    public function addSongPlaylist($request, $playlist)
     {
-        $count = $request->count;
-        for ($i = 0; $i < $count; $i++) {
-            $requestSongId = $request->input('song' . $i);
-            if ($requestSongId !== null) {
-                $detailPlaylist = new DetailPlaylist();
-                $detailPlaylist->song_id = $requestSongId;
-                $detailPlaylist->playlist_id = $playlist_id;
-                $this->detailPlaylistRepository->save($detailPlaylist);
+        $songsId = $request->song;
+        $songsOfPlayList = $playlist->songs;
+        foreach ($songsId as $songId ) {
+            if (!$songsOfPlayList->contains('song_id', $songId)) {
+                $playlist->songs()->attach($songId);
             }
         }
     }

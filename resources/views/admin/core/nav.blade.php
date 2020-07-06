@@ -49,8 +49,8 @@
                     <i class="align-middle" data-feather="star"></i> <span class="align-middle">Artist</span>
                 </a>
                 <ul id="artists" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
-                    <li class="sidebar-item"><a class="sidebar-link" href="ui-alerts.html">List</a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="ui-alerts.html">Create New</a></li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="{{route('artist.list')}}">List</a></li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="{{route('artist.create')}}">Create New</a></li>
                 </ul>
             </li>
 

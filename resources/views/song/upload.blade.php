@@ -24,7 +24,7 @@
                                 <i class="fa fa-check" aria-hidden="true"></i>{{ Session::get('size') }}
                             </p>
                     @endif
-                        <!-- Login Form -->
+                    <!-- Login Form -->
                         <div class="login-form">
                             <form action="{{ route('music.store') }}" method="post" enctype="multipart/form-data">
                                 @csrf
@@ -36,11 +36,11 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">File <i><span
                                                 style="color: red">(.mp3)</span></i></label>
-                                    <input type="file" name="type" class="form-control" id="exampleInputEmail1">
+                                    <input type="file" name="type" class="form-control" accept="audio/*">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Image</label>
-                                    <input type="file" name="image" class="form-control" id="exampleInputEmail1">
+                                    <input type="file" name="image" class="form-control" accept="image/*">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Category</label>

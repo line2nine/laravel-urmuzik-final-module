@@ -38,6 +38,7 @@ class SongController extends Controller
 
     public function store(SongRequest $request)
     {
+        dd($request);
         $this->songService->create($request);
         Session::flash('success','Add Completed');
         return redirect()->route('music.upload');

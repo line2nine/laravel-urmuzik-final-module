@@ -23,9 +23,18 @@ class PlaylistController extends Controller
         return view('home.playlist.list', compact('playlists'));
     }
 
+    public function myPlaylist()
+    {
+        $myPlaylists = $this->playlistService->myPlaylist();
+
+        return view('home.playlist.my-playlist', compact('myPlaylists'));
+    }
+
     public function create(CreatePlaylistRequest $request){
         $this->playlistService->create($request);
 
         return redirect(route('playlist.index'));
     }
+
+
 }

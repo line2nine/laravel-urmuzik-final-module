@@ -5,6 +5,7 @@ namespace App\Http\Repositories;
 
 
 use App\Playlist;
+use Illuminate\Support\Facades\Auth;
 
 class PlaylistRepository
 {
@@ -18,6 +19,11 @@ class PlaylistRepository
     public function getAll()
     {
         return $this->playlist->all();
+    }
+
+    public function myPlaylist()
+    {
+        return $this->playlist->where('user_id', Auth::user()->id)->get();
     }
 
     public function find($id)

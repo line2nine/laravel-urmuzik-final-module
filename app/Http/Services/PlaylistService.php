@@ -22,6 +22,15 @@ class PlaylistService
         return $this->playlistRepository->getAll();
     }
 
+    public function myPlaylist()
+    {
+        if ($this->playlistRepository->myPlaylist()){
+            return $this->playlistRepository->myPlaylist();
+        } else {
+            return null;
+        }
+    }
+
     public function find($id)
     {
         return $this->playlistRepository->find($id);

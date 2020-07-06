@@ -48,8 +48,9 @@ class DetailPlaylistController extends Controller
 
     public function storeSong(Request $request, $playlist_id)
     {
-        $this->detailPlaylistService->addSongPlaylist($request, $playlist_id);
+        $playlist = $this->playlistService->find($playlist_id);
+        $this->detailPlaylistService->addSongPlaylist($request, $playlist);
 
-        return redirect(route('playlist.detail', ['playlist_id' => $playlist_id]));
+        return redirect(route('playlist.detail', ['playlist_id' => $playlist->id]));
     }
 }

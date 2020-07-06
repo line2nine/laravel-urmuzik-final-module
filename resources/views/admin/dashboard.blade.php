@@ -14,6 +14,8 @@
     <title>Admin Dashboard</title>
 
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
+    <link href="{{asset('css/customer-profile.css')}}" rel="stylesheet">
+    <link href="{{asset('css/customer-avatar.css')}}" rel="stylesheet">
     <link href="{{asset('css/font-awesome.min.css')}}" rel="stylesheet">
 </head>
 

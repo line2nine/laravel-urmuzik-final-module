@@ -85,10 +85,9 @@ class UserService
         if ($request->hasFile('image')) {
             $user->avatar = $request->image->store('images', 'public');
         }
-        if (Auth::user()->role == Role::ADMIN) {
-            $user->role = $request->role;
-            $user->status = $request->status;
-        }
+        $user->role = $request->role;
+        $user->status = $request->status;
+
         $this->userRepo->save($user);
     }
 

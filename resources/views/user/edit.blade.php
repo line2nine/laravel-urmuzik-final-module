@@ -34,7 +34,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputState">Role</label>
-                            <select id="inputState" class="form-control">
+                            <select id="inputState" class="form-control" name="role">
                                 <option
                                     @if($user->role == \App\Http\Controllers\Role::ADMIN)
                                     selected
@@ -51,7 +51,7 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="inputState">Status</label>
-                            <select id="inputState" class="form-control">
+                            <select id="inputState" class="form-control" name="status">
                                 <option
                                     @if($user->role == \App\Http\Controllers\Status::ACTIVE)
                                     selected

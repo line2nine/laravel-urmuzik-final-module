@@ -67,7 +67,16 @@ Route::middleware(['auth', 'check.role'])->group(function () {
             Route::get('{id}/delete', 'Music\CategoryController@destroy')->name('category.delete');
             Route::get('{id}/edit', 'Music\CategoryController@edit')->name('category.edit');
             Route::post('{id}/edit', 'Music\CategoryController@update');
-            Route::get('{id}/detail', 'Music\CategoryController@userDetail')->name('category.detail');
+            Route::get('{id}/detail', 'Music\CategoryController@categoryDetail')->name('category.detail');
+        });
+        Route::group(['prefix' => 'artist'], function () {
+            Route::get('list', 'Music\ArtistController@index')->name('artist.list');
+            Route::get('create-new', 'Music\ArtistController@create')->name('artist.create');
+            Route::post('create-new', 'Music\ArtistController@store');
+            Route::get('{id}/delete', 'Music\ArtistController@destroy')->name('artist.delete');
+            Route::get('{id}/edit', 'Music\ArtistController@edit')->name('artist.edit');
+            Route::post('{id}/edit', 'Music\ArtistController@update');
+            Route::get('{id}/detail', 'Music\ArtistController@artistDetail')->name('artist.detail');
         });
     });
 });

@@ -44,6 +44,6 @@ class CategoryService
 
     public function detail($id)
     {
-        return $this->songRepo->filter($id);
+        return $this->categoryRepo->filter($id);
     }
 }

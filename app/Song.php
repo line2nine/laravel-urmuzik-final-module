@@ -8,8 +8,8 @@ class Song extends Model
 {
     protected $table = 'songs';
 
-    function playlist()
+    function playlists()
     {
-        return $this->belongsToMany('App\Playlist', 'detail_playlist');
+        return $this->belongsToMany('App\Playlist', 'detail_playlists');
     }
 }

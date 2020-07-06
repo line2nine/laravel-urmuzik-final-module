@@ -27,6 +27,10 @@
                                                 class="fa fa-play-circle"></i></a> &emsp;
                                         <a href="{{ route('music.play',['id'=>$item->song->id]) }}" target="_blank"
                                            title="open new window"><i class="fa fa-plus-square-o"></i></a>
+                                        &emsp;
+                                        <a href="{{route('playlist.delete-song', ['playlist_id' => $playlist->id, 'song_id' => $item->song->id])}}" title="">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
                                     </td>
                                 </tr>
                             @empty

@@ -12,7 +12,7 @@
 
     <section class="album-catagory section-padding-100-0">
         <div class="container">
-            {{--            <a class="btn btn-success" href="{{route('playlist.add-song')}}">add song</a>--}}
+            <a class="btn btn-success" href="{{route('playlist.add-song', ['playlist_id' => $playlist->id])}}">add song</a>
             <div class="one-music-songs-area mb-70">
                 <div class="container">
                     <div class="row">

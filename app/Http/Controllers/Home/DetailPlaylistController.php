@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Services\DetailPlaylistService;
 use App\Http\Services\PlaylistService;
 use App\Http\Services\SongService;
+use App\Song;
 use Illuminate\Http\Request;
 
 class DetailPlaylistController extends Controller
@@ -32,7 +33,15 @@ class DetailPlaylistController extends Controller
     public function addSong($playlist_id)
     {
         $playlist = $this->playlistService->find($playlist_id);
-        $songs = $this->songService->getAll();
+        $songOfPlaylist = $this->detailPlaylistService->getSongByPlaylistId($playlist_id);
+        $songAll = $this->songService->getAll();
+        $idSongsNotExitPlaylist = $songAll->pluck('id')->diff($songOfPlaylist->pluck('song_id'));
+
+        $songs = [];
+        foreach ($idSongsNotExitPlaylist as $idSong) {
+            $song = $this->songService->find($idSong);
+            array_push($songs, $song);
+        }
 
         return view('home.playlist.detail.add-song', compact('playlist', 'songs'));
     }

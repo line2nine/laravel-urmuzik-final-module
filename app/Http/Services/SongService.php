@@ -36,6 +36,11 @@ class SongService
         return $this->songRepo->find($id);
     }
 
+    public function view($id)
+    {
+        return $this->songRepo->view($id);
+    }
+
     public function create($request)
     {
 //        dd($request->type);

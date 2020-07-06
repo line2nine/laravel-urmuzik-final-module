@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\SongRequest;
 use App\Http\Requests\UpdateSong;
 use App\Http\Services\SongService;
+use App\Song;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -47,7 +48,12 @@ class SongController extends Controller
     {
         $song = $this->songService->find($id);
         Session::put('idCurrentSong',"$song->id");
-
+        // dem luot nghe bai hat
+        $viewNumber = Session::get('viewKey'.$id);
+        if (!Session::get('viewKey'.$id)){
+            Session::put('viewKey'.$id,1);
+            $this->songService->view($id);
+        }
         // lay ra bai hat tiep theo
         $songs = $this->songService->getAll();
         for ($i = 0; $i < count($songs); $i++){
@@ -93,6 +99,16 @@ class SongController extends Controller
         Session::flash('success','Delete Completed');
         $user = Auth::user();
         return redirect()->route('music.list.user',['id'=>$user->id]);
+    }
+
+    public function setView($id)
+    {
+        $song = $this->songService->find($id);
+        $viewNumber = Session::get('viewKey');
+        if (!Session::get('viewKey')){
+            Session::put('viewKey',1);
+            $song->increment('view');
+        }
     }
 
 }

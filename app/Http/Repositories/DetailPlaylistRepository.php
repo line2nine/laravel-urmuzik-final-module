@@ -24,4 +24,9 @@ class DetailPlaylistRepository
     {
         $detailPlaylist->save();
     }
+
+    public function delete($detailPlaylist)
+    {
+        $detailPlaylist->detele();
+    }
 }

@@ -53,4 +53,12 @@ class DetailPlaylistController extends Controller
 
         return redirect(route('playlist.detail', ['playlist_id' => $playlist->id]));
     }
+
+    public function deleteSong($playlist_id, $song_id)
+    {
+        $playlist = $this->playlistService->find($playlist_id);
+        $this->detailPlaylistService->deleteSong($playlist, $song_id);
+
+        return redirect(route('playlist.detail', ['playlist_id' => $playlist->id]));
+    }
 }

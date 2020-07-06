@@ -49,7 +49,7 @@
             <div class="row oneMusic-albums">
 
                 <!-- Single Album -->
-                @foreach($myPlaylists as $key => $playlist)
+                @forelse($myPlaylists as $key => $playlist)
                     <div class="col-12 col-sm-4 col-md-3 col-lg-2 single-album-item t c p">
                         <a href="{{route('playlist.detail', ['playlist_id' => $playlist->id])}}">
                             <div class="single-album">
@@ -61,7 +61,9 @@
                             </div>
                         </a>
                     </div>
-                @endforeach
+                @empty
+                    <tr>No data</tr>
+                @endforelse
             </div>
         </div>
     </section>

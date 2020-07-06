@@ -20,8 +20,8 @@ class DetailPlaylistRepository
         return $this->detailPlaylist->where('playlist_id', $playlist_id)->get();
     }
 
-    public function save()
+    public function save($detailPlaylist)
     {
-        $this->detailPlaylist->save();
+        $detailPlaylist->save();
     }
 }

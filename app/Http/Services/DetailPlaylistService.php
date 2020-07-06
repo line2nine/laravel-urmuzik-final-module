@@ -33,4 +33,8 @@ class DetailPlaylistService
         }
     }
 
+    public function deleteSong($playlist, $song_id)
+    {
+        $playlist->songs()->detach($song_id);
+    }
 }

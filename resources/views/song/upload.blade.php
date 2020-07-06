@@ -32,15 +32,24 @@
                                     <label for="exampleInputEmail1">Name Song</label>
                                     <input type="text" name="name" class="form-control" id="exampleInputEmail1"
                                            placeholder="name song">
+                                    @error('name')
+                                     <p class="error">{{ $message }}</p>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">File <i><span
                                                 style="color: red">(.mp3)</span></i></label>
                                     <input type="file" name="type" class="form-control" id="exampleInputEmail1">
+                                    @error('type')
+                                     <p class="error" >{{ $message }}</p>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Image</label>
                                     <input type="file" name="image" class="form-control" id="exampleInputEmail1">
+                                    @error('image')
+                                    <p class="error">{{ $message }}</p>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Category</label>
@@ -61,6 +70,9 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Description</label>
                                     <textarea class="form-control" rows="4" name="desc"></textarea>
+                                    @error('desc')
+                                    <p class="error">{{ $message }}</p>
+                                    @enderror
                                 </div>
                                 <button type="submit" class="btn oneMusic-btn mt-30">New</button>
                             </form>

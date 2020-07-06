@@ -46,6 +46,7 @@ class SongService
 //        dd($request->type);
         $user = Auth::user();
         $songRepo = new Song();
+        $default = 0;
         $songRepo->name = $request->name;
         $songRepo->type = $request->type->store('songs','public');
         $songRepo->image = $request->image->store('images','public');
@@ -53,6 +54,7 @@ class SongService
         $songRepo->artist_id = $request->artists;
         $songRepo->desc = $request->desc;
         $songRepo->user_id = $user->id;
+        $songRepo->view = $default;
 
         $this->songRepo->save($songRepo);
     }

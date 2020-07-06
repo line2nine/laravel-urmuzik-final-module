@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{asset('style.css')}}">
     <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/dropdown.css')}}">
+    <link rel="stylesheet" href="{{asset('css/error.css')}}">
     <title>URMUZIK</title>
 </head>
 <body>

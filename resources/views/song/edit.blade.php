@@ -21,6 +21,9 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Name Song</label>
                                     <input type="text" name="name" class="form-control" id="exampleInputEmail1" value="{{$song->name}}">
+                                    @error('name')
+                                    <p class="error">{{ $message }}</p>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">File <i><span
@@ -63,6 +66,9 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Description</label>
                                     <textarea class="form-control" rows="4" name="desc">{{ $song->desc }}</textarea>
+                                    @error('desc')
+                                    <p class="error">{{ $message }}</p>
+                                    @enderror
                                 </div>
                                 <button type="submit" class="btn oneMusic-btn mt-30">Update</button>
                             </form>

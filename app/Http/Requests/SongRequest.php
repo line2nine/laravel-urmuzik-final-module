@@ -16,6 +16,7 @@ class SongRequest extends FormRequest
         return true;
     }
 
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -24,10 +25,23 @@ class SongRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required',
-            'type'=>'required',
+            'name'=>'required|max:255',
+            'type'=>'required|mimes:mp3',
             'image'=>'required',
             'desc'=>'required'
         ];
+    }
+
+
+    public function messages()
+    {
+        $messages = [
+            'name.required' => 'You need to enter the name of the song and the length must not exceed 255 characters',
+            'type.mimes:mp3' => 'The file needs to be in .mp3 format',
+            'image.required' => 'Image may not be blank',
+            'desc' => 'Description may not be blank'
+        ];
+
+        return $messages;
     }
 }

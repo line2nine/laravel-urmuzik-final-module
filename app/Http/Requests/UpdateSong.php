@@ -28,4 +28,14 @@ class UpdateSong extends FormRequest
             'desc'=>'required'
         ];
     }
+
+    public function messages()
+    {
+        $messages = [
+            'name.required' => 'You need to enter the name of the song and the length must not exceed 255 characters',
+            'desc' => 'Description may not be blank'
+        ];
+
+        return $messages;
+    }
 }

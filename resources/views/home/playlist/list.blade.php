@@ -74,7 +74,7 @@
                 <div class="col-12 col-sm-6 col-md-3">
                     <div class="single-album-area">
                         <div class="album-thumb">
-                            <img src="img/bg-img/b1.jpg" alt="">
+                            <img src="{{asset('img/bg-img/b1.jpg')}}" alt="">
                             <!-- Album Price -->
                             <div class="album-price">
                                 <p>$0.90</p>
@@ -97,7 +97,7 @@
                 <div class="col-12 col-sm-6 col-md-3">
                     <div class="single-album-area">
                         <div class="album-thumb">
-                            <img src="img/bg-img/b2.jpg" alt="">
+                            <img src="{{asset('img/bg-img/b2.jpg')}}" alt="">
                         </div>
                         <div class="album-info">
                             <a href="#">
@@ -112,7 +112,7 @@
                 <div class="col-12 col-sm-6 col-md-3">
                     <div class="single-album-area">
                         <div class="album-thumb">
-                            <img src="img/bg-img/b3.jpg" alt="">
+                            <img src="{{asset('img/bg-img/b3.jpg')}}" alt="">
                         </div>
                         <div class="album-info">
                             <a href="#">
@@ -127,7 +127,7 @@
                 <div class="col-12 col-sm-6 col-md-3">
                     <div class="single-album-area">
                         <div class="album-thumb">
-                            <img src="img/bg-img/b4.jpg" alt="">
+                            <img src="{{asset('img/bg-img/b4.jpg')}}" alt="">
                         </div>
                         <div class="album-info">
                             <a href="#">

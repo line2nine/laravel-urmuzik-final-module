@@ -51,75 +51,21 @@
                     <div class="weeks-top-area mb-100">
                         <div class="section-heading text-left mb-50 wow fadeInUp" data-wow-delay="50ms">
                             <p>See what’s new</p>
-                            <h2>This week’s top</h2>
+                            <h2>New songs Updated</h2>
                         </div>
 
                         <!-- Single Top Item -->
+                        @foreach($songs as $song)
                         <div class="single-top-item d-flex wow fadeInUp" data-wow-delay="100ms">
                             <div class="thumbnail">
-                                <img src="img/bg-img/wt1.jpg" alt="">
+                                <img src="{{asset('storage/'.$song->image)}}" alt="">
                             </div>
                             <div class="content-">
-                                <h6>Sam Smith</h6>
-                                <p>Underground</p>
+                                <h6>{{$song->name}}</h6>
+                                <p>{{$song->artist->name}}</p>
                             </div>
                         </div>
-
-                        <!-- Single Top Item -->
-                        <div class="single-top-item d-flex wow fadeInUp" data-wow-delay="150ms">
-                            <div class="thumbnail">
-                                <img src="img/bg-img/wt2.jpg" alt="">
-                            </div>
-                            <div class="content-">
-                                <h6>Power Play</h6>
-                                <p>In my mind</p>
-                            </div>
-                        </div>
-
-                        <!-- Single Top Item -->
-                        <div class="single-top-item d-flex wow fadeInUp" data-wow-delay="200ms">
-                            <div class="thumbnail">
-                                <img src="img/bg-img/wt3.jpg" alt="">
-                            </div>
-                            <div class="content-">
-                                <h6>Cristinne Smith</h6>
-                                <p>My Music</p>
-                            </div>
-                        </div>
-
-                        <!-- Single Top Item -->
-                        <div class="single-top-item d-flex wow fadeInUp" data-wow-delay="250ms">
-                            <div class="thumbnail">
-                                <img src="img/bg-img/wt4.jpg" alt="">
-                            </div>
-                            <div class="content-">
-                                <h6>The Music Band</h6>
-                                <p>Underground</p>
-                            </div>
-                        </div>
-
-                        <!-- Single Top Item -->
-                        <div class="single-top-item d-flex wow fadeInUp" data-wow-delay="300ms">
-                            <div class="thumbnail">
-                                <img src="img/bg-img/wt5.jpg" alt="">
-                            </div>
-                            <div class="content-">
-                                <h6>Creative Lyrics</h6>
-                                <p>Songs and stuff</p>
-                            </div>
-                        </div>
-
-                        <!-- Single Top Item -->
-                        <div class="single-top-item d-flex wow fadeInUp" data-wow-delay="350ms">
-                            <div class="thumbnail">
-                                <img src="img/bg-img/wt6.jpg" alt="">
-                            </div>
-                            <div class="content-">
-                                <h6>The Culture</h6>
-                                <p>Pop Songs</p>
-                            </div>
-                        </div>
-
+                        @endforeach
                     </div>
                 </div>
 

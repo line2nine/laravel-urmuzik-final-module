@@ -25,6 +25,11 @@ class SongRepository
         return $this->song->findOrFail($id);
     }
 
+    public function getSongUser($id)
+    {
+        return $this->song->where('user_id','=',$id)->get();
+    }
+
     public function save($song)
     {
         $song->save();
@@ -33,5 +38,10 @@ class SongRepository
     public function searchSong($keyword)
     {
         return $this->song->where('name', 'LIKE', '%' . $keyword . '%')->get();
+    }
+
+    public function view($id)
+    {
+        return $this->find($id)->increment('view');
     }
 }

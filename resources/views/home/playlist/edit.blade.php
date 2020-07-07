@@ -1,12 +1,12 @@
 <!-- Modal -->
-<div class="modal fade" id="newPlaylist" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="editPlaylist" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form method="post" action="{{route('playlist.add')}}">
+            <form method="post" action="{{route('my-playlist.update', ['playlist_id' => $playlist->id])}}">
                 @csrf
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">ADD NEW PLAYLIST</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Playlist</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -18,7 +18,7 @@
                         @if($errors->first('title'))
                             is-invalid
                         @endif
-                            " value="{{ old('title') }}" name="title" required minlength="2" maxlength="15">
+                            " value="{{$playlist->title}}" name="title" required minlength="2" maxlength="15">
                         @if($errors->first('title'))
                             <p class="text-danger">{{ $errors->first('title') }}</p>
                         @endif

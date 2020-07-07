@@ -18,18 +18,31 @@
                         @csrf
                         @forelse($songs as $key => $song)
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="{{$song->id}}" name="song[{{$song->id}}]">
-                                <label class="form-check-label" for="defaultCheck1">
-                                        <span><img src="{{asset('storage/'.$song->image)}}" style="width: 70px;">
-                                        </span>
-                                    <span>{{$song->name}}</span>
-                                </label>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <img src="{{asset('storage/'.$song->image)}}" style="width: 70px; height: 70px">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <label class="form-check-label" for="defaultCheck1">
+                                                <span>{{$song->name}}</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" value="{{$song->id}}" name="song[{{$song->id}}]">
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+                            <hr>
                         @empty
                             <p>No data</p>
                         @endforelse
-
-                        <button type="submit" class="btn btn-primary">Add</button>
+                        <div class="text-right">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                            &emsp;
+                            <a href="{{route('playlist.detail', ['playlist_id' => $playlist->id])}}" class="btn btn-light">Cancel</a>
+                        </div>
                     </form>
                 </div>
             </div>

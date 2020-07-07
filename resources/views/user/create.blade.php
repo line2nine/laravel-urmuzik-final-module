@@ -23,16 +23,19 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="inputPassword4">Password</label>
-                            <input name="password" type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                            <input name="password" type="password" class="form-control" id="inputPassword4"
+                                   placeholder="Password">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputAddress">Address</label>
-                        <input name="address" type="text" class="form-control" id="inputAddress" placeholder="Your Address">
+                        <input name="address" type="text" class="form-control" id="inputAddress"
+                               placeholder="Your Address">
                     </div>
                     <div class="form-group">
                         <label for="inputPhone">Phone</label>
-                        <input name="phone" type="number" class="form-control" id="inputPhone" placeholder="Your Phone Number">
+                        <input name="phone" type="number" class="form-control" id="inputPhone"
+                               placeholder="Your Phone Number">
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-4">

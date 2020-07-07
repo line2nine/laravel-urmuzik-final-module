@@ -47,7 +47,6 @@
             </div>
 
             <div class="row oneMusic-albums">
-
                 <!-- Single Album -->
                 @forelse($playlists as $key => $playlist)
                     <div class="col-12 col-sm-4 col-md-3 col-lg-2 single-album-item t c p">

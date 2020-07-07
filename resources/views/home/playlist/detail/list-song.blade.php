@@ -14,7 +14,8 @@
                    title="edit name playlist"><i class="fa fa-edit"></i></a>
                 &emsp;
                 <a href="{{route('my-playlist.delete', ['playlist_id' => $playlist->id])}}"
-                   title="delete playlist" onclick="return confirm('Do you want to delete the playlist?')"><i class="fa fa-trash"></i></a>
+                   title="delete playlist" onclick="return confirm('Do you want to delete the playlist?')"><i
+                        class="fa fa-trash"></i></a>
             @endif
         </div>
     </section>
@@ -29,17 +30,20 @@
                             <tbody>
                             @forelse($listSong as $item)
                                 <tr>
-                                    <td><img src="{{asset('storage/'.$item->song->image)}}" style="width: 70px; height: 70px"></td>
+                                    <td><img src="{{asset('storage/'.$item->song->image)}}"
+                                             style="width: 70px; height: 70px"></td>
                                     <td>{{$item->song->name}}</td>
-
                                     <td class="text-right">
                                         <a href="{{ route('playlist.play',['playlist_id'=> $playlist->id, 'song_id' => $item->song->id]) }}" title="play"><i
                                                 class="fa fa-play-circle"></i></a> &emsp;
-                                        <a href="{{ route('playlist.play',['playlist_id'=> $playlist->id, 'song_id' => $item->song->id]) }}" target="_blank"
+                                        <a href="{{ route('playlist.play',['playlist_id'=> $playlist->id, 'song_id' => $item->song->id]) }}"
+                                           target="_blank"
                                            title="open new window"><i class="fa fa-external-link"></i></a>
                                         &emsp;
                                         <a href="{{route('playlist.delete-song', ['playlist_id' => $playlist->id, 'song_id' => $item->song->id])}}"
-                                           title="delete song" onclick="return confirm('Do you want to delete the song?')"><i class="fa fa-trash"></i>
+                                           title="delete song"
+                                           onclick="return confirm('Do you want to delete the song?')"><i
+                                                class="fa fa-trash"></i>
                                         </a>
                                     </td>
                                 </tr>

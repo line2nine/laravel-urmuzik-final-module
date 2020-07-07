@@ -33,7 +33,7 @@
                                     <input type="text" name="name" class="form-control" id="exampleInputEmail1"
                                            placeholder="name song">
                                     @error('name')
-                                     <p class="error">{{ $message }}</p>
+                                    <p class="error">{{ $message }}</p>
                                     @enderror
                                 </div>
                                 <div class="form-group">
@@ -42,7 +42,7 @@
 
                                     <input type="file" name="type" class="form-control">
                                     @error('type')
-                                     <p class="error" >{{ $message }}</p>
+                                    <p class="error">{{ $message }}</p>
                                     @enderror
                                 </div>
                                 <div class="form-group">

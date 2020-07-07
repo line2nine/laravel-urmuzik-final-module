@@ -38,7 +38,7 @@ class DetailPlaylistController extends Controller
         $song = $this->songService->find($song_id);
         Session::put('idCurrentSong', "$song->id");
         for ($i = 0; $i < count($listSong); $i++) {
-            if ($i + 1 == count($listSong)) {
+            if (($i + 1) == count($listSong)) {
                 $nextSong = $listSong[0];
                 return view('home.playlist.detail.play-song', compact('playlist', 'listSong', 'song', 'nextSong'));
             } elseif ($listSong[$i]->song_id == Session::get('idCurrentSong')) {

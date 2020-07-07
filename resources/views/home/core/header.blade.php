@@ -59,7 +59,7 @@
                                                             <a href="{{ route('music.list.user',['id'=>auth()->user()->id]) }}">List
                                                                 Songs</a></li>
                                                         <li>
-                                                            <a href="{{route('my-playlist')}}" >My Playlists</a>
+                                                            <a href="{{route('my-playlist')}}">My Playlists</a>
                                                         </li>
                                                         <li><a href="{{route('logout')}}"><i class="fa fa-sign-out"></i>
                                                                 Logout</a></li>

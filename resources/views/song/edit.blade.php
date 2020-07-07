@@ -14,13 +14,15 @@
                 <div class="col-12 col-lg-8">
                     <div class="login-content">
                         <h3>Welcome Back</h3>
-                    <!-- Login Form -->
+                        <!-- Login Form -->
                         <div class="login-form">
-                            <form action="{{route('music.update',['id'=>$song->id])}}" method="post" enctype="multipart/form-data">
+                            <form action="{{route('music.update',['id'=>$song->id])}}" method="post"
+                                  enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Name Song</label>
-                                    <input type="text" name="name" class="form-control" id="exampleInputEmail1" value="{{$song->name}}">
+                                    <input type="text" name="name" class="form-control" id="exampleInputEmail1"
+                                           value="{{$song->name}}">
                                     @error('name')
                                     <p class="error">{{ $message }}</p>
                                     @enderror
@@ -54,7 +56,7 @@
                                         @foreach($artists as $artist)
                                             <option
                                                 @if($artist->id == $song->artist_id)
-                                                    selected
+                                                selected
                                                 @endif
                                                 value="{{ $artist->id }}"
                                             >

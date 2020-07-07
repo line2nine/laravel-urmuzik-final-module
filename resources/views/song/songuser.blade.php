@@ -23,13 +23,17 @@
                         <td><img src="{{asset('storage/'.$song->image)}}" style="width: 70px;"></td>
                         <td>{{$song->name}}</td>
                         <td>
-                            <a href="{{ route('music.play',['id'=>$song->id]) }}" title="Play"><i class="fa fa-play-circle"></i></a> &emsp;
-                            <a href="{{ route('music.play',['id'=>$song->id]) }}" target="_blank" title="Open new window"><i class="fa fa-external-link"></i></a>
+                            <a href="{{ route('music.play',['id'=>$song->id]) }}" title="Play"><i
+                                    class="fa fa-play-circle"></i></a> &emsp;
+                            <a href="{{ route('music.play',['id'=>$song->id]) }}" target="_blank"
+                               title="Open new window"><i class="fa fa-external-link"></i></a>
                         </td>
                         <td>
-                            <a href="{{ route('music.edit',['id'=>$song->id]) }}" title="Edit"><i class="fa fa-edit"></i></a>
+                            <a href="{{ route('music.edit',['id'=>$song->id]) }}" title="Edit"><i
+                                    class="fa fa-edit"></i></a>
                             &emsp;&emsp;
-                            <a href="{{ route('music.delete',['id'=>$song->id]) }}" title="Delete" onclick="return confirm('Are you sure delete?')"><i class="fa fa-trash"></i></a>
+                            <a href="{{ route('music.delete',['id'=>$song->id]) }}" title="Delete"
+                               onclick="return confirm('Are you sure delete?')"><i class="fa fa-trash"></i></a>
                         </td>
                     </tr>
                 @empty

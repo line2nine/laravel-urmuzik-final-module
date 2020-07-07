@@ -1,7 +1,8 @@
 @extends('home.master')
 @section('register')
     <!-- ##### Breadcumb Area Start ##### -->
-    <section class="breadcumb-area bg-img bg-overlay" style="background-image: url({{asset('img/bg-img/breadcumb3.jpg')}});">
+    <section class="breadcumb-area bg-img bg-overlay"
+             style="background-image: url({{asset('img/bg-img/breadcumb3.jpg')}});">
         <div class="bradcumbContent">
             <p>See what’s new</p>
             <h2>Register</h2>
@@ -30,16 +31,20 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Email address</label>
-                                    <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter E-mail">
-                                    <small id="emailHelp" class="form-text text-muted"><i class="fa fa-lock mr-2"></i>We'll never share your email with anyone else.</small>
+                                    <input name="email" type="email" class="form-control" id="exampleInputEmail1"
+                                           aria-describedby="emailHelp" placeholder="Enter E-mail">
+                                    <small id="emailHelp" class="form-text text-muted"><i class="fa fa-lock mr-2"></i>We'll
+                                        never share your email with anyone else.</small>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Password</label>
-                                    <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                    <input name="password" type="password" class="form-control"
+                                           id="exampleInputPassword1" placeholder="Password">
                                 </div>
                                 <div class="form-group">
                                     <label>Phone</label>
-                                    <input name="phone" type="number" class="form-control" placeholder="Enter Phone Number">
+                                    <input name="phone" type="number" class="form-control"
+                                           placeholder="Enter Phone Number">
                                 </div>
                                 <div class="form-group">
                                     <label>Address</label>

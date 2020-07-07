@@ -8,6 +8,7 @@ use App\Http\Services\PlaylistService;
 use App\Http\Services\SongService;
 use App\Song;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class DetailPlaylistController extends Controller
 {
@@ -28,6 +29,23 @@ class DetailPlaylistController extends Controller
         $listSong = $this->detailPlaylistService->getSongByPlaylistId($playlist_id);
 
         return view('home.playlist.detail.list-song', compact('playlist', 'listSong'));
+    }
+
+    public function play($playlist_id, $song_id)
+    {
+        $playlist = $this->playlistService->find($playlist_id);
+        $listSong = $this->detailPlaylistService->getSongByPlaylistId($playlist_id);
+        $song = $this->songService->find($song_id);
+        Session::put('idCurrentSong',"$song->id");
+        for ($i = 0; $i < count($listSong); $i++){
+            if ($i+1 == count($listSong)){
+                $nextSong = $listSong[0];
+                return view('home.playlist.detail.play-song', compact('playlist','listSong','song', 'nextSong'));
+            } elseif($listSong[$i]->id == Session::get('idCurrentSong')) {
+                $nextSong = $listSong[$i+1];
+                return view('home.playlist.detail.play-song', compact('playlist','listSong','song', 'nextSong'));
+            }
+        }
     }
 
     public function addSong($playlist_id)

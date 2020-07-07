@@ -40,11 +40,13 @@
                                            target="_blank"
                                            title="open new window"><i class="fa fa-external-link"></i></a>
                                         &emsp;
+                                        @if(\Illuminate\Support\Facades\Auth::user()->id === $playlist->user->id)
                                         <a href="{{route('playlist.delete-song', ['playlist_id' => $playlist->id, 'song_id' => $item->song->id])}}"
                                            title="delete song"
                                            onclick="return confirm('Do you want to delete the song?')"><i
                                                 class="fa fa-trash"></i>
                                         </a>
+                                        @endif
                                     </td>
                                 </tr>
                             @empty

@@ -28,8 +28,8 @@
                             </audio>
                             <br>
                             <div class="row">
-                                <a href="{{route('music.play',['id'=>$nextSong])}}" class="btn btn-success"
-                                   title="Next"><i class="fa fa-angle-double-right"></i></a>
+                                <a href="{{route('music.play',['id'=>$nextSong])}}" class="pt-1 ml-3" title="Next"><i
+                                        class="icon-next" style="color: white"></i></a>
                                 &emsp;
                                 <p><i class="fa fa-headphones"></i> {{$song->view}}</p>
                             </div>

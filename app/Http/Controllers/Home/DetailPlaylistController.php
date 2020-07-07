@@ -80,11 +80,14 @@ class DetailPlaylistController extends Controller
     public function deleteSong($playlist_id, $song_id)
     {
         $playlist = $this->playlistService->find($playlist_id);
-        $this->detailPlaylistService->deleteSong($playlist, $song_id);
+        $status = $this->detailPlaylistService->deleteSong($playlist, $song_id);
+        if ($status) {
+            $message = 'xoa bai hat thanh cong';
+            session()->flash('success', $message);
 
-        $message = 'xoa bai hat thanh cong';
-        session()->flash('success', $message);
-
-        return back();
+            return back();
+        } else {
+            return abort(403);
+        }
     }
 }

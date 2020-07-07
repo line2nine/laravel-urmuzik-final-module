@@ -41,6 +41,12 @@ class DetailPlaylistService
 
     public function deleteSong($playlist, $song_id)
     {
-        $playlist->songs()->detach($song_id);
+        if (Auth::user()->id === $playlist->user->id) {
+            $playlist->songs()->detach($song_id);
+
+            return true;
+        } else {
+            return false;
+        }
     }
 }

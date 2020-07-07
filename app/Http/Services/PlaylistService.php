@@ -25,7 +25,7 @@ class PlaylistService
 
     public function myPlaylist()
     {
-        if ($this->playlistRepository->myPlaylist()){
+        if ($this->playlistRepository->myPlaylist()) {
             return $this->playlistRepository->myPlaylist();
         } else {
             return null;
@@ -47,16 +47,25 @@ class PlaylistService
         $this->playlistRepository->save($playlist);
     }
 
-    public function update($song, $request)
+    public function update($request, $id)
     {
+        $playlist = $this->playlistRepository->find($id);
 
+        if (Auth::user()->id === $playlist->user->id) {
+            $playlist->title = $request->title;
+            $this->playlistRepository->save($playlist);
+
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public function delete($id)
     {
         $playlist = $this->playlistRepository->find($id);
 
-        if (Auth::user()->id === $playlist->user->id){
+        if (Auth::user()->id === $playlist->user->id) {
             $this->playlistRepository->moveToDetailPlaylist($playlist);
             $this->playlistRepository->delete($playlist);
             return true;
@@ -68,7 +77,7 @@ class PlaylistService
     public function searchByKeyword($request)
     {
         $keyword = $request->keyword;
-        if ($keyword){
+        if ($keyword) {
             return $this->playlistRepository->searchSong($keyword);
         }
         return false;

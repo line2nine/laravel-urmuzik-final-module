@@ -40,4 +40,14 @@ class PlaylistRepository
     {
         return $this->playlist->where('title', 'LIKE', '%' . $keyword . '%')->get();
     }
+
+    public function delete($playlist)
+    {
+        $playlist->delete();
+    }
+
+    public function moveToDetailPlaylist($playlist)
+    {
+        $playlist->detailPlaylist()->delete();
+    }
 }

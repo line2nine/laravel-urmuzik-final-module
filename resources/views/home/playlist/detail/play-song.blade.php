@@ -28,9 +28,9 @@
                             </audio>
                             <br>
                             <div class="row">
-                                <a href="{{ route('playlist.play',['playlist_id' => $nextSong->playlist_id, 'song_id'=> $nextSong->song_id]) }}"
-                                   class="btn btn-success" title="Next"><i
-                                        class="fa fa-angle-double-right"></i></a>
+                                <a class="pt-1 ml-3" href="{{ route('playlist.play',['playlist_id' => $nextSong->playlist_id, 'song_id'=> $nextSong->song_id]) }}"
+                                    title="Next">
+                                    <i class="icon-next" style="color: white;"></i></a>
                                 &emsp;
                                 <p id="view"><i class="fa fa-headphones"></i> {{$song->view}}</p>
                             </div>

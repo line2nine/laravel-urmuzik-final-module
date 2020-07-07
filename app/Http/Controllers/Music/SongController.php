@@ -17,6 +17,7 @@ use Symfony\Component\Console\Input\Input;
 class SongController extends Controller
 {
     protected $songService;
+
     public function __construct(SongService $songService)
     {
         $this->songService = $songService;
@@ -26,20 +27,20 @@ class SongController extends Controller
     {
         $songs = $this->songService->getAll();
 //        dd($songs[1]);
-        return view('song.song',compact('songs'));
+        return view('song.song', compact('songs'));
     }
 
     public function create()
     {
         $categories = Category::all();
         $artists = Artist::all();
-        return view('song.upload', compact('categories','artists'));
+        return view('song.upload', compact('categories', 'artists'));
     }
 
     public function store(SongRequest $request)
     {
         $this->songService->create($request);
-        Session::flash('success','Add Completed');
+        Session::flash('success', 'Add Completed');
         return redirect()->route('music.upload');
     }
 
@@ -47,22 +48,22 @@ class SongController extends Controller
     public function show($id)
     {
         $song = $this->songService->find($id);
-        Session::put('idCurrentSong',"$song->id");
+        Session::put('idCurrentSong', "$song->id");
         // dem luot nghe bai hat
-        $viewNumber = Session::get('viewKey'.$id);
-        if (!Session::get('viewKey'.$id)){
-            Session::put('viewKey'.$id,1);
+        $viewNumber = Session::get('viewKey' . $id);
+        if (!Session::get('viewKey' . $id)) {
+            Session::put('viewKey' . $id, 1);
             $this->songService->view($id);
         }
         // lay ra bai hat tiep theo
         $songs = $this->songService->getAll();
-        for ($i = 0; $i < count($songs); $i++){
-            if ($i+1 == count($songs)){
+        for ($i = 0; $i < count($songs); $i++) {
+            if ($i + 1 == count($songs)) {
                 $nextSong = $songs[0]->id;
-                return view('song.play',compact('song','nextSong'));
-            } elseif($songs[$i]->id == Session::get('idCurrentSong')) {
-                $nextSong = $songs[$i+1]->id;
-                return view('song.play',compact('song','nextSong'));
+                return view('song.play', compact('song', 'nextSong'));
+            } elseif ($songs[$i]->id == Session::get('idCurrentSong')) {
+                $nextSong = $songs[$i + 1]->id;
+                return view('song.play', compact('song', 'nextSong'));
             }
         }
     }
@@ -70,7 +71,7 @@ class SongController extends Controller
     public function listSongUser($id)
     {
         $songs = $this->songService->getSongUser($id);
-        return view('song.songuser',compact('songs'));
+        return view('song.songuser', compact('songs'));
     }
 
     public function edit($id)
@@ -78,7 +79,7 @@ class SongController extends Controller
         $song = $this->songService->find($id);
         $categories = Category::all();
         $artists = Artist::all();
-        return view('song.edit',compact('song','categories','artists'));
+        return view('song.edit', compact('song', 'categories', 'artists'));
     }
 
 
@@ -86,9 +87,9 @@ class SongController extends Controller
     {
         $song = $this->songService->find($id);
         $this->songService->update($song, $request);
-        Session::flash('success','Update Completed');
+        Session::flash('success', 'Update Completed');
         $user = Auth::user();
-        return redirect()->route('music.list.user',['id'=>$user->id]);
+        return redirect()->route('music.list.user', ['id' => $user->id]);
     }
 
 
@@ -96,17 +97,17 @@ class SongController extends Controller
     {
         $song = $this->songService->find($id);
         $song->delete();
-        Session::flash('success','Delete Completed');
+        Session::flash('success', 'Delete Completed');
         $user = Auth::user();
-        return redirect()->route('music.list.user',['id'=>$user->id]);
+        return redirect()->route('music.list.user', ['id' => $user->id]);
     }
 
     public function setView($id)
     {
         $song = $this->songService->find($id);
         $viewNumber = Session::get('viewKey');
-        if (!Session::get('viewKey')){
-            Session::put('viewKey',1);
+        if (!Session::get('viewKey')) {
+            Session::put('viewKey', 1);
             $song->increment('view');
         }
     }

@@ -4,6 +4,7 @@
 namespace App\Http\Services;
 
 
+use App\Http\Repositories\DetailPlaylistRepository;
 use App\Http\Repositories\PlaylistRepository;
 use App\Playlist;
 use Illuminate\Support\Facades\Auth;
@@ -49,6 +50,19 @@ class PlaylistService
     public function update($song, $request)
     {
 
+    }
+
+    public function delete($id)
+    {
+        $playlist = $this->playlistRepository->find($id);
+
+        if (Auth::user()->id === $playlist->user->id){
+            $this->playlistRepository->moveToDetailPlaylist($playlist);
+            $this->playlistRepository->delete($playlist);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public function searchByKeyword($request)

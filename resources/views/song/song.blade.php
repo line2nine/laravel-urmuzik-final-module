@@ -18,11 +18,13 @@
                         <td><img src="{{asset('storage/'.$song->image)}}" style="width: 70px; height: 70px"></td>
                         <td>{{$song->name}}</td>
                         <td class="text-right">
-                            <a href="{{ route('music.play',['id'=>$song->id]) }}" title="play"><i class="fa fa-play-circle"></i></a> &emsp;
-                            <a href="{{ route('music.play',['id'=>$song->id]) }}" target="_blank" title="open new window"><i class="fa fa-external-link"></i></a>
+                            <a href="{{ route('music.play',['id'=>$song->id]) }}" title="play"><i
+                                    class="fa fa-play-circle"></i></a> &emsp;
+                            <a href="{{ route('music.play',['id'=>$song->id]) }}" target="_blank"
+                               title="open new window"><i class="fa fa-external-link"></i></a>
                         </td>
                     </tr>
-                    @empty
+                @empty
                     <tr>No data</tr>
                 @endforelse
                 </tbody>

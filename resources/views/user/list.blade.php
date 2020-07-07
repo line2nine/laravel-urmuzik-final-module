@@ -50,12 +50,12 @@
                         </td>
                         <td class="table-action">
                             <a href="{{route('user.detail', $user->id)}}"><i class="align-middle"
-                                                                           data-feather="info"></i></a>
+                                                                             data-feather="info"></i></a>
                             <a href="{{route('user.edit', $user->id)}}"><i class="align-middle"
                                                                            data-feather="edit-2"></i></a>
                             @if(auth()->user()->id !== $user->id)
-                            <a href="{{route('user.delete', $user->id)}}"><i class="align-middle"
-                                                                             data-feather="trash"></i></a>
+                                <a href="{{route('user.delete', $user->id)}}"><i class="align-middle"
+                                                                                 data-feather="trash"></i></a>
                             @endif
                         </td>
                     </tr>

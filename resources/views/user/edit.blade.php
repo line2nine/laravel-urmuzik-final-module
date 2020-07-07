@@ -19,7 +19,8 @@
                     </div>
                     <div class="form-group">
                         <label for="inputEmail4">Email</label>
-                        <input name="email" type="email" class="form-control" id="inputEmail4" value="{{$user->email}}" placeholder="Email">
+                        <input name="email" type="email" class="form-control" id="inputEmail4" value="{{$user->email}}"
+                               placeholder="Email">
                     </div>
                     <div class="form-group">
                         <label>Address</label>

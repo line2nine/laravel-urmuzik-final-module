@@ -13,8 +13,10 @@
                         <div class="col-12">
                             <div class="hero-slides-content text-center">
                                 <h6 data-animation="fadeInUp" data-delay="100ms">Latest album</h6>
-                                <h2 data-animation="fadeInUp" data-delay="300ms">Beyond Time <span>Beyond Time</span></h2>
-                                <a data-animation="fadeInUp" data-delay="500ms" href="#" class="btn oneMusic-btn mt-50">Discover <i class="fa fa-angle-double-right"></i></a>
+                                <h2 data-animation="fadeInUp" data-delay="300ms">Beyond Time <span>Beyond Time</span>
+                                </h2>
+                                <a data-animation="fadeInUp" data-delay="500ms" href="#" class="btn oneMusic-btn mt-50">Discover
+                                    <i class="fa fa-angle-double-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -31,8 +33,10 @@
                         <div class="col-12">
                             <div class="hero-slides-content text-center">
                                 <h6 data-animation="fadeInUp" data-delay="100ms">Latest album</h6>
-                                <h2 data-animation="fadeInUp" data-delay="300ms">Colorlib Music <span>Colorlib Music</span></h2>
-                                <a data-animation="fadeInUp" data-delay="500ms" href="#" class="btn oneMusic-btn mt-50">Discover <i class="fa fa-angle-double-right"></i></a>
+                                <h2 data-animation="fadeInUp" data-delay="300ms">Colorlib Music
+                                    <span>Colorlib Music</span></h2>
+                                <a data-animation="fadeInUp" data-delay="500ms" href="#" class="btn oneMusic-btn mt-50">Discover
+                                    <i class="fa fa-angle-double-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -56,15 +60,15 @@
 
                         <!-- Single Top Item -->
                         @foreach($songs as $song)
-                        <div class="single-top-item d-flex wow fadeInUp" data-wow-delay="100ms">
-                            <div class="thumbnail">
-                                <img src="{{asset('storage/'.$song->image)}}" alt="">
+                            <div class="single-top-item d-flex wow fadeInUp" data-wow-delay="100ms">
+                                <div class="thumbnail">
+                                    <img src="{{asset('storage/'.$song->image)}}" alt="">
+                                </div>
+                                <div class="content-">
+                                    <h6>{{$song->name}}</h6>
+                                    <p>{{$song->artist->name}}</p>
+                                </div>
                             </div>
-                            <div class="content-">
-                                <h6>{{$song->name}}</h6>
-                                <p>{{$song->artist->name}}</p>
-                            </div>
-                        </div>
                         @endforeach
                     </div>
                 </div>
@@ -78,7 +82,8 @@
                         </div>
 
                         <!-- Single Top Item -->
-                        <div class="single-new-item d-flex align-items-center justify-content-between wow fadeInUp" data-wow-delay="100ms">
+                        <div class="single-new-item d-flex align-items-center justify-content-between wow fadeInUp"
+                             data-wow-delay="100ms">
                             <div class="first-part d-flex align-items-center">
                                 <div class="thumbnail">
                                     <img src="img/bg-img/wt7.jpg" alt="">
@@ -94,7 +99,8 @@
                         </div>
 
                         <!-- Single Top Item -->
-                        <div class="single-new-item d-flex align-items-center justify-content-between wow fadeInUp" data-wow-delay="150ms">
+                        <div class="single-new-item d-flex align-items-center justify-content-between wow fadeInUp"
+                             data-wow-delay="150ms">
                             <div class="first-part d-flex align-items-center">
                                 <div class="thumbnail">
                                     <img src="img/bg-img/wt8.jpg" alt="">
@@ -110,7 +116,8 @@
                         </div>
 
                         <!-- Single Top Item -->
-                        <div class="single-new-item d-flex align-items-center justify-content-between wow fadeInUp" data-wow-delay="200ms">
+                        <div class="single-new-item d-flex align-items-center justify-content-between wow fadeInUp"
+                             data-wow-delay="200ms">
                             <div class="first-part d-flex align-items-center">
                                 <div class="thumbnail">
                                     <img src="img/bg-img/wt9.jpg" alt="">
@@ -126,7 +133,8 @@
                         </div>
 
                         <!-- Single Top Item -->
-                        <div class="single-new-item d-flex align-items-center justify-content-between wow fadeInUp" data-wow-delay="250ms">
+                        <div class="single-new-item d-flex align-items-center justify-content-between wow fadeInUp"
+                             data-wow-delay="250ms">
                             <div class="first-part d-flex align-items-center">
                                 <div class="thumbnail">
                                     <img src="img/bg-img/wt10.jpg" alt="">
@@ -142,7 +150,8 @@
                         </div>
 
                         <!-- Single Top Item -->
-                        <div class="single-new-item d-flex align-items-center justify-content-between wow fadeInUp" data-wow-delay="300ms">
+                        <div class="single-new-item d-flex align-items-center justify-content-between wow fadeInUp"
+                             data-wow-delay="300ms">
                             <div class="first-part d-flex align-items-center">
                                 <div class="thumbnail">
                                     <img src="img/bg-img/wt11.jpg" alt="">
@@ -158,7 +167,8 @@
                         </div>
 
                         <!-- Single Top Item -->
-                        <div class="single-new-item d-flex align-items-center justify-content-between wow fadeInUp" data-wow-delay="350ms">
+                        <div class="single-new-item d-flex align-items-center justify-content-between wow fadeInUp"
+                             data-wow-delay="350ms">
                             <div class="first-part d-flex align-items-center">
                                 <div class="thumbnail">
                                     <img src="img/bg-img/wt12.jpg" alt="">
@@ -261,7 +271,8 @@
     <!-- ##### Miscellaneous Area End ##### -->
 
     <!-- ##### Featured Artist Area Start ##### -->
-    <section class="featured-artist-area section-padding-100 bg-img bg-overlay bg-fixed" style="background-image: url({{asset('img/bg-img/bg-4.jpg')}});">
+    <section class="featured-artist-area section-padding-100 bg-img bg-overlay bg-fixed"
+             style="background-image: url({{asset('img/bg-img/bg-4.jpg')}});">
         <div class="container">
             <div class="row align-items-end">
                 <div class="col-12 col-md-5 col-lg-4">
@@ -276,7 +287,10 @@
                             <p>See what’s new</p>
                             <h2>Buy What’s New</h2>
                         </div>
-                        <p>Nam tristique ex vel magna tincidunt, ut porta nisl finibus. Vivamus eu dolor eu quam varius rutrum. Fusce nec justo id sem aliquam fringilla nec non lacus. Suspendisse eget lobortis nisi, ac cursus odio. Vivamus nibh velit, rutrum at ipsum ac, dignissim iaculis ante. Donec in velit non elit pulvinar pellentesque et non eros.</p>
+                        <p>Nam tristique ex vel magna tincidunt, ut porta nisl finibus. Vivamus eu dolor eu quam varius
+                            rutrum. Fusce nec justo id sem aliquam fringilla nec non lacus. Suspendisse eget lobortis
+                            nisi, ac cursus odio. Vivamus nibh velit, rutrum at ipsum ac, dignissim iaculis ante. Donec
+                            in velit non elit pulvinar pellentesque et non eros.</p>
                         <div class="song-play-area">
                             <div class="song-name">
                                 <p>01. Main Hit Song</p>
@@ -306,7 +320,10 @@
             <div class="row justify-content-center">
                 <div class="col-12 col-lg-9">
                     <div class="ablums-text text-center mb-70">
-                        <p>Nam tristique ex vel magna tincidunt, ut porta nisl finibus. Vivamus eu dolor eu quam varius rutrum. Fusce nec justo id sem aliquam fringilla nec non lacus. Suspendisse eget lobortis nisi, ac cursus odio. Vivamus nibh velit, rutrum at ipsum ac, dignissim iaculis ante. Donec in velit non elit pulvinar pellentesque et non eros.</p>
+                        <p>Nam tristique ex vel magna tincidunt, ut porta nisl finibus. Vivamus eu dolor eu quam varius
+                            rutrum. Fusce nec justo id sem aliquam fringilla nec non lacus. Suspendisse eget lobortis
+                            nisi, ac cursus odio. Vivamus nibh velit, rutrum at ipsum ac, dignissim iaculis ante. Donec
+                            in velit non elit pulvinar pellentesque et non eros.</p>
                     </div>
                 </div>
             </div>

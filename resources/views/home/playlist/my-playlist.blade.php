@@ -5,6 +5,11 @@
         <div class="bradcumbContent">
             <a data-toggle="modal" data-target="#newPlaylist"><p>See what’s new</p></a>
             <h2>My playlist</h2>
+            @if(\Illuminate\Support\Facades\Session::has('success'))
+                <p class="text-success">
+                    <i class="fa fa-check" aria-hidden="true"></i>{{ Session::get('success') }}
+                </p>
+            @endif
         </div>
     </section>
 
@@ -12,7 +17,6 @@
     <section class="album-catagory section-padding-100-0">
         <div class="container">
             <div class="row">
-                <p style="color: green">{{session('success')}}</p>
                 <div class="col-12">
                     <div class="browse-by-catagories catagory-menu d-flex flex-wrap align-items-center mb-70">
                         <a href="#" data-filter="*">Browse All</a>

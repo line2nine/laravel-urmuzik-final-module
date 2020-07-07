@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CreatePlaylistRequest;
 use App\Http\Requests\EditPlaylistRequest;
 use App\Http\Services\PlaylistService;
+use Illuminate\Support\Facades\Session;
 
 class PlaylistController extends Controller
 {
@@ -41,8 +42,8 @@ class PlaylistController extends Controller
     {
         $status = $this->playlistService->delete($playlist_id);
         if ($status) {
-            $message = 'xoa thanh cong';
-            session()->flash('success', $message);
+            $message = 'Delete completed';
+            Session::flash('success',$message);
             return redirect(route('my-playlist'));
         } else {
             return abort(403);
@@ -53,8 +54,8 @@ class PlaylistController extends Controller
     {
         $status = $this->playlistService->update($request, $playlist_id);
         if ($status) {
-            $message = 'cap nhat thanh cong';
-            session()->flash('success', $message);
+            $message = 'Update completed';
+            Session::flash('success',$message);
             return back();
         } else {
             return abort(403);

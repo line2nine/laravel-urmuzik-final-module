@@ -70,8 +70,8 @@ class DetailPlaylistController extends Controller
         $status = $this->detailPlaylistService->addSongPlaylist($request, $playlist);
 
         if ($status) {
-            $message = 'them bai hat thanh cong';
-            session()->flash('success', $message);
+            $message = 'Add song completed';
+            Session::flash('success',$message);
         }
 
         return redirect(route('playlist.detail', ['playlist_id' => $playlist->id]));
@@ -82,8 +82,8 @@ class DetailPlaylistController extends Controller
         $playlist = $this->playlistService->find($playlist_id);
         $status = $this->detailPlaylistService->deleteSong($playlist, $song_id);
         if ($status) {
-            $message = 'xoa bai hat thanh cong';
-            session()->flash('success', $message);
+            $message = 'Delete completed';
+            Session::flash('success',$message);
 
             return back();
         } else {

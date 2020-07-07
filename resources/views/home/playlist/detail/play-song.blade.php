@@ -76,14 +76,14 @@
                 if (currentSong.id == result[i].song_id) {
                     let nextSong = result[i + 1];
                     console.log(nextSong);
-                    document.getElementById('autoNext').src = "http://yourmusic.com/storage/" + nextSong.song['type'];
-                    document.getElementById('image').src = "http://yourmusic.com/storage/" + nextSong.song['image'];
+                    document.getElementById('autoNext').src = "http://urmusik.com/storage/" + nextSong.song['type'];
+                    document.getElementById('image').src = "http://urmusik.com/storage/" + nextSong.song['image'];
                     document.getElementById('desc').innerHTML = nextSong.song['desc'];
                     document.getElementById('name').innerHTML = nextSong.song['name'];
                     document.getElementById('view').innerHTML = '<i class="fa fa-headphones"></i> ' + nextSong.song['view'];
                     document.getElementById('next').load();
                     document.getElementById('next').play();
-                    window.location.href = "http://yourmusic.com/playlist/" + nextSong.playlist_id + "/detail/" + nextSong.song_id + "/play";
+                    window.location.href = "http://urmusik.com/playlist/" + nextSong.playlist_id + "/detail/" + nextSong.song_id + "/play";
                 }
             }
         }

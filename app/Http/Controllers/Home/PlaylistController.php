@@ -33,8 +33,18 @@ class PlaylistController extends Controller
     public function create(CreatePlaylistRequest $request){
         $this->playlistService->create($request);
 
-        return redirect(route('playlist.index'));
+        return redirect(route('my-playlist'));
     }
 
+    public function delete($playlist_id)
+    {
+        if ($this->playlistService->delete($playlist_id)){
+            $message = 'xoa thanh cong';
+            session()->flash('success', $message);
+            return redirect(route('my-playlist'));
+        } else {
+            return abort(403);
+        }
+    }
 
 }

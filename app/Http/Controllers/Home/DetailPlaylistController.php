@@ -85,6 +85,6 @@ class DetailPlaylistController extends Controller
         $message = 'xoa bai hat thanh cong';
         session()->flash('success', $message);
 
-        return redirect(route('playlist.detail', ['playlist_id' => $playlist->id]));
+        return back();
     }
 }

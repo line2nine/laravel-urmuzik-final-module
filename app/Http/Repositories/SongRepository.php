@@ -27,7 +27,7 @@ class SongRepository
 
     public function getSongUser($id)
     {
-        return $this->song->where('user_id','=',$id)->get();
+        return $this->song->where('user_id', '=', $id)->get();
     }
 
     public function save($song)

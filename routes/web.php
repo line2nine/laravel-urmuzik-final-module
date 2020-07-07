@@ -38,6 +38,7 @@ Route::group(['prefix' => 'user'], function () {
             Route::post('detail/{playlist_id}/add-song', 'Home\DetailPlaylistController@storeSong')->name('playlist.store-song');
             Route::get('detail/{playlist_id}{song_id}/delete', 'Home\DetailPlaylistController@deleteSong')->name('playlist.delete-song');
             Route::get('/', 'Home\PlaylistController@myPlaylist')->name('my-playlist');
+            Route::get('/{playlist_id}/delete', 'Home\PlaylistController@delete')->name('my-playlist.delete');
         });
     });
 });

@@ -23,6 +23,11 @@ class PlaylistService
         return $this->playlistRepository->getAll();
     }
 
+    public function recentlyCreated()
+    {
+        return $this->playlistRepository->recentlyCreated();
+    }
+
     public function myPlaylist()
     {
         if ($this->playlistRepository->myPlaylist()) {

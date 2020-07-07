@@ -30,7 +30,7 @@
                     <i class="align-middle" data-feather="music"></i> <span class="align-middle">Song</span>
                 </a>
                 <ul id="songs" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
-                    <li class="sidebar-item"><a class="sidebar-link" href="ui-alerts.html">List</a></li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="{{route('song.dashboard.list')}}">List</a></li>
                 </ul>
             </li>
 

@@ -8,7 +8,7 @@
                 <nav class="classy-navbar justify-content-between" id="oneMusicNav">
 
                     <!-- Nav brand -->
-                    <a href="/" class="nav-brand"><img src="{{asset('img/core-img/logonew.png')}}" ></a>
+                    <a href="/"><img src="{{asset('img/core-img/logo.png')}}" alt="" ></a>
 
                     <!-- Navbar Toggler -->
                     <div class="classy-navbar-toggler">
@@ -39,8 +39,8 @@
                                     <li><a href="{{route('playlist.index')}}">Playlist</a></li>
                                 @endif
 
-                                <li><a href="#">Singer</a></li>
-                                <li><a href="#">Contact</a></li>
+{{--                                <li><a href="#">Singer</a></li>--}}
+{{--                                <li><a href="#">Contact</a></li>--}}
                                 <li><a href="{{route('music.index')}}"><i class="fa fa-music"></i> Song</a></li>
                                 <li><a href="{{route('music.upload')}}"><i class="fa fa-arrow-circle-up"></i> Upload</a>
                                 </li>

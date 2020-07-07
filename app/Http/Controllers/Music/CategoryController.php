@@ -18,7 +18,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = $this->categoryService->getAll();
-        return view('category.list',compact('categories'));
+        return view('category.list', compact('categories'));
     }
 
     public function create()
@@ -39,18 +39,30 @@ class CategoryController extends Controller
 
     public function edit($id)
     {
-        //
+        $category = $this->categoryService->find($id);
+        return view('category.edit', compact('category'));
     }
 
     public function update(Request $request, $id)
     {
-        //
+        $category = $this->categoryService->find($id);
+        $this->categoryService->update($request, $category);
+        return redirect()->route('category.list');
     }
 
     public function destroy($id)
     {
         $category = $this->categoryService->find($id);
         $category->delete();
+        return redirect()->route('category.list');
+    }
+
+    function search(Request $request)
+    {
+        if ($this->categoryService->searchByKeyword($request)) {
+            $categories = $this->categoryService->searchByKeyword($request);
+            return view('category.list', compact('categories'));
+        }
         return redirect()->route('category.list');
     }
 }

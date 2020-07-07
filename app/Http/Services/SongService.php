@@ -26,6 +26,16 @@ class SongService
         return $this->songRepo->getAll();
     }
 
+    public function recentlyUploaded()
+    {
+        return $this->songRepo->recentlyUploaded();
+    }
+
+    public function topTrending()
+    {
+        return $this->songRepo->topTrending();
+    }
+
     public function getSongUser($id)
     {
         return $this->songRepo->getSongUser($id);

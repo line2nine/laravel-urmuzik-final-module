@@ -51,6 +51,7 @@
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
+                    <a href="{{route('user.list')}}" class="btn btn-secondary">Cancel</a>
                 </form>
             </div>
         </div>

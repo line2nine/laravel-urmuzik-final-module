@@ -20,6 +20,16 @@ class SongRepository
         return $this->song->all();
     }
 
+    public function recentlyUploaded()
+    {
+        return $this->song->orderby('created_at', 'desc')->paginate(6);
+    }
+
+    public function topTrending()
+    {
+        return $this->song->orderby('view', 'desc')->paginate(6);
+    }
+
     public function find($id)
     {
         return $this->song->findOrFail($id);

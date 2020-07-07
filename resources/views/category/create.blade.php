@@ -13,6 +13,7 @@
                         <input name="name" type="text" class="form-control">
                     </div>
                     <button type="submit" class="btn btn-primary">Create</button>
+                    <a href="{{route('category.list')}}" class="btn btn-secondary">Cancel</a>
                 </form>
             </div>
         </div>

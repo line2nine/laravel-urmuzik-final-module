@@ -36,14 +36,23 @@ class CategoryService
         return $this->categoryRepo->find($id);
     }
 
-    public function update($request, $categoryRepo)
+    public function update($request, $category)
     {
-        $categoryRepo->name = $request->name;
-        $this->categoryRepo->save($categoryRepo);
+        $category->name = $request->name;
+        $this->categoryRepo->save($category);
     }
 
     public function detail($id)
     {
         return $this->categoryRepo->filter($id);
+    }
+
+    public function searchByKeyword($request)
+    {
+        $keyword = $request->keyword;
+        if ($keyword) {
+            return $this->categoryRepo->search($keyword);
+        }
+        return false;
     }
 }

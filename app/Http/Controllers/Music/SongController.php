@@ -26,8 +26,13 @@ class SongController extends Controller
     public function index()
     {
         $songs = $this->songService->getAll();
-//        dd($songs[1]);
         return view('song.song', compact('songs'));
+    }
+
+    public function indexDashboard()
+    {
+        $songs = $this->songService->getAll();
+        return view('song.dashboard.list', compact('songs'));
     }
 
     public function create()
@@ -37,6 +42,13 @@ class SongController extends Controller
         return view('song.upload', compact('categories', 'artists'));
     }
 
+    public function createDashboard()
+    {
+        $categories = Category::all();
+        $artists = Artist::all();
+        return view('song.dashboard.create', compact('categories', 'artists'));
+    }
+
     public function store(SongRequest $request)
     {
         $this->songService->create($request);
@@ -44,6 +56,12 @@ class SongController extends Controller
         return redirect()->route('music.upload');
     }
 
+    public function storeDashboard(SongRequest $request)
+    {
+        $this->songService->create($request);
+        Session::flash('success', 'Add Completed');
+        return redirect()->route('song.dashboard.list');
+    }
 
     public function show($id)
     {
@@ -102,6 +120,14 @@ class SongController extends Controller
         return redirect()->route('music.list.user', ['id' => $user->id]);
     }
 
+    public function destroyDashboard($id)
+    {
+        $song = $this->songService->find($id);
+        $song->delete();
+        Session::flash('success', 'Delete Completed');
+        return redirect()->route('song.dashboard.list');
+    }
+
     public function setView($id)
     {
         $song = $this->songService->find($id);
@@ -112,4 +138,12 @@ class SongController extends Controller
         }
     }
 
+    function search(Request $request)
+    {
+        if ($this->songService->searchByKeyword($request)) {
+            $songs = $this->songService->searchByKeyword($request);
+            return view('song.dashboard.list', compact('songs'));
+        }
+        return redirect()->route('song.dashboard.list');
+    }
 }

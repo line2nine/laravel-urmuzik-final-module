@@ -1,5 +1,28 @@
 @extends('admin.dashboard')
 @section('content')
+    <form class="form-inline d-none d-sm-inline-block mb-2" method="get" action="{{route('artist.search')}}">
+        @csrf
+        <div class="input-group input-group-navbar">
+            <input type="text" class="form-control" placeholder="Search…"
+                   name="keyword" aria-label="Search"
+                   value="{{request('keyword')?request('keyword'):''}}">
+            <div class="input-group-append">
+                <button class="btn" type="button">
+                    <i class="align-middle" data-feather="search"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+    @if(request('keyword'))
+        @if($artists->count() >= 2)
+            <p class="text-primary">Found {{$artists->count()}} results matched with "{{request('keyword')}}"</p>
+        @else
+            <p class="text-primary">Found {{$artists->count()}} result matched with "{{request('keyword')}}"</p>
+        @endif
+    @endif
+    <div class="form-group">
+        <a href="{{route('user.create')}}" class="btn btn-success">Create New</a>
+    </div>
     <div class="col-12">
         <div class="card">
             <div class="card-header">
@@ -21,11 +44,9 @@
                         <td><img src="{{asset('storage/' . $artist->image)}}" alt="avt" class="avatar"></td>
                         <td>{{$artist->name}}</td>
                         <td class="table-action">
-                            <a href="{{route('artist.detail', $artist->id)}}"><i class="align-middle"
-                                                                                     data-feather="info"></i></a>
                             <a href="{{route('artist.edit', $artist->id)}}"><i class="align-middle"
                                                                                    data-feather="edit-2"></i></a>
-                            <a href="{{route('artist.delete', $artist->id)}}"><i class="align-middle"
+                            <a onclick="return confirm('Are You Sure?')" href="{{route('artist.delete', $artist->id)}}"><i class="align-middle"
                                                                                      data-feather="trash"></i></a>
                         </td>
                     </tr>

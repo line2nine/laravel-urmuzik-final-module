@@ -26,13 +26,18 @@
                         <!-- Nav Start -->
                         <div class="classynav">
                             <ul>
-                                <li><a href="index.html">Home</a></li>
-                                <li><a>Albums</a>
-                                    <ul class="dropdown">
-                                        <li><a href="{{route('playlist.index')}}">List</a></li>
-                                        <li><a data-toggle="modal" data-target="#exampleModal">Add new</a></li>
-                                    </ul>
-                                </li>
+                                <li><a href="/">Home</a></li>
+                                @if(\Illuminate\Support\Facades\Auth::user())
+                                    <li><a>Playlists</a>
+                                        <ul class="dropdown">
+                                            <li><a href="{{route('playlist.index')}}">Playlists</a></li>
+                                            <li><a href="{{route('my-playlist')}}">My Playlists</a></li>
+                                            <li><a data-toggle="modal" data-target="#newPlaylist">New Playlist</a></li>
+                                        </ul>
+                                    </li>
+                                @else
+                                    <li><a href="{{route('playlist.index')}}">Playlist</a></li>
+                                @endif
                                 <li><a href="#">Pages</a>
                                     <ul class="dropdown">
                                         <li><a href="index.html">Home</a></li>
@@ -77,8 +82,14 @@
                                             <ul>
                                                 <li><a href="#" id="loginBtn">{{auth()->user()->name}}</a>
                                                     <ul class="dropdown">
-                                                        <li><a href="{{ route('music.list.user',['id'=>auth()->user()->id]) }}">List Songs</a></li>
-                                                        <li><a href="{{route('logout')}}"><i class="fa fa-sign-out"></i> Logout</a></li>
+                                                        <li>
+                                                            <a href="{{ route('music.list.user',['id'=>auth()->user()->id]) }}">List
+                                                                Songs</a></li>
+                                                        <li>
+                                                            <a href="{{route('my-playlist')}}" >My Playlists</a>
+                                                        </li>
+                                                        <li><a href="{{route('logout')}}"><i class="fa fa-sign-out"></i>
+                                                                Logout</a></li>
                                                     </ul>
                                                 </li>
                                             </ul>

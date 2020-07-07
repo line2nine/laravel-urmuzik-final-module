@@ -67,7 +67,12 @@ class DetailPlaylistController extends Controller
     public function storeSong(Request $request, $playlist_id)
     {
         $playlist = $this->playlistService->find($playlist_id);
-        $this->detailPlaylistService->addSongPlaylist($request, $playlist);
+        $status = $this->detailPlaylistService->addSongPlaylist($request, $playlist);
+
+        if ($status) {
+            $message = 'them bai hat thanh cong';
+            session()->flash('success', $message);
+        }
 
         return redirect(route('playlist.detail', ['playlist_id' => $playlist->id]));
     }
@@ -76,6 +81,9 @@ class DetailPlaylistController extends Controller
     {
         $playlist = $this->playlistService->find($playlist_id);
         $this->detailPlaylistService->deleteSong($playlist, $song_id);
+
+        $message = 'xoa bai hat thanh cong';
+        session()->flash('success', $message);
 
         return redirect(route('playlist.detail', ['playlist_id' => $playlist->id]));
     }

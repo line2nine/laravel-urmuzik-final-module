@@ -17,4 +17,9 @@ class Playlist extends Model
     {
         return $this->belongsToMany('App\Song', 'detail_playlists');
     }
+
+    function detailPlaylist()
+    {
+        return $this->hasMany('App\DetailPlaylist', 'playlist_id');
+    }
 }

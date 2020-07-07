@@ -25,7 +25,7 @@ class EditUserRequest extends FormRequest
     {
         return [
             'name' => 'required|regex:/^([a-zA-Z\.]+)(\s[a-zA-Z\.]+)*$/|min:2|max:32',
-            'email'=> "required|email|unique:users,email,$this->id,id",
+            'email' => "required|email|unique:users,email,$this->id,id",
             'phone' => 'required',
             'address' => 'required'
         ];

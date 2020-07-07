@@ -10,7 +10,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $songs = Song::orderby('created_at','desc')->paginate(3);
-        return view('home.home',compact('songs'));
+        $songs = Song::orderby('created_at', 'desc')->paginate(3);
+        return view('home.home', compact('songs'));
     }
 }

@@ -24,8 +24,8 @@ class UpdateSong extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required',
-            'desc'=>'required'
+            'name' => 'required',
+            'desc' => 'required'
         ];
     }
 

@@ -21,7 +21,7 @@
 
     <section class="album-catagory section-padding-100-0">
         <div class="container">
-
+            <p style="color: green">{{session('success')}}</p>
             <div class="one-music-songs-area mb-70">
                 <div class="container">
                     <div class="row">

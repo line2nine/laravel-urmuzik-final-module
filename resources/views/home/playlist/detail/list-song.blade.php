@@ -6,16 +6,18 @@
         <div class="bradcumbContent">
             <h2>{{$playlist->title}}</h2>
             <p>{{$playlist->user->name}}</p>
-            @if(\Illuminate\Support\Facades\Auth::user()->id === $playlist->user->id)
-                <a href="{{route('playlist.add-song', ['playlist_id' => $playlist->id])}}"
-                   title="add songs playlist"><i class="fa fa-plus-square-o"></i></a>
-                &emsp;
-                <a data-toggle="modal" data-target="#editPlaylist"
-                   title="edit name playlist"><i class="fa fa-edit"></i></a>
-                &emsp;
-                <a href="{{route('my-playlist.delete', ['playlist_id' => $playlist->id])}}"
-                   title="delete playlist" onclick="return confirm('Do you want to delete the playlist?')"><i
-                        class="fa fa-trash"></i></a>
+            @if(\Illuminate\Support\Facades\Auth::user())
+                @if(\Illuminate\Support\Facades\Auth::user()->id === $playlist->user->id)
+                    <a href="{{route('playlist.add-song', ['playlist_id' => $playlist->id])}}"
+                       title="add songs playlist"><i class="fa fa-plus-square-o"></i></a>
+                    &emsp;
+                    <a data-toggle="modal" data-target="#editPlaylist"
+                       title="edit name playlist"><i class="fa fa-edit"></i></a>
+                    &emsp;
+                    <a href="{{route('my-playlist.delete', ['playlist_id' => $playlist->id])}}"
+                       title="delete playlist" onclick="return confirm('Do you want to delete the playlist?')"><i
+                            class="fa fa-trash"></i></a>
+                @endif
             @endif
         </div>
     </section>
@@ -34,18 +36,21 @@
                                              style="width: 70px; height: 70px"></td>
                                     <td>{{$item->song->name}}</td>
                                     <td class="text-right">
-                                        <a href="{{ route('playlist.play',['playlist_id'=> $playlist->id, 'song_id' => $item->song->id]) }}" title="play"><i
+                                        <a href="{{ route('playlist.play',['playlist_id'=> $playlist->id, 'song_id' => $item->song->id]) }}"
+                                           title="play"><i
                                                 class="fa fa-play-circle"></i></a> &emsp;
                                         <a href="{{ route('playlist.play',['playlist_id'=> $playlist->id, 'song_id' => $item->song->id]) }}"
                                            target="_blank"
                                            title="open new window"><i class="fa fa-external-link"></i></a>
                                         &emsp;
-                                        @if(\Illuminate\Support\Facades\Auth::user()->id === $playlist->user->id)
-                                        <a href="{{route('playlist.delete-song', ['playlist_id' => $playlist->id, 'song_id' => $item->song->id])}}"
-                                           title="delete song"
-                                           onclick="return confirm('Do you want to delete the song?')"><i
-                                                class="fa fa-trash"></i>
-                                        </a>
+                                        @if(\Illuminate\Support\Facades\Auth::user())
+                                            @if(\Illuminate\Support\Facades\Auth::user()->id === $playlist->user->id)
+                                                <a href="{{route('playlist.delete-song', ['playlist_id' => $playlist->id, 'song_id' => $item->song->id])}}"
+                                                   title="delete song"
+                                                   onclick="return confirm('Do you want to delete the song?')"><i
+                                                        class="fa fa-trash"></i>
+                                                </a>
+                                            @endif
                                         @endif
                                     </td>
                                 </tr>

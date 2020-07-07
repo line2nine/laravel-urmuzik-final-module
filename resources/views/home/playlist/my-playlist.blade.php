@@ -12,6 +12,7 @@
     <section class="album-catagory section-padding-100-0">
         <div class="container">
             <div class="row">
+                <p style="color: green">{{session('success')}}</p>
                 <div class="col-12">
                     <div class="browse-by-catagories catagory-menu d-flex flex-wrap align-items-center mb-70">
                         <a href="#" data-filter="*">Browse All</a>

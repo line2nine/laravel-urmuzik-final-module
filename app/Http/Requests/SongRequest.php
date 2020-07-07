@@ -25,10 +25,10 @@ class SongRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|max:255',
-            'type'=>'required|mimes:mp3',
-            'image'=>'required',
-            'desc'=>'required'
+            'name' => 'required|max:255',
+            'type' => 'required|mimes:mp3',
+            'image' => 'required',
+            'desc' => 'required'
         ];
     }
 

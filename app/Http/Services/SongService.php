@@ -43,13 +43,12 @@ class SongService
 
     public function create($request)
     {
-//        dd($request->type);
         $user = Auth::user();
         $songRepo = new Song();
         $default = 0;
         $songRepo->name = $request->name;
-        $songRepo->type = $request->type->store('songs','public');
-        $songRepo->image = $request->image->store('images','public');
+        $songRepo->type = $request->type->store('songs', 'public');
+        $songRepo->image = $request->image->store('images', 'public');
         $songRepo->category_id = $request->category;
         $songRepo->artist_id = $request->artists;
         $songRepo->desc = $request->desc;
@@ -78,7 +77,7 @@ class SongService
     public function searchByKeyword($request)
     {
         $keyword = $request->keyword;
-        if ($keyword){
+        if ($keyword) {
             return $this->songRepo->searchSong($keyword);
         }
         return false;

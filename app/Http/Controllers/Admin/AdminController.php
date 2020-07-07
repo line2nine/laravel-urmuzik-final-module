@@ -13,11 +13,13 @@ use Illuminate\Support\Facades\View;
 class AdminController extends Controller
 {
 
-    public function dashboard() {
+    public function dashboard()
+    {
         return view('admin.dashboard');
     }
 
-    public function showFormUpdateInfo() {
+    public function showFormUpdateInfo()
+    {
         return view('admin.edit-info');
     }
 }

@@ -52,21 +52,25 @@
             <div class="row">
                 <!-- ***** Weeks Top ***** -->
                 <div class="col-12 col-lg-4">
-                    <div class="weeks-top-area mb-100">
+                    <div class="new-hits-area mb-100">
                         <div class="section-heading text-left mb-50 wow fadeInUp" data-wow-delay="50ms">
-                            <h2>New songs Updated</h2>
+                            <h2>New Songs</h2>
                         </div>
 
                         <!-- Single Top Item -->
-                        @foreach($songs as $song)
-                            <div class="single-top-item d-flex align-items-center wow fadeInUp" data-wow-delay="100ms">
-                                <div class="thumbnail">
-                                    <img src="{{asset('storage/'.$song->image)}}" alt="">
+                        @foreach($songs as $key => $song)
+                            <div class="single-new-item d-flex align-items-center justify-content-between wow fadeInUp"
+                                 data-wow-delay="100ms">
+                                <div class="first-part d-flex align-items-center">
+                                    <div class="thumbnail">
+                                        <img src="{{asset('storage/' . $song->image)}}" alt="">
+                                    </div>
+                                    <div class="content-">
+                                        <h6>{{$song->name}}</h6>
+                                        <p>{{$song->artist->name}}</p>
+                                    </div>
                                 </div>
-                                <div class="content-">
-                                    <h6>{{$song->name}}</h6>
-                                    <p>{{$song->artist->name}}</p>
-                                </div>
+                                <a href="{{route('music.play', $song->id)}}" target="_blank"><i class="icon-play-button"></i></a>
                             </div>
                         @endforeach
                     </div>

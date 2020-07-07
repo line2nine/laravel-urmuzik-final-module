@@ -27,20 +27,6 @@
                                 <source src="horse.mp3" type="audio/mpeg">
                             </audio>
                             <br>
-{{--                            <div class="btn-group btn-group-toggle" data-toggle="buttons">--}}
-{{--                                <label class="btn btn-secondary">--}}
-{{--                                    <a href="{{ route('music.next') }}" title="Next"> <i class="fa fa-angle-double-right"></i></a>--}}
-{{--                                </label>--}}
-{{--                                <label class="btn btn-secondary active">--}}
-{{--                                    <input type="radio" name="options" id="option1" checked> Download--}}
-{{--                                </label>--}}
-{{--                                <label class="btn btn-secondary">--}}
-{{--                                    <input type="radio" name="options" id="option2"> Share--}}
-{{--                                </label>--}}
-{{--                                <label class="btn btn-secondary">--}}
-{{--                                    <input type="radio" name="options" id="option3"> Add--}}
-{{--                                </label>--}}
-{{--                            </div>--}}
                             <div class="row">
                                 <a href="{{route('music.play',['id'=>$nextSong])}}" class="btn btn-success" title="Next"><i class="fa fa-angle-double-right"></i></a>
                                     &emsp;

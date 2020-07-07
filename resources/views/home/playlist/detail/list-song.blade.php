@@ -5,8 +5,13 @@
              style="background-image: url({{asset('img/bg-img/breadcumb3.jpg')}});">
         <div class="bradcumbContent">
             <h2>{{$playlist->title}}</h2>
-            <p></p>
             <p>{{$playlist->user->name}}</p>
+            @if(\Illuminate\Support\Facades\Auth::user()->id === $playlist->user->id)
+            <span><a href="{{route('my-playlist.delete', ['playlist_id' => $playlist->id])}}">
+                                            <i class="fa fa-trash"></i>
+                                        </a></span>
+
+            @endif
         </div>
     </section>
 

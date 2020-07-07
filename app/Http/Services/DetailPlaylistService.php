@@ -24,13 +24,19 @@ class DetailPlaylistService
 
     public function addSongPlaylist($request, $playlist)
     {
-        $songsId = $request->song;
-        $songsOfPlayList = $playlist->songs;
-        foreach ($songsId as $songId ) {
-            if (!$songsOfPlayList->contains('song_id', $songId)) {
-                $playlist->songs()->attach($songId);
+        if (isset($request->song)) {
+            $songsId = $request->song;
+            $songsOfPlayList = $playlist->songs;
+            foreach ($songsId as $songId) {
+                if (!$songsOfPlayList->contains('song_id', $songId)) {
+                    $playlist->songs()->attach($songId);
+                }
             }
+            return true;
+        } else {
+            return false;
         }
+
     }
 
     public function deleteSong($playlist, $song_id)

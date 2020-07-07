@@ -38,7 +38,8 @@ class PlaylistController extends Controller
 
     public function delete($playlist_id)
     {
-        if ($this->playlistService->delete($playlist_id)){
+        $status = $this->playlistService->delete($playlist_id);
+        if ($status){
             $message = 'xoa thanh cong';
             session()->flash('success', $message);
             return redirect(route('my-playlist'));

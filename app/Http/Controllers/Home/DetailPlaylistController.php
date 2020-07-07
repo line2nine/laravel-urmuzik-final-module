@@ -35,6 +35,7 @@ class DetailPlaylistController extends Controller
         $playlist = $this->playlistService->find($playlist_id);
         $listSong = $this->detailPlaylistService->getSongByPlaylistId($playlist_id);
         $song = $this->songService->find($song_id);
+//        dd($playlist->id);
 
         return view('home.playlist.detail.play-song', compact('playlist','listSong','song'));
     }

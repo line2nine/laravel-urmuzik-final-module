@@ -6,7 +6,7 @@
             <div class="row align-items-end">
                 <div class="col-12 col-md-5 col-lg-4">
                     <div class="featured-artist-thumb">
-                        <img src="{{ asset('storage/'.$song->image) }}" alt="">
+                        <img id="image" src="{{ asset('storage/'.$song->image) }}" alt="">
                     </div>
                 </div>
 
@@ -17,13 +17,13 @@
                             <p>See what’s new</p>
                             <h2>Buy What’s New</h2>
                         </div>
-                        <p>{{ $song->desc }}</p>
+                        <p id="desc">{{ $song->desc }}</p>
                         <div class="song-play-area">
                             <div class="song-name">
-                                <p>{{ $song->name }}</p>
+                                <p id="name">{{ $song->name }}</p>
                             </div>
-                            <audio autoplay>
-                                <source src="{{ asset('/storage/' . $song->type) }}" type="audio/ogg">
+                            <audio autoplay onended="autoNext()" id="next">
+                                <source id="autoNext" src="{{ asset('/storage/' . $song->type) }}" type="audio/ogg">
                                 <source src="horse.mp3" type="audio/mpeg">
                             </audio>
                             <br>
@@ -31,7 +31,7 @@
                                 <a href="#" class="btn btn-success" title="Next"><i
                                         class="fa fa-angle-double-right"></i></a>
                                 &emsp;
-                                <p><i class="fa fa-headphones"></i> {{$song->view}}</p>
+                                <p id="view"><i class="fa fa-headphones"></i> {{$song->view}}</p>
                             </div>
                         </div>
                     </div>
@@ -39,22 +39,23 @@
             </div>
             <br>
             <table class="table">
-                <tbody>
+                <tbody style="color: white;">
                 @forelse($listSong as $item)
                     <tr>
                         <td><img src="{{asset('storage/'.$item->song->image)}}" style="width: 70px;"></td>
-                        <td>{{$item->song->name}}</td>
-                        <td>
+                        <td style="color: white;">{{$item->song->name}}</td>
+                        <td class="text-right">
                             <a href="{{ route('playlist.play',['playlist_id'=>$playlist->id, 'song_id'=>$item->song->id]) }}"
                                title="play"><i
-                                    class="fa fa-play-circle"></i></a> &emsp;
+                                    class="fa fa-play-circle" style="color: green;"></i></a> &emsp;
                             <a href="{{ route('music.play',['id'=>$item->song->id]) }}" target="_blank"
-                               title="open new window"><i class="fa fa-plus-square-o"></i></a>
+                               title="open new window"><i class="fa fa-external-link" style="color: white;"></i></a>
                             &emsp;
                             <a href="{{route('playlist.delete-song', ['playlist_id' => $playlist->id, 'song_id' => $item->song->id])}}"
                                title="">
-                                <i class="fa fa-trash"></i>
+                                <i class="fa fa-trash" style="color: red;"></i>
                             </a>
+                            &emsp;
                         </td>
                     </tr>
                 @empty
@@ -64,5 +65,27 @@
             </table>
         </div>
     </section>
-
+    <script>
+        function autoNext(){
+            let songs = '<?php echo $listSong ?>';
+            let result = JSON.parse(songs);
+            let song = '<?php echo $song ?>';
+            let currentSong = JSON.parse(song);
+            let playlist = '<?php echo $playlist ?>';
+            for (let i = 0; i < result.length; i++){
+                if (currentSong.id == result[i].song_id){
+                    let nextSong = result[i + 1];
+                    console.log(nextSong);
+                    document.getElementById('autoNext').src = "http://yourmusic.com/storage/" + nextSong.song['type'];
+                    document.getElementById('image').src = "http://yourmusic.com/storage/" + nextSong.song['image'];
+                    document.getElementById('desc').innerHTML = nextSong.song['desc'];
+                    document.getElementById('name').innerHTML = nextSong.song['name'];
+                    document.getElementById('view').innerHTML ='<i class="fa fa-headphones"></i> ' + nextSong.song['view'];
+                    document.getElementById('next').load();
+                    document.getElementById('next').play();
+                    window.location.href = "http://yourmusic.com/playlist/" + nextSong.playlist_id + "/detail/" + nextSong.song_id + "/play";
+                }
+            }
+        }
+    </script>
 @endsection

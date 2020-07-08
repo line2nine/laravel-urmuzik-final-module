@@ -67,6 +67,7 @@ class UserController extends Controller
     {
         $user = $this->userService->find($id);
         $this->userService->update($user, $request);
+        \alert("Update Successful", '', 'success')->autoClose(2000)->timerProgressBar();
         return redirect()->route('user.profile', $user->id);
     }
 
@@ -94,6 +95,7 @@ class UserController extends Controller
         if ($filePath !== 'images/default-avatar.png') {
             Storage::delete("public/" . $filePath);
         }
+        notify("Deleted user $user->name", 'success');
         return redirect()->route('user.list');
     }
 

@@ -1,21 +1,12 @@
 @extends('home.master')
 @section('login')
-    <!-- ##### Breadcumb Area Start ##### -->
-    <section class="breadcumb-area bg-img bg-overlay" style="background-image: url({{asset('img/bg-img/breadcumb3.jpg')}});">
-        <div class="bradcumbContent">
-            <p>See what’s new</p>
-            <h2>Login</h2>
-        </div>
-    </section>
-    <!-- ##### Breadcumb Area End ##### -->
-
     <!-- ##### Login Area Start ##### -->
     <section class="login-area section-padding-100">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12 col-lg-8">
                     <div class="login-content">
-                        <h3>Welcome Back</h3>
+                        <h3>Login</h3>
                         <a href="{{route('auth.google')}}" class="btn btn-secondary btn-icon">
                             <span class="btn-inner--icon"><img src="{{asset('img/icons/google.svg')}}"></span>
                             <span class="btn-inner--text">Google</span>

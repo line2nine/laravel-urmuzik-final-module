@@ -17,9 +17,12 @@
     <link href="{{asset('css/customer-profile.css')}}" rel="stylesheet">
     <link href="{{asset('css/customer-avatar.css')}}" rel="stylesheet">
     <link href="{{asset('css/font-awesome.min.css')}}" rel="stylesheet">
+    @notify_css
+    @notify_js
 </head>
 
 <body>
+@include('sweetalert::alert')
 <div class="wrapper">
     @include('admin.core.nav')
 
@@ -35,6 +38,7 @@
 
 </div>
 
+@notify_render
 <script src="{{asset('js/vendor.js')}}"></script>
 <script src="{{asset('js/app.js')}}"></script>
 </body>

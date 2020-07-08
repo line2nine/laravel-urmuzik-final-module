@@ -13,9 +13,12 @@
     <link rel="stylesheet" href="{{asset('css/dropdown.css')}}">
     <link rel="stylesheet" href="{{asset('css/error.css')}}">
     <link rel="stylesheet" href="{{asset('css/customer-avatar.css')}}">
+    @notify_css
+    @notify_js
     <title>URMUZIK</title>
 </head>
 <body>
+@include('sweetalert::alert')
 <!-- Preloader -->
 <div class="preloader d-flex align-items-center justify-content-center">
     <div class="lds-ellipsis">
@@ -37,6 +40,7 @@
 
 @include('home.core.footer')
 
+@notify_render
 <script src="{{asset('js/jquery/jquery-2.2.4.min.js')}}"></script>
 <!-- Popper js -->
 <script src="{{asset('js/bootstrap/popper.min.js')}}"></script>

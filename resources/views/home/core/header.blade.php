@@ -63,6 +63,9 @@
                                                             <li>
                                                                 <a href="{{route('user.profile', auth()->user()->id)}}">Profile</a>
                                                             </li>
+                                                            <li>
+                                                                <a href="{{route('user.changePass.profile', auth()->user()->id)}}">Change Password</a>
+                                                            </li>
                                                         @endif
                                                         <li>
                                                             <a href="{{ route('music.list.user',['id'=>auth()->user()->id]) }}">List

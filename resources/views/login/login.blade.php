@@ -16,6 +16,10 @@
                 <div class="col-12 col-lg-8">
                     <div class="login-content">
                         <h3>Welcome Back</h3>
+                        <a href="{{route('auth.google')}}" class="btn btn-secondary btn-icon">
+                            <span class="btn-inner--icon"><img src="{{asset('img/icons/google.svg')}}"></span>
+                            <span class="btn-inner--text">Google</span>
+                        </a>
                         <!-- Login Form -->
                         <div class="login-form">
                             <form action="{{route('login')}}" method="post">

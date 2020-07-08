@@ -59,6 +59,7 @@ Route::group(['prefix' => 'songs'], function () {
 });
 Route::group(['prefix'=>'artists'],function (){
     Route::get('/', 'Music\ArtistController@index')->name('artist.index');
+    Route::get('/{id}/songs', 'Music\ArtistController@show')->name('artist.song');
 });
 Route::get('search/keyword', 'Music\SongController@searchHome')->name('search.home');
 

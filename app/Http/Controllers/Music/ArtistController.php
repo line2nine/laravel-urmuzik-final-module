@@ -4,21 +4,24 @@ namespace App\Http\Controllers\Music;
 
 use App\Http\Controllers\Controller;
 use App\Http\Services\ArtistService;
+use App\Http\Services\SongService;
 use Illuminate\Http\Request;
 
 class ArtistController extends Controller
 {
     protected $artistService;
+    protected $songService;
 
-    public function __construct(ArtistService $artistService)
+    public function __construct(ArtistService $artistService, SongService $songService)
     {
         $this->artistService = $artistService;
+        $this->songService = $songService;
     }
 
     public function index()
     {
         $artists = $this->artistService->getAll();
-        return view('home.singer.singer',compact('artists'));
+        return view('home.singer.singer', compact('artists'));
     }
 
     public function create()
@@ -34,7 +37,8 @@ class ArtistController extends Controller
 
     public function show($id)
     {
-        //
+        $songs = $this->songService->getSongArtist($id);
+        return view('home.singer.singer-song', compact('songs'));
     }
 
     public function edit($id)

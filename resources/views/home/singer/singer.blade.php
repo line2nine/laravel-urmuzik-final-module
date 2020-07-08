@@ -18,9 +18,9 @@
                     <div class="col-12 col-sm-4 col-md-3 col-lg-2 single-album-item t c p">
                         <div class="single-album">
                             <a href="#">
-                                <img src="{{asset('img/bg-img/a'.random_int(1,12).'.jpg')}}" alt="">
+                                <a href="{{ route('artist.song',['id'=>$artist->id]) }}"><img src="{{asset('img/bg-img/a'.random_int(1,12).'.jpg')}}" alt=""></a>
                                 <div class="album-info">
-                                    <h5>{{ $artist->name }}</h5>
+                                    <a href="{{ route('artist.song',['id'=>$artist->id]) }}"><h5>{{ $artist->name }}</h5></a>
                                 </div>
                             </a>
                         </div>

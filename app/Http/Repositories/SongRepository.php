@@ -40,6 +40,11 @@ class SongRepository
         return $this->song->where('user_id', '=', $id)->get();
     }
 
+    public function getSongArtist($id)
+    {
+        return $this->song->where('artist_id','=',$id)->get();
+    }
+
     public function save($song)
     {
         $song->save();

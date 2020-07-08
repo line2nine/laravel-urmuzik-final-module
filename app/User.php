@@ -40,4 +40,8 @@ class User extends Authenticatable
     function playlist(){
         return $this->hasMany('App\Playlist', 'user_id');
     }
+
+    function song(){
+        return $this->hasMany('App\Song', 'user_id');
+    }
 }

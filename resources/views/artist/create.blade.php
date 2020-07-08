@@ -17,6 +17,7 @@
                         <input name="image" type="file" class="form-control">
                     </div>
                     <button type="submit" class="btn btn-primary">Create</button>
+                    <a href="{{route('artist.list')}}" class="btn btn-secondary">Cancel</a>
                 </form>
             </div>
         </div>

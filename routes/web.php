@@ -34,9 +34,12 @@ Route::group(['prefix' => 'user'], function () {
         Route::get('{id}/delete-song', 'Music\SongController@destroy')->name('music.delete');
         Route::group(['prefix' => 'my-playlist'], function () {
             Route::post('add', 'Home\PlaylistController@create')->name('playlist.add');
-            Route::get('detail/{playlist_id}/add-song', 'Home\DetailPlaylistController@addSong')->name('playlist.add-song');
-            Route::post('detail/{playlist_id}/add-song', 'Home\DetailPlaylistController@storeSong')->name('playlist.store-song');
-            Route::get('detail/{playlist_id}/{song_id}/delete', 'Home\DetailPlaylistController@deleteSong')->name('playlist.delete-song');
+            Route::get('detail/{playlist_id}/add-song',
+                'Home\DetailPlaylistController@addSong')->name('playlist.add-song');
+            Route::post('detail/{playlist_id}/add-song',
+                'Home\DetailPlaylistController@storeSong')->name('playlist.store-song');
+            Route::get('detail/{playlist_id}/{song_id}/delete',
+                'Home\DetailPlaylistController@deleteSong')->name('playlist.delete-song');
             Route::get('/', 'Home\PlaylistController@myPlaylist')->name('my-playlist');
             Route::get('/{playlist_id}/delete', 'Home\PlaylistController@delete')->name('my-playlist.delete');
             Route::post('/{playlist_id}/edit', 'Home\PlaylistController@update')->name('my-playlist.update');
@@ -45,9 +48,9 @@ Route::group(['prefix' => 'user'], function () {
 });
 
 Route::group(['prefix' => 'playlist'], function () {
-   Route::get('/', 'Home\PlaylistController@index')->name('playlist.index');
-   Route::get('/{playlist_id}/detail', 'Home\DetailPlaylistController@index')->name('playlist.detail');
-   Route::get('/{playlist_id}/detail/{song_id}/play','Home\DetailPlaylistController@play')->name('playlist.play');
+    Route::get('/', 'Home\PlaylistController@index')->name('playlist.index');
+    Route::get('/{playlist_id}/detail', 'Home\DetailPlaylistController@index')->name('playlist.detail');
+    Route::get('/{playlist_id}/detail/{song_id}/play', 'Home\DetailPlaylistController@play')->name('playlist.play');
 });
 
 Route::group(['prefix' => 'songs'], function () {
@@ -71,8 +74,19 @@ Route::middleware(['auth', 'check.role'])->group(function () {
             Route::get('{id}/change-password', 'UserController@changePass')->name('user.changePass');
             Route::post('{id}/change-password', 'UserController@updatePass');
         });
+        Route::group(['prefix' => 'song'], function () {
+            Route::get('list', 'Music\SongController@indexDashboard')->name('song.dashboard.list');
+            Route::get('search', 'Music\SongController@search')->name('song.dashboard.search');
+            Route::get('create-new', 'Music\SongController@createDashboard')->name('song.dashboard.create');
+            Route::post('create-new', 'Music\SongController@storeDashboard');
+            Route::get('{id}/delete', 'Music\SongController@destroyDashboard')->name('song.dashboard.delete');
+            Route::get('{id}/edit', 'Music\SongController@editDashboard')->name('song.dashboard.edit');
+            Route::post('{id}/edit', 'Music\SongController@updateDashboard');
+            Route::get('{id}/detail', 'Music\SongController@songDetailDashboard')->name('song.dashboard.detail');
+        });
         Route::group(['prefix' => 'category'], function () {
             Route::get('list', 'Music\CategoryController@index')->name('category.list');
+            Route::get('search', 'Music\CategoryController@search')->name('category.search');
             Route::get('create-new', 'Music\CategoryController@create')->name('category.create');
             Route::post('create-new', 'Music\CategoryController@store');
             Route::get('{id}/delete', 'Music\CategoryController@destroy')->name('category.delete');
@@ -82,6 +96,7 @@ Route::middleware(['auth', 'check.role'])->group(function () {
         });
         Route::group(['prefix' => 'artist'], function () {
             Route::get('list', 'Music\ArtistController@index')->name('artist.list');
+            Route::get('search', 'Music\ArtistController@search')->name('artist.search');
             Route::get('create-new', 'Music\ArtistController@create')->name('artist.create');
             Route::post('create-new', 'Music\ArtistController@store');
             Route::get('{id}/delete', 'Music\ArtistController@destroy')->name('artist.delete');

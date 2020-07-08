@@ -21,6 +21,11 @@ class PlaylistRepository
         return $this->playlist->all();
     }
 
+    public function recentlyCreated()
+    {
+        return $this->playlist->orderby('created_at', 'desc')->paginate(5);
+    }
+
     public function myPlaylist()
     {
         return $this->playlist->where('user_id', Auth::user()->id)->get();

@@ -7,6 +7,7 @@ namespace App\Http\Services;
 use App\Artist;
 use App\Http\Repositories\ArtistRepository;
 use App\Http\Repositories\SongRepository;
+use Illuminate\Support\Facades\Storage;
 
 class ArtistService
 {
@@ -41,14 +42,31 @@ class ArtistService
         return $this->artistRepo->find($id);
     }
 
-    public function update($request, $artistRepo)
+    public function update($request, $artist)
     {
-        $artistRepo->name = $request->name;
-        $this->artistRepo->save($artistRepo);
+        $oldFilePath = $artist->image;
+        $newFilePath = $request->image;
+        $artist->name = $request->name;
+        if ($oldFilePath !== 'images/default-avatar.png' && $newFilePath !== null) {
+            Storage::delete("public/" . $oldFilePath);
+        }
+        if ($request->hasFile('image')) {
+            $artist->image = $request->image->store('images', 'public');
+        }
+        $this->artistRepo->save($artist);
     }
 
     public function detail($id)
     {
         return $this->artistRepo->filter($id);
+    }
+
+    public function searchByKeyword($request)
+    {
+        $keyword = $request->keyword;
+        if ($keyword) {
+            return $this->artistRepo->search($keyword);
+        }
+        return false;
     }
 }

@@ -1,6 +1,6 @@
 @extends('admin.dashboard')
 @section('content')
-    <form class="form-inline d-none d-sm-inline-block" method="get" action="{{route('user.search')}}">
+    <form class="form-inline d-none d-sm-inline-block mb-2" method="get" action="{{route('user.search')}}">
         @csrf
         <div class="input-group input-group-navbar">
             <input type="text" class="form-control" placeholder="Search…"
@@ -20,6 +20,9 @@
             <p class="text-primary">Found {{$users->count()}} result matched with "{{request('keyword')}}"</p>
         @endif
     @endif
+    <div class="form-group">
+        <a href="{{route('user.create')}}" class="btn btn-success">Create New</a>
+    </div>
     <div class="col-12">
         <div class="card">
             <div class="card-header">
@@ -54,7 +57,7 @@
                             <a href="{{route('user.edit', $user->id)}}"><i class="align-middle"
                                                                            data-feather="edit-2"></i></a>
                             @if(auth()->user()->id !== $user->id)
-                                <a href="{{route('user.delete', $user->id)}}"><i class="align-middle"
+                                <a onclick="return confirm('Are You Sure?')" href="{{route('user.delete', $user->id)}}"><i class="align-middle"
                                                                                  data-feather="trash"></i></a>
                             @endif
                         </td>

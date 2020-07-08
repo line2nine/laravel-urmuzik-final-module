@@ -39,16 +39,30 @@ class ArtistController extends Controller
 
     public function edit($id)
     {
-        //
+        $artist = $this->artistService->find($id);
+        return view('artist.edit', compact('artist'));
     }
 
     public function update(Request $request, $id)
     {
-        //
+        $artist = $this->artistService->find($id);
+        $this->artistService->update($request, $artist);
+        return redirect()->route('artist.list');
     }
 
     public function destroy($id)
     {
-        //
+        $artist = $this->artistService->find($id);
+        $artist->delete();
+        return redirect()->route('artist.list');
+    }
+
+    function search(Request $request)
+    {
+        if ($this->artistService->searchByKeyword($request)) {
+            $artists = $this->artistService->searchByKeyword($request);
+            return view('artist.list', compact('artists'));
+        }
+        return redirect()->route('artist.list');
     }
 }

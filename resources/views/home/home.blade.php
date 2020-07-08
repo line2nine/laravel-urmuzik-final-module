@@ -63,7 +63,7 @@
                                  data-wow-delay="100ms">
                                 <div class="first-part d-flex align-items-center">
                                     <div class="thumbnail">
-                                        <img src="{{asset('storage/' . $song->image)}}" alt="">
+                                        <img src="{{asset('storage/' . $song->image)}}" style="width: 70px; height: 70px" alt="">
                                     </div>
                                     <div class="content-">
                                         <h6>{{$song->name}}</h6>
@@ -89,7 +89,7 @@
                              data-wow-delay="100ms">
                             <div class="first-part d-flex align-items-center">
                                 <div class="thumbnail">
-                                    <img src="{{asset('storage/' . $trending->image)}}" alt="">
+                                    <img src="{{asset('storage/' . $trending->image)}}" style="width: 70px; height: 70px" alt="">
                                 </div>
                                 <div class="content-">
                                     <h6>{{$trending->name}}</h6>

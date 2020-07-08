@@ -6,7 +6,7 @@
             <div class="row align-items-end">
                 <div class="col-12 col-md-5 col-lg-4">
                     <div class="featured-artist-thumb">
-                        <img src="{{ asset('storage/'.$song->image) }}" alt="">
+                        <img src="{{ asset('storage/'.$song->image) }}" style="width: 350px; height: 460px" alt="">
                     </div>
                 </div>
 

@@ -24,7 +24,7 @@ class CreatePlaylistRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|regex:/^([a-zA-Z\.]+)(\s[a-zA-Z\.]+)*$/|min:2|max:15',
+            'title' => 'required|min:2|max:15',
         ];
     }
 }

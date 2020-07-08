@@ -47,6 +47,7 @@ class UserService
             $user->avatar = 'images/default-avatar.png';
         }
         $this->userRepo->save($user);
+        Auth::login($user);
     }
 
     public function createNew($request)

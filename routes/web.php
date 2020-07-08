@@ -23,9 +23,14 @@ Route::post('login', 'Auth\LoginController@login');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('register', 'UserController@create')->name('register');
 Route::post('register', 'UserController@store');
+Route::get('auth/google', 'Auth\GoogleController@redirectToGoogle')->name('auth.google');
+Route::get('auth/google/callback', 'Auth\GoogleController@handleGoogleCallback')->name('googleCallBack');
 
 Route::group(['prefix' => 'user'], function () {
     Route::middleware(['auth'])->group(function () {
+        Route::get('{id}/profile', 'UserController@userProfile')->name('user.profile');
+        Route::get('{id}/edit-profile', 'UserController@edit')->name('user.edit.profile');
+        Route::post('{id}/edit-profile', 'UserController@update');
         Route::get('upload', 'Music\SongController@create')->name('music.upload');
         Route::post('upload', 'Music\SongController@store')->name('music.store');
         Route::get('{id}/list-song-user', 'Music\SongController@listSongUser')->name('music.list.user');

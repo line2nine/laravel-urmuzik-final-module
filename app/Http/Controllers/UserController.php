@@ -59,12 +59,16 @@ class UserController extends Controller
 
     public function edit($id)
     {
-        //
+        $user = $this->userService->find($id);
+        return view('user.home.edit', compact('user'));
     }
 
     public function update(Request $request, $id)
     {
-        //
+        $user = $this->userService->find($id);
+        $this->userService->update($user, $request);
+        \alert("Update Successful", '', 'success')->autoClose(2000)->timerProgressBar();
+        return redirect()->route('user.profile', $user->id);
     }
 
     public function editAtDashboard($id)
@@ -91,6 +95,7 @@ class UserController extends Controller
         if ($filePath !== 'images/default-avatar.png') {
             Storage::delete("public/" . $filePath);
         }
+        notify("Deleted user $user->name", 'success');
         return redirect()->route('user.list');
     }
 
@@ -123,5 +128,11 @@ class UserController extends Controller
     {
         $user = $this->userService->find($id);
         return view('user.detail', compact('user'));
+    }
+
+    function userProfile($id)
+    {
+        $user = $this->userService->find($id);
+        return view('user.home.detail', compact('user'));
     }
 }

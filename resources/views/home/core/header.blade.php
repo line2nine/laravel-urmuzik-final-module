@@ -8,7 +8,7 @@
                 <nav class="classy-navbar justify-content-between" id="oneMusicNav">
 
                     <!-- Nav brand -->
-                    <a href="/"><img src="{{asset('img/core-img/logo.png')}}" alt="" ></a>
+                    <a href="/"><img src="{{asset('img/core-img/logo.png')}}" alt=""></a>
 
                     <!-- Navbar Toggler -->
                     <div class="classy-navbar-toggler">
@@ -40,7 +40,7 @@
                                 @endif
 
                                 <li><a href="{{route('artist.index')}}">Singer</a></li>
-{{--                                <li><a href="#">Contact</a></li>--}}
+                               <li><a href="#">Contact</a></li>
                                 <li><a href="{{route('music.index')}}"><i class="fa fa-music"></i> Song</a></li>
                                 <li><a href="{{route('music.upload')}}"><i class="fa fa-arrow-circle-up"></i> Upload</a>
                                 </li>
@@ -56,9 +56,13 @@
                                                 <li><a href="#" id="loginBtn">{{auth()->user()->name}}</a>
                                                     <ul class="dropdown">
                                                         @if(auth()->user()->role == \App\Http\Controllers\Role::ADMIN)
-                                                        <li>
-                                                            <a href="{{route('admin.dashboard')}}">Dashboard</a></li>
-                                                        <li>
+                                                            <li>
+                                                                <a href="{{route('admin.dashboard')}}">Dashboard</a>
+                                                            </li>
+                                                        @else
+                                                            <li>
+                                                                <a href="{{route('user.profile', auth()->user()->id)}}">Profile</a>
+                                                            </li>
                                                         @endif
                                                         <li>
                                                             <a href="{{ route('music.list.user',['id'=>auth()->user()->id]) }}">List

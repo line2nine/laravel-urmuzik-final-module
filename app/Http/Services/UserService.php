@@ -68,7 +68,22 @@ class UserService
 
     public function update($user, $request)
     {
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->address = $request->address;
+        $oldFilePath = $user->avatar;
+        $newFilePath = $request->image;
+        if ($oldFilePath !== 'images/default-avatar.png' && $newFilePath !== null) {
+            Storage::delete("public/" . $oldFilePath);
+        }
+        if ($request->hasFile('image')) {
+            $user->avatar = $request->image->store('images', 'public');
+        }
+        $user->role = Role::USER;
+        $user->status = Status::ACTIVE;
 
+        $this->userRepo->save($user);
     }
 
     public function updateNew($user, $request)

@@ -59,12 +59,15 @@ class UserController extends Controller
 
     public function edit($id)
     {
-        //
+        $user = $this->userService->find($id);
+        return view('user.home.edit', compact('user'));
     }
 
     public function update(Request $request, $id)
     {
-        //
+        $user = $this->userService->find($id);
+        $this->userService->update($user, $request);
+        return redirect()->route('user.profile', $user->id);
     }
 
     public function editAtDashboard($id)
@@ -123,5 +126,11 @@ class UserController extends Controller
     {
         $user = $this->userService->find($id);
         return view('user.detail', compact('user'));
+    }
+
+    function userProfile($id)
+    {
+        $user = $this->userService->find($id);
+        return view('user.home.detail', compact('user'));
     }
 }

@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/dropdown.css')}}">
     <link rel="stylesheet" href="{{asset('css/error.css')}}">
+    <link rel="stylesheet" href="{{asset('css/customer-avatar.css')}}">
     <title>URMUZIK</title>
 </head>
 <body>

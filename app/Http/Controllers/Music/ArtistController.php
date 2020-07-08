@@ -18,7 +18,7 @@ class ArtistController extends Controller
     public function index()
     {
         $artists = $this->artistService->getAll();
-        return view('artist.list',compact('artists'));
+        return view('home.singer.singer',compact('artists'));
     }
 
     public function create()

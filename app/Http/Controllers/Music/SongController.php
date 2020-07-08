@@ -7,6 +7,7 @@ use App\Category;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SongRequest;
 use App\Http\Requests\UpdateSong;
+use App\Http\Services\ArtistService;
 use App\Http\Services\PlaylistService;
 use App\Http\Services\SongService;
 use Illuminate\Http\Request;
@@ -18,11 +19,13 @@ class SongController extends Controller
 {
     protected $songService;
     protected $playlistService;
+    protected $artistService;
 
-    public function __construct(SongService $songService, PlaylistService $playlistService)
+    public function __construct(SongService $songService, PlaylistService $playlistService, ArtistService $artistService)
     {
         $this->songService = $songService;
         $this->playlistService = $playlistService;
+        $this->artistService = $artistService;
     }
 
     public function index()
@@ -165,7 +168,11 @@ class SongController extends Controller
                 }
                 return redirect()->route('playlist.index');
             case 'artist':
-
+                if ($this->artistService->searchByKeyword($request->keyword)) {
+                    $artists = $this->artistService->searchByKeyword($request->keyword);
+                    return view('home.singer.singer', compact('artists'));
+                }
+                return redirect()->route('artist.index');
             default:
                 abort(404);
                 break;

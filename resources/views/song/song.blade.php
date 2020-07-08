@@ -20,6 +20,7 @@
                                     <select class="form-control" name="select">
                                         <option value="song">Song</option>
                                         <option value="playlist">Playlist</option>
+                                        <option value="artist">Artist</option>
                                     </select>
                                 </div>
                                 <div class="col-lg-2">

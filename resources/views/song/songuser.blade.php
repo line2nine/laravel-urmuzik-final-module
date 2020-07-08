@@ -20,7 +20,7 @@
                 <tbody>
                 @forelse($songs as $song)
                     <tr>
-                        <td><img src="{{asset('storage/'.$song->image)}}" style="width: 70px;"></td>
+                        <td><img src="{{asset('storage/'.$song->image)}}" style="width: 70px; height: 70px"></td>
                         <td>{{$song->name}}</td>
                         <td>
                             <a href="{{ route('music.play',['id'=>$song->id]) }}" title="Play"><i

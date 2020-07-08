@@ -7,22 +7,22 @@ use App\Category;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SongRequest;
 use App\Http\Requests\UpdateSong;
+use App\Http\Services\PlaylistService;
 use App\Http\Services\SongService;
-use App\Song;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Storage;
-use Symfony\Component\Console\Input\Input;
+
 
 class SongController extends Controller
 {
     protected $songService;
+    protected $playlistService;
 
-    public function __construct(SongService $songService)
+    public function __construct(SongService $songService, PlaylistService $playlistService)
     {
         $this->songService = $songService;
+        $this->playlistService = $playlistService;
     }
 
     public function index()
@@ -141,12 +141,35 @@ class SongController extends Controller
         }
     }
 
-    function search(Request $request)
+    function search(Request $request) //dashboard
     {
         if ($this->songService->searchByKeyword($request)) {
             $songs = $this->songService->searchByKeyword($request);
             return view('song.dashboard.list', compact('songs'));
         }
         return redirect()->route('song.dashboard.list');
+    }
+    public function searchHome(Request $request) //home
+    {
+        switch ($request->select){
+            case 'song':
+                if ($this->songService->searchHome($request->keyword)) {
+                    $songs = $this->songService->searchHome($request->keyword);
+                    return view('song.song', compact('songs'));
+                }
+                return redirect()->route('music.index');
+            case 'playlist':
+                if ($this->playlistService->searchByKeyword($request->keyword)) {
+                    $playlists = $this->playlistService->searchByKeyword($request->keyword);
+                    return view('home.playlist.list', compact('playlists'));
+                }
+                return redirect()->route('playlist.index');
+            case 'artist':
+
+            default:
+                abort(404);
+                break;
+        }
+
     }
 }

@@ -59,6 +59,8 @@ Route::group(['prefix' => 'songs'], function () {
 
 });
 
+Route::get('search/keyword', 'Music\SongController@searchHome')->name('search.home');
+
 Route::middleware(['auth', 'check.role'])->group(function () {
     Route::group(['prefix' => 'admin'], function () {
         Route::get('dashboard', 'UserController@index')->name('admin.dashboard');

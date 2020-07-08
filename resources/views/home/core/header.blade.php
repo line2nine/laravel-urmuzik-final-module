@@ -39,7 +39,7 @@
                                     <li><a href="{{route('playlist.index')}}">Playlist</a></li>
                                 @endif
 
-{{--                                <li><a href="#">Singer</a></li>--}}
+                                <li><a href="#">Singer</a></li>
 {{--                                <li><a href="#">Contact</a></li>--}}
                                 <li><a href="{{route('music.index')}}"><i class="fa fa-music"></i> Song</a></li>
                                 <li><a href="{{route('music.upload')}}"><i class="fa fa-arrow-circle-up"></i> Upload</a>

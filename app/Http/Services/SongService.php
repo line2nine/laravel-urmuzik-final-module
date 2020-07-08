@@ -92,4 +92,12 @@ class SongService
         }
         return false;
     }
+
+    public function searchHome($keyword)
+    {
+        if ($keyword) {
+            return $this->songRepo->searchSong($keyword);
+        }
+        return false;
+    }
 }

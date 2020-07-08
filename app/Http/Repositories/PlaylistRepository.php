@@ -55,4 +55,5 @@ class PlaylistRepository
     {
         $playlist->detailPlaylist()->delete();
     }
+
 }

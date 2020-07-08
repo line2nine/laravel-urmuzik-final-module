@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CreatePlaylistRequest;
 use App\Http\Requests\EditPlaylistRequest;
 use App\Http\Services\PlaylistService;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
 class PlaylistController extends Controller
@@ -61,4 +62,5 @@ class PlaylistController extends Controller
             return abort(403);
         }
     }
+
 }

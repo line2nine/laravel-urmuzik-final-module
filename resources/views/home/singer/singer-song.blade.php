@@ -21,7 +21,7 @@
                         <td><img src="{{asset('storage/'.$song->image)}}" style="width: 70px; height: 70px"></td>
                         <td>{{ $song->name }}</td>
                         <td class="text-right">
-                            <a href="#" title="play"><i
+                            <a href="{{ route('artist.play',['artist_id'=>$artist->id, 'song_id'=>$song->id]) }}" title="play"><i
                                     class="fa fa-play-circle"></i></a> &emsp;
                             <a href="#" target="_blank"
                                title="open new window"><i class="fa fa-external-link"></i></a>

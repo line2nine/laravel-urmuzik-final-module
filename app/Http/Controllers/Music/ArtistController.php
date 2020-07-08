@@ -38,7 +38,17 @@ class ArtistController extends Controller
     public function show($id)
     {
         $songs = $this->songService->getSongArtist($id);
-        return view('home.singer.singer-song', compact('songs'));
+        $artist = $this->artistService->find($id);
+        return view('home.singer.singer-song', compact('songs','artist'));
+    }
+
+    public function play($artist_id, $song_id)
+    {
+
+        $listSong = $this->songService->getSongArtist($artist_id);
+        $artist = $this->artistService->find($artist_id);
+        $song = $this->songService->find($song_id);
+        return view('home.singer.play-song-singer', compact('song','listSong','artist'));
     }
 
     public function edit($id)

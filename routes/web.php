@@ -56,6 +56,7 @@ Route::group(['prefix' => 'playlist'], function () {
 Route::group(['prefix' => 'songs'], function () {
     Route::get('/', 'Music\SongController@index')->name('music.index');
     Route::get('/{id}/play', 'Music\SongController@show')->name('music.play');
+
 });
 
 Route::middleware(['auth', 'check.role'])->group(function () {

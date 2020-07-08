@@ -79,11 +79,10 @@ class PlaylistService
         }
     }
 
-    public function searchByKeyword($request)
+    public function searchByKeyword($keyword)
     {
-        $keyword = $request->keyword;
         if ($keyword) {
-            return $this->playlistRepository->searchSong($keyword);
+            return $this->playlistRepository->searchPlaylist($keyword);
         }
         return false;
     }

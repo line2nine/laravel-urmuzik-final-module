@@ -31,7 +31,7 @@
                                 <a href="{{route('music.play',['id'=>$nextSong])}}" class="pt-1 ml-3" title="Next"><i
                                         class="icon-next" style="color: white"></i></a>
                                 &emsp;
-                                <a href="{{ route('music.download',['id'=>$song]) }}" class="pt-1"
+                                <a href="#" class="pt-1"
                                    title="Download"><i class="icon-download" style="color: white"></i></a>
                                 &emsp;
                                 <p><i class="fa fa-headphones"></i> {{$song->view}}</p>

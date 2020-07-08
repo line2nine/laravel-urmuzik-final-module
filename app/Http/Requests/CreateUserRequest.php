@@ -27,8 +27,7 @@ class CreateUserRequest extends FormRequest
             'name' => 'required|regex:/^([a-zA-Z\.]+)(\s[a-zA-Z\.]+)*$/|min:2|max:32',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:6|max:32',
-            'phone' => 'required',
-            'address' => 'required'
+            'confirmPass' => 'required|same:password|min:6|max:32',
         ];
     }
 }

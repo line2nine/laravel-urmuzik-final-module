@@ -124,6 +124,23 @@ class UserController extends Controller
         return back()->with('error', 'Wrong current password, try again');
     }
 
+    function changePassProfile($id)
+    {
+        $user = $this->userService->find($id);
+        return view('user.home.changePass', compact('user'));
+    }
+
+    function updatePassProfile(ChangePasswordUserRequest $request, $id)
+    {
+        $user = $this->userService->find($id);
+        if ($this->userService->checkPass($request)) {
+            $this->userService->changePass($user, $request);
+            \alert('Your Password Has Been Updated', '', 'success')->autoClose(2000)->timerProgressBar();
+            return redirect()->route('user.profile', $user->id);
+        }
+        return back()->with('error', 'Wrong current password, try again');
+    }
+
     function userDetail($id)
     {
         $user = $this->userService->find($id);

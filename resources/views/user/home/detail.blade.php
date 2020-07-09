@@ -15,7 +15,11 @@
             <div class="row justify-content-center">
                 <div class="col-12 col-lg-8">
                     <div class="login-content" style="font-size: 20px">
-                        <img src="{{asset('storage/' . $user->avatar)}}" alt="user-avatar" class="avatar-1">
+                        @if($user->google_id)
+                            <img src="{{$user->avatar}}">
+                        @else
+                            <img src="{{asset('storage/' . $user->avatar)}}" alt="user-avatar" class="avatar-1">
+                        @endif
                         <br>
                         <br>
                         <!-- Login Form -->

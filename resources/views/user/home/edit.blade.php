@@ -15,8 +15,12 @@
             <div class="row justify-content-center">
                 <div class="col-12 col-lg-8">
                     <div class="login-content">
-                        <img src="{{asset('storage/' . $user->avatar)}}" alt="user-avatar" class="avatar-1">
-                        <br>
+                        @if($user->google_id)
+                            <img src="{{$user->avatar}}">
+                        @else
+                            <img src="{{asset('storage/' . $user->avatar)}}" alt="user-avatar" class="avatar-1">
+                        @endif
+                        <br><br>
                         <!-- Login Form -->
                         <div class="login-form">
                             <form action="{{route('user.edit.profile', $user->id)}}" method="post" enctype="multipart/form-data">

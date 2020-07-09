@@ -41,6 +41,11 @@ class SongService
         return $this->songRepo->getSongUser($id);
     }
 
+    public function getSongArtist($id)
+    {
+        return $this->songRepo->getSongArtist($id);
+    }
+
     public function find($id)
     {
         return $this->songRepo->find($id);

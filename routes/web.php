@@ -51,6 +51,9 @@ Route::group(['prefix' => 'user'], function () {
             Route::get('/{playlist_id}/delete', 'Home\PlaylistController@delete')->name('my-playlist.delete');
             Route::post('/{playlist_id}/edit', 'Home\PlaylistController@update')->name('my-playlist.update');
         });
+        Route::group(['prefix' => 'comments'], function () {
+            Route::post('{song_id}/', 'CommentController@addNewCommentSong')->name('comments.song');
+        });
     });
 });
 
@@ -64,7 +67,7 @@ Route::group(['prefix' => 'songs'], function () {
     Route::get('/', 'Music\SongController@index')->name('music.index');
     Route::get('/{id}/play', 'Music\SongController@show')->name('music.play');
 });
-Route::group(['prefix'=>'artists'],function (){
+Route::group(['prefix' => 'artists'], function () {
     Route::get('/', 'Music\ArtistController@index')->name('artist.index');
 });
 Route::get('search/keyword', 'Music\SongController@searchHome')->name('search.home');

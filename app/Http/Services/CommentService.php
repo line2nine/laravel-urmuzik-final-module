@@ -34,4 +34,9 @@ class CommentService
     {
         return $this->getAll();
     }
+
+    public function getCommentOfSong($song_id)
+    {
+        return $this->commentsRepository->getCommentOfSong($song_id);
+    }
 }

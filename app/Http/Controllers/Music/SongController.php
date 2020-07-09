@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\SongRequest;
 use App\Http\Requests\UpdateSong;
 use App\Http\Services\ArtistService;
+use App\Http\Services\LikeService;
 use App\Http\Services\CommentService;
 use App\Http\Services\PlaylistService;
 use App\Http\Services\SongService;
@@ -21,13 +22,15 @@ class SongController extends Controller
     protected $songService;
     protected $playlistService;
     protected $artistService;
+    protected $likeService;
     protected $commentsService;
 
-    public function __construct(SongService $songService, PlaylistService $playlistService, ArtistService $artistService, CommentService $commentService)
+    public function __construct(SongService $songService, PlaylistService $playlistService, ArtistService $artistService, LikeService $likeService, CommentService $commentService)
     {
         $this->songService = $songService;
         $this->playlistService = $playlistService;
         $this->artistService = $artistService;
+        $this->likeService = $likeService;
         $this->commentsService = $commentService;
     }
 
@@ -73,9 +76,16 @@ class SongController extends Controller
 
     public function show($id)
     {
+        $likes = count($this->likeService->getAll($id));
         $comments = $this->commentsService->getCommentOfSong($id);
         $song = $this->songService->find($id);
         Session::put('idCurrentSong', "$song->id");
+        if (Auth::user()) {
+            $user_id = Auth::user()->id;
+            $check = count($this->likeService->find($song->id, $user_id));
+        } else {
+            $check = 0;
+        }
         // dem luot nghe bai hat
         $viewNumber = Session::get('viewKey' . $id);
         if (!Session::get('viewKey' . $id)) {
@@ -87,10 +97,10 @@ class SongController extends Controller
         for ($i = 0; $i < count($songs); $i++) {
             if ($i + 1 == count($songs)) {
                 $nextSong = $songs[0]->id;
-                return view('song.play', compact('song', 'nextSong', 'comments'));
+                return view('song.play', compact('song', 'nextSong', 'comments', 'likes', 'check'));
             } elseif ($songs[$i]->id == Session::get('idCurrentSong')) {
                 $nextSong = $songs[$i + 1]->id;
-                return view('song.play', compact('song', 'nextSong', 'comments'));
+                return view('song.play', compact('song', 'nextSong', 'comments', 'likes', 'check'));
             }
         }
     }

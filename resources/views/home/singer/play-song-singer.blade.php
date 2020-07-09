@@ -21,15 +21,14 @@
                             <div class="song-name">
                                 <p id="name">{{ $song->name }}</p>
                             </div>
-                            <audio autoplay onended="autoNext()" id="next">
+                            <audio autoplay onended="auto()" id="next">
                                 <source id="autoNext" src="{{ asset('/storage/' . $song->type) }}" type="audio/ogg">
                                 <source src="horse.mp3" type="audio/mpeg">
                             </audio>
                             <br>
                             <div class="row">
-                                <a href="#"
-                                   class="pt-1 ml-3" title="Next"><i
-                                        class="icon-next" style="color: white"></i></a>
+                                <a href="{{ route('artist.play',['artist_id'=>$artist->id, 'song_id'=>$nextSong->id]) }}"
+                                   class="pt-1 ml-3" title="Next"><i class="icon-next" style="color: white"></i></a>
                                 &emsp;
                                 <p id="view"><i class="fa fa-headphones"></i> {{$song->view}}</p>
                             </div>
@@ -40,15 +39,16 @@
             <br>
             <table class="table">
                 <tbody style="color: white;">
-                @forelse($listSong as $song)
+                @forelse($listSong as $item)
                     <tr>
-                        <td><img src="{{asset('storage/'.$song->image)}}" style="width: 70px;height: 70px"></td>
-                        <td style="color: white;">{{$song->name}}</td>
+                        <td><img src="{{asset('storage/'.$item->image)}}" style="width: 70px;height: 70px"></td>
+                        <td style="color: white;">{{$item->name}}</td>
                         <td class="text-right">
-                            <a href="{{ route('artist.play',['artist_id'=>$artist->id, 'song_id'=>$song->id]) }}"
+                            <a href="{{ route('artist.play',['artist_id'=>$artist->id, 'song_id'=>$item->id]) }}"
                                title="play"><i
                                     class="fa fa-play-circle" style="color: green;"></i></a> &emsp;
-                            <a href="{{ route('artist.play',['artist_id'=>$artist->id, 'song_id'=>$song->id]) }}" target="_blank"
+                            <a href="{{ route('artist.play',['artist_id'=>$artist->id, 'song_id'=>$item->id]) }}"
+                               target="_blank"
                                title="open new window"><i class="fa fa-external-link" style="color: white;"></i></a>
                             &emsp;
                             <a href="#"
@@ -65,4 +65,28 @@
             </table>
         </div>
     </section>
+    <script>
+        function auto() {
+            let songs = '<?php echo $listSong ?>';
+            let result = JSON.parse(songs);
+            let song = '<?php echo $song ?>';
+            let currentSong = JSON.parse(song);
+            console.log(currentSong.id)
+            console.log(result[0].id);
+            for (let i = 0; i < result.length; i++) {
+                if (currentSong.id == result[i].id) {
+                    let nextSong = result[i + 1];
+                    console.log(nextSong);
+                    document.getElementById('autoNext').src = "http://yourmusic.com/storage/" + nextSong.type;
+                    document.getElementById('image').src = "http://yourmusic.com/storage/" + nextSong.image;
+                    document.getElementById('desc').innerHTML = nextSong.desc;
+                    document.getElementById('name').innerHTML = nextSong.name;
+                    document.getElementById('view').innerHTML = '<i class="fa fa-headphones"></i> ' + nextSong.view;
+                    document.getElementById('next').load();
+                    document.getElementById('next').play();
+                    window.location.href = "http://yourmusic.com/artists/" + nextSong.artist_id + "/songs/" + nextSong.id + "/play";
+                }
+            }
+        }
+    </script>
 @endsection

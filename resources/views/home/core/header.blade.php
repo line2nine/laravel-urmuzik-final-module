@@ -32,7 +32,8 @@
                                         <ul class="dropdown">
                                             <li><a href="{{route('playlist.index')}}">Playlists</a></li>
                                             <li><a href="{{route('my-playlist')}}">My Playlists</a></li>
-                                            <li><a data-toggle="modal" data-target="#newPlaylist">New Playlist</a></li>
+                                            <li><a data-toggle="modal" data-target="#newPlaylist"
+                                                   style="cursor: pointer">New Playlist</a></li>
                                         </ul>
                                     </li>
                                 @else
@@ -40,7 +41,7 @@
                                 @endif
 
                                 <li><a href="{{route('artist.index')}}">Singer</a></li>
-                               <li><a href="#">Contact</a></li>
+                                <li><a href="#">Contact</a></li>
                                 <li><a href="{{route('music.index')}}"><i class="fa fa-music"></i> Song</a></li>
                                 <li><a href="{{route('music.upload')}}"><i class="fa fa-arrow-circle-up"></i> Upload</a>
                                 </li>
@@ -64,7 +65,8 @@
                                                                 <a href="{{route('user.profile', auth()->user()->id)}}">Profile</a>
                                                             </li>
                                                             <li>
-                                                                <a href="{{route('user.changePass.profile', auth()->user()->id)}}">Change Password</a>
+                                                                <a href="{{route('user.changePass.profile', auth()->user()->id)}}">Change
+                                                                    Password</a>
                                                             </li>
                                                         @endif
                                                         <li>

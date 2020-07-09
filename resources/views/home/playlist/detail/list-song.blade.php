@@ -9,14 +9,14 @@
             @if(\Illuminate\Support\Facades\Auth::user())
                 @if(\Illuminate\Support\Facades\Auth::user()->id === $playlist->user->id)
                     <a href="{{route('playlist.add-song', ['playlist_id' => $playlist->id])}}"
-                       title="add songs playlist"><i class="fa fa-plus-square-o"></i></a>
+                       title="Add songs playlist"><i class="fa fa-plus-square-o" style="color: green"></i></a>
                     &emsp;
                     <a data-toggle="modal" data-target="#editPlaylist"
-                       title="edit name playlist"><i class="fa fa-edit"></i></a>
+                       title="Edit name playlist"><i class="fa fa-edit" style="cursor: pointer"></i></a>
                     &emsp;
                     <a href="{{route('my-playlist.delete', ['playlist_id' => $playlist->id])}}"
-                       title="delete playlist" onclick="return confirm('Do you want to delete the playlist?')"><i
-                            class="fa fa-trash"></i></a>
+                       title="Delete playlist" onclick="return confirm('Do you want to delete the playlist?')"><i
+                            class="fa fa-trash" style="color: red"></i></a>
                 @endif
             @endif
             @if(\Illuminate\Support\Facades\Session::has('success'))

@@ -3,7 +3,7 @@
      aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form method="post" action="{{route('playlist.add')}}">
+            <form method="post" action="{{route('playlist.add')}}" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">ADD NEW PLAYLIST</h5>
@@ -13,7 +13,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label>Name playlist</label>
+                        <label>Name</label>
                         <input type="text" class="form-control
                         @if($errors->first('title'))
                             is-invalid
@@ -22,7 +22,10 @@
                         @if($errors->first('title'))
                             <p class="text-danger">{{ $errors->first('title') }}</p>
                         @endif
-
+                    </div>
+                    <div class="form-group">
+                        <label>Image</label>
+                        <input type="file" class="form-control" name="image">
                     </div>
                 </div>
                 <div class="modal-footer">

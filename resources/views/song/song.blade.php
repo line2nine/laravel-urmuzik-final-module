@@ -3,8 +3,7 @@
     <section class="breadcumb-area bg-img bg-overlay"
              style="background-image: url({{asset('img/bg-img/breadcumb3.jpg')}});">
         <div class="bradcumbContent">
-            <p>See what’s new</p>
-            <h2>Song</h2><br>
+            <h2>All Songs</h2><br>
             <div class="container">
                 <div class="row">
                     <div class="col-12">

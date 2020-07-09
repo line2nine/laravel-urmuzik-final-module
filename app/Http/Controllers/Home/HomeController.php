@@ -23,8 +23,9 @@ class HomeController extends Controller
     {
         $songs = $this->songService->recentlyUploaded();
         $songsTrending = $this->songService->topTrending();
-        $playlists = $this->playlistService->recentlyCreated();
-        return view('home.home', compact('songs', 'songsTrending', 'playlists'));
+        $recentPlaylists = $this->playlistService->recentlyCreated();
+        $trendingPlaylists = $this->playlistService->topTrending();
+        return view('home.home', compact('songs', 'songsTrending', 'recentPlaylists', 'trendingPlaylists'));
     }
 
 }

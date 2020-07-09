@@ -9,6 +9,7 @@ use App\Http\Requests\SongRequest;
 use App\Http\Requests\UpdateSong;
 use App\Http\Services\ArtistService;
 use App\Http\Services\LikeService;
+use App\Http\Services\CommentService;
 use App\Http\Services\PlaylistService;
 use App\Http\Services\SongService;
 use Illuminate\Http\Request;
@@ -22,13 +23,15 @@ class SongController extends Controller
     protected $playlistService;
     protected $artistService;
     protected $likeService;
+    protected $commentsService;
 
-    public function __construct(SongService $songService, PlaylistService $playlistService, ArtistService $artistService, LikeService $likeService)
+    public function __construct(SongService $songService, PlaylistService $playlistService, ArtistService $artistService, LikeService $likeService, CommentService $commentService)
     {
         $this->songService = $songService;
         $this->playlistService = $playlistService;
         $this->artistService = $artistService;
         $this->likeService = $likeService;
+        $this->commentsService = $commentService;
     }
 
     public function index()
@@ -74,6 +77,7 @@ class SongController extends Controller
     public function show($id)
     {
         $likes = count($this->likeService->getAll($id));
+        $comments = $this->commentsService->getCommentOfSong($id);
         $song = $this->songService->find($id);
         Session::put('idCurrentSong', "$song->id");
         if (Auth::user()) {
@@ -93,14 +97,13 @@ class SongController extends Controller
         for ($i = 0; $i < count($songs); $i++) {
             if ($i + 1 == count($songs)) {
                 $nextSong = $songs[0]->id;
-                return view('song.play', compact('song', 'nextSong', 'likes', 'check'));
+                return view('song.play', compact('song', 'nextSong', 'comments', 'likes', 'check'));
             } elseif ($songs[$i]->id == Session::get('idCurrentSong')) {
                 $nextSong = $songs[$i + 1]->id;
-                return view('song.play', compact('song', 'nextSong', 'likes', 'check'));
+                return view('song.play', compact('song', 'nextSong', 'comments', 'likes', 'check'));
             }
         }
     }
-
 
     public function listSongUser($id)
     {
@@ -188,6 +191,5 @@ class SongController extends Controller
                 abort(404);
                 break;
         }
-
     }
 }

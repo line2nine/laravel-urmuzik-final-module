@@ -63,7 +63,11 @@ class SongService
         $default = 0;
         $songRepo->name = $request->name;
         $songRepo->type = $request->type->store('songs', 'public');
-        $songRepo->image = $request->image->store('images', 'public');
+        if ($request->hasFile('image')) {
+            $songRepo->image = $request->image->store('images', 'public');
+        } else {
+            $songRepo->image = 'images/default-song.png';
+        }
         $songRepo->category_id = $request->category;
         $songRepo->artist_id = $request->artists;
         $songRepo->desc = $request->desc;

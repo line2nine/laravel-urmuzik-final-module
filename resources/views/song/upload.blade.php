@@ -48,9 +48,6 @@
                                 <div class="form-group">
                                     <label>Image</label>
                                     <input type="file" name="image" class="form-control">
-                                    @error('image')
-                                    <p class="error">{{ $message }}</p>
-                                    @enderror
                                 </div>
 
                                 <div class="form-group">

@@ -102,7 +102,7 @@
                             </audio>
                         </div>
                         @endforeach
-                    </d
+                    </div>
                 </div>
 
                 <!-- ***** Popular Artists ***** -->
@@ -130,6 +130,7 @@
                         @endforeach
                     </div>
                 </div>
+
             </div>
         </div>
     </section>

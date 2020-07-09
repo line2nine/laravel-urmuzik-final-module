@@ -36,10 +36,22 @@
                                 &emsp;
                                 <p><i class="fa fa-headphones"></i> {{$song->view}}</p>
                             </div>
-
                         </div>
-
-
+                    </div>
+                </div>
+            </div>
+            <br><br>
+            <div class="row" style="color: white">
+                <div class="container">
+                    <div class="row">
+                        &emsp;&emsp;&emsp;
+                        @include('comment.display-comment')
+                        &emsp;&emsp;&emsp;
+                    </div>
+                    <div class="row">
+                        &emsp;&emsp;&emsp;
+                        @include('comment.comments')
+                        &emsp;&emsp;&emsp;
                     </div>
                 </div>
             </div>

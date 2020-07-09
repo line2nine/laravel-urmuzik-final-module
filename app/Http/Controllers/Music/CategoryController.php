@@ -29,6 +29,8 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $this->categoryService->create($request);
+        \alert("Create Completed !", '', 'success')->autoClose(2000)->timerProgressBar();
+
         return redirect()->route('category.list');
     }
 
@@ -47,6 +49,8 @@ class CategoryController extends Controller
     {
         $category = $this->categoryService->find($id);
         $this->categoryService->update($request, $category);
+        \alert("Update Completed !", '', 'success')->autoClose(2000)->timerProgressBar();
+
         return redirect()->route('category.list');
     }
 
@@ -54,6 +58,8 @@ class CategoryController extends Controller
     {
         $category = $this->categoryService->find($id);
         $category->delete();
+        notify("Deleted Completed !", 'success');
+
         return redirect()->route('category.list');
     }
 

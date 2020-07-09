@@ -51,6 +51,9 @@ Route::group(['prefix' => 'user'], function () {
             Route::get('/{playlist_id}/delete', 'Home\PlaylistController@delete')->name('my-playlist.delete');
             Route::post('/{playlist_id}/edit', 'Home\PlaylistController@update')->name('my-playlist.update');
         });
+        Route::group(['prefix' => 'comments'], function () {
+            Route::post('{song_id}/', 'CommentController@addNewCommentSong')->name('comments.song');
+        });
     });
 });
 

@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\SongRequest;
 use App\Http\Requests\UpdateSong;
 use App\Http\Services\ArtistService;
+use App\Http\Services\CommentService;
 use App\Http\Services\PlaylistService;
 use App\Http\Services\SongService;
 use Illuminate\Http\Request;
@@ -20,12 +21,14 @@ class SongController extends Controller
     protected $songService;
     protected $playlistService;
     protected $artistService;
+    protected $commentsService;
 
-    public function __construct(SongService $songService, PlaylistService $playlistService, ArtistService $artistService)
+    public function __construct(SongService $songService, PlaylistService $playlistService, ArtistService $artistService, CommentService $commentService)
     {
         $this->songService = $songService;
         $this->playlistService = $playlistService;
         $this->artistService = $artistService;
+        $this->commentsService = $commentService;
     }
 
     public function index()
@@ -70,6 +73,7 @@ class SongController extends Controller
 
     public function show($id)
     {
+        $comments = $this->commentsService->getCommentOfSong($id);
         $song = $this->songService->find($id);
         Session::put('idCurrentSong', "$song->id");
         // dem luot nghe bai hat
@@ -83,10 +87,10 @@ class SongController extends Controller
         for ($i = 0; $i < count($songs); $i++) {
             if ($i + 1 == count($songs)) {
                 $nextSong = $songs[0]->id;
-                return view('song.play', compact('song', 'nextSong'));
+                return view('song.play', compact('song', 'nextSong', 'comments'));
             } elseif ($songs[$i]->id == Session::get('idCurrentSong')) {
                 $nextSong = $songs[$i + 1]->id;
-                return view('song.play', compact('song', 'nextSong'));
+                return view('song.play', compact('song', 'nextSong', 'comments'));
             }
         }
     }
@@ -154,7 +158,7 @@ class SongController extends Controller
 
     public function searchHome(Request $request) //home
     {
-        switch ($request->select){
+        switch ($request->select) {
             case 'song':
                 if ($this->songService->searchHome($request->keyword)) {
                     $songs = $this->songService->searchHome($request->keyword);

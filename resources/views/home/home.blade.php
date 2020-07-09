@@ -153,7 +153,7 @@
                         <div class="single-album">
                             <img src="{{asset('storage/' . $playlist->image)}}" alt="">
                             <div class="album-info">
-                                <a href="#">
+                                <a href="{{ route('playlist.detail',['playlist_id'=>$playlist->id]) }}">
                                     <h5>{{$playlist->title}}</h5>
                                 </a>
                                 <p>Creator: {{$playlist->user->name}}</p>

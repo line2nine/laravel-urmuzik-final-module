@@ -26,6 +26,11 @@ class PlaylistRepository
         return $this->playlist->orderby('created_at', 'desc')->paginate(5);
     }
 
+    public function topTrending()
+    {
+        return $this->playlist->orderby('view', 'desc')->paginate(5);
+    }
+
     public function myPlaylist()
     {
         return $this->playlist->where('user_id', Auth::user()->id)->get();
@@ -56,4 +61,8 @@ class PlaylistRepository
         $playlist->detailPlaylist()->delete();
     }
 
+    public function view($id)
+    {
+        return $this->find($id)->increment('view');
+    }
 }

@@ -28,6 +28,11 @@ class PlaylistService
         return $this->playlistRepository->recentlyCreated();
     }
 
+    public function topTrending()
+    {
+        return $this->playlistRepository->topTrending();
+    }
+
     public function myPlaylist()
     {
         if ($this->playlistRepository->myPlaylist()) {
@@ -46,8 +51,15 @@ class PlaylistService
     {
         $user = Auth::user();
         $playlist = new Playlist();
+        $default = 0;
         $playlist->title = $request->title;
+        if ($request->hasFile('image')) {
+            $playlist->image = $request->image->store('images', 'public');
+        } else {
+            $playlist->image = 'images/default-playlist.jpg';
+        }
         $playlist->user_id = $user->id;
+        $playlist->view = $default;
 
         $this->playlistRepository->save($playlist);
     }
@@ -85,5 +97,10 @@ class PlaylistService
             return $this->playlistRepository->searchPlaylist($keyword);
         }
         return false;
+    }
+
+    public function view($id)
+    {
+        return $this->playlistRepository->view($id);
     }
 }

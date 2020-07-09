@@ -15,7 +15,7 @@
                         <!-- Section Heading -->
                         <div class="section-heading white text-left mb-30">
                             <h2>{{$playlist->title}}</h2>
-                            <p>{{$playlist->user->name}}</p>
+                            <p><i class="fa fa-headphones"></i> {{$playlist->view}}</p>
                         </div>
                         <p id="desc">{{ $song->desc }}</p>
                         <div class="song-play-area">

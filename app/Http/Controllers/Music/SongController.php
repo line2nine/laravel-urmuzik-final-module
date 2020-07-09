@@ -91,7 +91,6 @@ class SongController extends Controller
         }
     }
 
-
     public function listSongUser($id)
     {
         $songs = $this->songService->getSongUser($id);
@@ -152,6 +151,7 @@ class SongController extends Controller
         }
         return redirect()->route('song.dashboard.list');
     }
+
     public function searchHome(Request $request) //home
     {
         switch ($request->select){
@@ -177,6 +177,5 @@ class SongController extends Controller
                 abort(404);
                 break;
         }
-
     }
 }

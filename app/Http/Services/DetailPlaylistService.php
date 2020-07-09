@@ -36,7 +36,6 @@ class DetailPlaylistService
         } else {
             return false;
         }
-
     }
 
     public function deleteSong($playlist, $song_id)

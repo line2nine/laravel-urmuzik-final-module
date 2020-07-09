@@ -27,7 +27,6 @@ class SongRequest extends FormRequest
         return [
             'name' => 'required|max:255',
             'type' => 'required|mp3_ogg_extension',
-            'image' => 'required',
             'desc' => 'required'
         ];
     }
@@ -38,7 +37,6 @@ class SongRequest extends FormRequest
         $messages = [
             'name.required' => 'You need to enter the name of the song and the length must not exceed 255 characters',
             'type.mp3_ogg_extension' => 'The file needs to be in .mp3 format',
-            'image.required' => 'Image may not be blank',
             'desc' => 'Description may not be blank'
         ];
 

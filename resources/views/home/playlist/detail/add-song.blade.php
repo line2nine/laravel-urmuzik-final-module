@@ -1,15 +1,13 @@
 @extends('home.master')
 @section('content')
-
     <section class="breadcumb-area bg-img bg-overlay"
              style="background-image: url({{asset('img/bg-img/breadcumb3.jpg')}});">
         <div class="bradcumbContent">
-            <h2>{{$playlist->title}}</h2>
+            <h2>Add song to your playlist</h2>
             <p></p>
-            <p>{{$playlist->user->name}}</p>
+            <p>Playlist: {{$playlist->title}}</p>
         </div>
     </section>
-
     <section class="album-catagory section-padding-100-0">
         <div class="container">
             <div class="one-music-songs-area mb-70">

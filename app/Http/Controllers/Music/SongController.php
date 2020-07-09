@@ -95,7 +95,6 @@ class SongController extends Controller
         }
     }
 
-
     public function listSongUser($id)
     {
         $songs = $this->songService->getSongUser($id);
@@ -182,6 +181,5 @@ class SongController extends Controller
                 abort(404);
                 break;
         }
-
     }
 }

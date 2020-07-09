@@ -14,8 +14,7 @@
                     <div class="featured-artist-content">
                         <!-- Section Heading -->
                         <div class="section-heading white text-left mb-30">
-                            <p>See what’s new</p>
-                            <h2>Buy What’s New</h2>
+                            <h2>{{$song->name}}</h2>
                         </div>
                         <p>{{ $song->desc }}</p>
                         <div class="song-play-area">

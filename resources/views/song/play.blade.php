@@ -31,6 +31,16 @@
                                 <a href="{{route('music.play',['id'=>$nextSong])}}" class="pt-1 ml-3" title="Next"><i
                                         class="icon-next" style="color: white"></i></a>
                                 &emsp;
+                                @if($check == 0)
+                                    <a href="{{ route('music.like',['id'=>$song->id]) }}" id="like" class="pt-1 like"
+                                       style="color: white" title="Like"><i class="icon-like"></i> {{ $likes }}</a>
+                                    &emsp;
+                                @else
+                                    <a href="{{ route('music.unlike',['id'=>$song->id]) }}" class="pt-1"
+                                       style="color: white" title="Unlike"><i
+                                            class="fa fa-thumbs-o-down"></i> {{ $likes }}  </a>
+                                    &emsp;
+                                @endif
                                 <a href="#" class="pt-1"
                                    title="Download"><i class="icon-download" style="color: white"></i></a>
                                 &emsp;

@@ -50,6 +50,7 @@
 <script src="{{asset('js/plugins/plugins.js')}}"></script>
 <!-- Active js -->
 <script src="{{asset('js/active.js')}}"></script>
+<script src="{{asset('js/jquery/like.js')}}"></script>
 <script>
     $("audio").on("play", function() {
         var id = $(this).attr('id');

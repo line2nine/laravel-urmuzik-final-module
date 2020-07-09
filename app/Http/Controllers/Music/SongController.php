@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\SongRequest;
 use App\Http\Requests\UpdateSong;
 use App\Http\Services\ArtistService;
+use App\Http\Services\LikeService;
 use App\Http\Services\PlaylistService;
 use App\Http\Services\SongService;
 use Illuminate\Http\Request;
@@ -20,12 +21,14 @@ class SongController extends Controller
     protected $songService;
     protected $playlistService;
     protected $artistService;
+    protected $likeService;
 
-    public function __construct(SongService $songService, PlaylistService $playlistService, ArtistService $artistService)
+    public function __construct(SongService $songService, PlaylistService $playlistService, ArtistService $artistService, LikeService $likeService)
     {
         $this->songService = $songService;
         $this->playlistService = $playlistService;
         $this->artistService = $artistService;
+        $this->likeService = $likeService;
     }
 
     public function index()
@@ -70,8 +73,15 @@ class SongController extends Controller
 
     public function show($id)
     {
+        $likes = count($this->likeService->getAll($id));
         $song = $this->songService->find($id);
         Session::put('idCurrentSong', "$song->id");
+        if (Auth::user()) {
+            $user_id = Auth::user()->id;
+            $check = count($this->likeService->find($song->id, $user_id));
+        } else {
+            $check = 0;
+        }
         // dem luot nghe bai hat
         $viewNumber = Session::get('viewKey' . $id);
         if (!Session::get('viewKey' . $id)) {
@@ -83,10 +93,10 @@ class SongController extends Controller
         for ($i = 0; $i < count($songs); $i++) {
             if ($i + 1 == count($songs)) {
                 $nextSong = $songs[0]->id;
-                return view('song.play', compact('song', 'nextSong'));
+                return view('song.play', compact('song', 'nextSong', 'likes', 'check'));
             } elseif ($songs[$i]->id == Session::get('idCurrentSong')) {
                 $nextSong = $songs[$i + 1]->id;
-                return view('song.play', compact('song', 'nextSong'));
+                return view('song.play', compact('song', 'nextSong', 'likes', 'check'));
             }
         }
     }
@@ -152,9 +162,10 @@ class SongController extends Controller
         }
         return redirect()->route('song.dashboard.list');
     }
+
     public function searchHome(Request $request) //home
     {
-        switch ($request->select){
+        switch ($request->select) {
             case 'song':
                 if ($this->songService->searchHome($request->keyword)) {
                     $songs = $this->songService->searchHome($request->keyword);

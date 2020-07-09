@@ -27,7 +27,7 @@ class CommentRepository
 
     public function getCommentOfSong($song_id)
     {
-        return $this->comments->where('song_id', $song_id)->get();
+        return $this->comments->where('song_id', $song_id)->orderby('created_at', 'desc')->get();
     }
 
 }

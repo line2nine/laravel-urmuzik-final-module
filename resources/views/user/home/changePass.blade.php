@@ -27,6 +27,9 @@
                                     @if(\Illuminate\Support\Facades\Session::has('error'))
                                         <span class="text-danger">{{\Illuminate\Support\Facades\Session::get('error')}}</span>
                                     @endif
+                                    @if($errors->first('oldPass'))
+                                        <span class="text-danger">{{$errors->first('oldPass')}}</span>
+                                    @endif
                                 </div>
                                 <div class="form-group">
                                     <label>New Password</label>

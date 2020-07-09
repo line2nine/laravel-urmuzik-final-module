@@ -22,12 +22,12 @@ class SongRepository
 
     public function recentlyUploaded()
     {
-        return $this->song->orderby('created_at', 'desc')->paginate(6);
+        return $this->song->orderby('created_at', 'desc')->paginate(5);
     }
 
     public function topTrending()
     {
-        return $this->song->orderby('view', 'desc')->paginate(6);
+        return $this->song->orderby('view', 'desc')->paginate(5);
     }
 
     public function find($id)

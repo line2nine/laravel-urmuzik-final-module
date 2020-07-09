@@ -35,6 +35,11 @@ class DetailPlaylistController extends Controller
     {
         $playlist = $this->playlistService->find($playlist_id);
         $listSong = $this->detailPlaylistService->getSongByPlaylistId($playlist_id);
+        $viewNumber = Session::get('viewKey' . $playlist_id);
+        if (!Session::get('viewKey' . $playlist_id)) {
+            Session::put('viewKey' . $playlist_id, 1);
+            $this->playlistService->view($playlist_id);
+        }
         $song = $this->songService->find($song_id);
         Session::put('idCurrentSong', "$song->id");
         for ($i = 0; $i < count($listSong); $i++) {
@@ -45,6 +50,16 @@ class DetailPlaylistController extends Controller
                 $nextSong = $listSong[$i + 1];
                 return view('home.playlist.detail.play-song', compact('playlist', 'listSong', 'song', 'nextSong'));
             }
+        }
+    }
+
+    public function setView($id)
+    {
+        $playlist = $this->playlistService->find($id);
+        $viewNumber = Session::get('viewKey');
+        if (!Session::get('viewKey')) {
+            Session::put('viewKey', 1);
+            $playlist->increment('view');
         }
     }
 

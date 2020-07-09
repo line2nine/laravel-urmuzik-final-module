@@ -32,7 +32,7 @@
                                         <ul class="dropdown">
                                             <li><a href="{{route('playlist.index')}}">Playlists</a></li>
                                             <li><a href="{{route('my-playlist')}}">My Playlists</a></li>
-                                            <li><a data-toggle="modal" data-target="#newPlaylist">New Playlist</a></li>
+                                            <li><a data-toggle="modal" data-target="#newPlaylist" style="cursor: pointer">New Playlist</a></li>
                                         </ul>
                                     </li>
                                 @else

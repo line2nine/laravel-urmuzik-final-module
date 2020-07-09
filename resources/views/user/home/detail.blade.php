@@ -16,7 +16,7 @@
                 <div class="col-12 col-lg-8">
                     <div class="login-content" style="font-size: 20px">
                         @if($user->google_id)
-                            <img src="{{$user->avatar}}">
+                            <img src="{{$user->avatar}}" alt="user-avatar" class="avatar-1">
                         @else
                             <img src="{{asset('storage/' . $user->avatar)}}" alt="user-avatar" class="avatar-1">
                         @endif

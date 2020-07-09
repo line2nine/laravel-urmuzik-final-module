@@ -25,4 +25,9 @@ class CommentRepository
         return $this->comments->all();
     }
 
+    public function getCommentOfSong($song_id)
+    {
+        return $this->comments->where('song_id', $song_id)->get();
+    }
+
 }

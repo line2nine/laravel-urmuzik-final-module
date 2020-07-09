@@ -20,7 +20,8 @@
                     <div class="media-body">
                         <h4 class="media-heading user_name" style="color: red">{{$comment->user->name}}</h4>
                         <span style="font-size: 20px; color: white">{{$comment->desc}}</span>
-                        <p class="pull-right mr-2" style="color: white"><small>{{date($comment->created_at)}}</small></p>
+                        <p class="pull-right mr-2" style="color: white"><small>{{date($comment->created_at)}}</small>
+                        </p>
                     </div>
             </div>
         @endforeach

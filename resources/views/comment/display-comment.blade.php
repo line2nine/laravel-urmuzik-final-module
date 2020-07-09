@@ -7,7 +7,7 @@
             <div class="media mb-3" style="background-color: #383838; border-radius: 20px;">
                 &emsp;&emsp;&emsp;
                 @if($comment->user->google_id)
-                    <a class="media-left">
+                    <a class="media-left mt-2">
                         <img src="{{ $comment->user->avatar}}" class="rounded-circle" alt="Cinque Terre" width="70px">
                     </a>
                 @else

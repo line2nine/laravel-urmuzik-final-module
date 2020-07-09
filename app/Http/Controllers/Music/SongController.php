@@ -63,14 +63,14 @@ class SongController extends Controller
     public function store(SongRequest $request)
     {
         $this->songService->create($request);
-        Session::flash('success', 'Add Completed');
+        \alert("Add Completed !", '', 'success')->autoClose(2000)->timerProgressBar();
         return redirect()->route('music.upload');
     }
 
     public function storeDashboard(SongRequest $request)
     {
         $this->songService->create($request);
-        Session::flash('success', 'Add Completed');
+        \alert("Add Completed !", '', 'success')->autoClose(2000)->timerProgressBar();
         return redirect()->route('song.dashboard.list');
     }
 
@@ -124,7 +124,7 @@ class SongController extends Controller
     {
         $song = $this->songService->find($id);
         $this->songService->update($song, $request);
-        Session::flash('success', 'Update Completed');
+        \alert("Update Completed !", '', 'success')->autoClose(2000)->timerProgressBar();
         $user = Auth::user();
         return redirect()->route('music.list.user', ['id' => $user->id]);
     }
@@ -134,7 +134,7 @@ class SongController extends Controller
     {
         $song = $this->songService->find($id);
         $song->delete();
-        Session::flash('success', 'Delete Completed');
+        notify("Deleted Completed !", 'success');
         $user = Auth::user();
         return redirect()->route('music.list.user', ['id' => $user->id]);
     }
@@ -143,7 +143,7 @@ class SongController extends Controller
     {
         $song = $this->songService->find($id);
         $song->delete();
-        Session::flash('success', 'Delete Completed');
+        notify("Deleted Completed !", 'success');
         return redirect()->route('song.dashboard.list');
     }
 

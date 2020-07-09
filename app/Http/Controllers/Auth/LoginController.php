@@ -27,18 +27,23 @@ class LoginController extends Controller
 
         if (Auth::attempt($user)) {
             if (Auth::user()->role !== Role::ADMIN) {
+                notify("Welcome " . Auth::user()->name . "!", 'success');
                 return redirect()->route('index');
             } else {
+                notify("Welcome " . Auth::user()->name . "!", 'success');
                 return redirect()->route('admin.dashboard');
             }
         } else {
+            toast('username or password incorrect','error')->position('top');
             return back();
         }
     }
 
     function logout()
     {
+        $name = Auth::user()->name;
         Auth::logout();
+        notify("Goodbye " . $name . "!", 'info');
         return redirect()->route('index');
     }
 }

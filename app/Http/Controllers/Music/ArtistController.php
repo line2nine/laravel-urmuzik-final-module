@@ -33,6 +33,8 @@ class ArtistController extends Controller
     public function store(Request $request)
     {
         $this->artistService->create($request);
+        \alert("Create Completed !", '', 'success')->autoClose(2000)->timerProgressBar();
+
         return redirect()->route('artist.list');
     }
 
@@ -71,6 +73,8 @@ class ArtistController extends Controller
     {
         $artist = $this->artistService->find($id);
         $this->artistService->update($request, $artist);
+        \alert("Update Completed !", '', 'success')->autoClose(2000)->timerProgressBar();
+
         return redirect()->route('artist.list');
     }
 
@@ -78,6 +82,8 @@ class ArtistController extends Controller
     {
         $artist = $this->artistService->find($id);
         $artist->delete();
+        notify("Deleted Completed !", 'success');
+
         return redirect()->route('artist.list');
     }
 

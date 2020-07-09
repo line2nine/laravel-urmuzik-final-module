@@ -43,8 +43,8 @@ class PlaylistController extends Controller
     {
         $status = $this->playlistService->delete($playlist_id);
         if ($status) {
-            $message = 'Delete completed';
-            Session::flash('success',$message);
+            notify("Deleted Completed !", 'success');
+
             return redirect(route('my-playlist'));
         } else {
             return abort(403);
@@ -55,8 +55,8 @@ class PlaylistController extends Controller
     {
         $status = $this->playlistService->update($request, $playlist_id);
         if ($status) {
-            $message = 'Update completed';
-            Session::flash('success',$message);
+            \alert("Update Completed !", '', 'success')->autoClose(2000)->timerProgressBar();
+
             return back();
         } else {
             return abort(403);

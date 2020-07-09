@@ -25,6 +25,7 @@ class GoogleController extends Controller
 
         if ($findUser) {
             Auth::login($findUser);
+            notify("Welcome " . Auth::user()->name . "!", 'success');
             return redirect()->route('index');
 
         } else {
@@ -40,6 +41,7 @@ class GoogleController extends Controller
             $newUser->save();
 
             Auth::login($newUser);
+            notify("Welcome " . Auth::user()->name . "!", 'success');
             return redirect()->route('index');
         }
     }

@@ -15,14 +15,10 @@ use Symfony\Component\Console\Input\Input;
 class SongService
 {
     protected $songRepo;
-    protected $likeService;
-    protected $commentService;
 
-    public function __construct(SongRepository $songRepo, LikeService $likeService, CommentService $commentService)
+    public function __construct(SongRepository $songRepo)
     {
         $this->songRepo = $songRepo;
-        $this->commentService = $commentService;
-        $this->likeService =$likeService;
     }
 
     public function getAll()
@@ -101,9 +97,9 @@ class SongService
     public function delete($id) {
         $song = $this->songRepo->find($id);
         if (Auth::user()->id = $song->user_id) {
-            $this->commentService->deleteAllComment($song->id);
-            $this->likeService->deleteAllLike($song->id);
             $this->songRepo->moveToDetailPlaylist($song);
+            $this->songRepo->moveToLikes($song);
+            $this->songRepo->moveToComments($song);
 
             if ($song->image !== 'images/default-song.png') {
                 $oldImage = $song->image;

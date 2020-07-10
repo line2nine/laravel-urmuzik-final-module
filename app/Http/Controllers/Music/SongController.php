@@ -15,6 +15,7 @@ use App\Http\Services\SongService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use function Composer\Autoload\includeFile;
 
 
 class SongController extends Controller
@@ -132,11 +133,15 @@ class SongController extends Controller
 
     public function destroy($id)
     {
-        $song = $this->songService->find($id);
-        $song->delete();
-        notify("Deleted Completed !", 'success');
-        $user = Auth::user();
-        return redirect()->route('music.list.user', ['id' => $user->id]);
+        $status = $this->songService->delete($id);
+        if ($status) {
+            notify("Deleted Completed !", 'success');
+            $user = Auth::user();
+            return redirect()->route('music.list.user', ['id' => $user->id]);
+        } else {
+            return abort(403);
+        }
+
     }
 
     public function destroyDashboard($id)

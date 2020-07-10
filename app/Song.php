@@ -14,6 +14,11 @@ class Song extends Model
         return $this->belongsToMany('App\Playlist', 'detail_playlists');
     }
 
+    function detailPlaylist()
+    {
+        return $this->hasMany('App\DetailPlaylist', 'song_id');
+    }
+
     function artist()
     {
         return $this->belongsTo(Artist::class, 'artist_id');

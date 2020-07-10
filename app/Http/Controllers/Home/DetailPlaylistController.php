@@ -66,15 +66,7 @@ class DetailPlaylistController extends Controller
     public function addSong($playlist_id)
     {
         $playlist = $this->playlistService->find($playlist_id);
-        $songOfPlaylist = $this->detailPlaylistService->getSongByPlaylistId($playlist_id);
-        $songAll = $this->songService->getAll();
-        $idSongsNotExitPlaylist = $songAll->pluck('id')->diff($songOfPlaylist->pluck('song_id'));
-
-        $songs = [];
-        foreach ($idSongsNotExitPlaylist as $idSong) {
-            $song = $this->songService->find($idSong);
-            array_push($songs, $song);
-        }
+        $songs = $this->detailPlaylistService->getSongNotExitPlaylist($playlist_id);
 
         return view('home.playlist.detail.add-song', compact('playlist', 'songs'));
     }
@@ -82,7 +74,7 @@ class DetailPlaylistController extends Controller
     public function storeSong(Request $request, $playlist_id)
     {
         $playlist = $this->playlistService->find($playlist_id);
-        $status = $this->detailPlaylistService->addSongPlaylist($request, $playlist);
+        $status = $this->detailPlaylistService->addSongsPlaylist($request, $playlist);
 
         if ($status) {
             \alert("Add Song Completed !", '', 'success')->autoClose(2000)->timerProgressBar();

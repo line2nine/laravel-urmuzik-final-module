@@ -19,10 +19,16 @@ class ArtistController extends Controller
         $this->songService = $songService;
     }
 
-    public function index()
+    public function list()
     {
         $artists = $this->artistService->getAll();
         return view('home.singer.singer', compact('artists'));
+    }
+
+    public function index()
+    {
+        $artists = $this->artistService->getAll();
+        return view('artist.list', compact('artists'));
     }
 
     public function create()

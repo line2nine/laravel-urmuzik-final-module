@@ -74,11 +74,10 @@ class UserService
         $user->phone = $request->phone;
         $user->address = $request->address;
         $oldFilePath = $user->avatar;
-        $newFilePath = $request->image;
-        if ($oldFilePath !== 'images/default-avatar.png' && $newFilePath !== null) {
-            Storage::delete("public/" . $oldFilePath);
-        }
         if ($request->hasFile('image')) {
+            if ($oldFilePath !== 'images/default-avatar.png') {
+                Storage::delete("public/" . $oldFilePath);
+            }
             $user->avatar = $request->image->store('images', 'public');
         }
         $user->role = Role::USER;
@@ -94,11 +93,11 @@ class UserService
         $user->phone = $request->phone;
         $user->address = $request->address;
         $oldFilePath = $user->avatar;
-        $newFilePath = $request->image;
-        if ($oldFilePath !== 'images/default-avatar.png' && $newFilePath !== null) {
-            Storage::delete("public/" . $oldFilePath);
-        }
+
         if ($request->hasFile('image')) {
+            if ($oldFilePath !== 'images/default-avatar.png') {
+                Storage::delete("public/" . $oldFilePath);
+            }
             $user->avatar = $request->image->store('images', 'public');
         }
         $user->role = $request->role;

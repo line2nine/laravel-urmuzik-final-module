@@ -69,4 +69,14 @@ class SongRepository
     {
         $song->detailPlaylist()->delete();
     }
+
+    public function moveToLikes($song)
+    {
+        $song->likes()->delete();
+    }
+
+    public function moveToComments($song)
+    {
+        $song->comments()->delete();
+    }
 }

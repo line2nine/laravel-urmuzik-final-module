@@ -54,6 +54,8 @@ Route::group(['prefix' => 'user'], function () {
         Route::group(['prefix' => 'comments'], function () {
             Route::post('{song_id}/', 'CommentController@addNewCommentSong')->name('comments.song');
         });
+        Route::get('{song_id}/song-add-playlists', 'Music\SongController@addSongToPlaylists')->name('songAddToPlaylists');
+        Route::post('{song_id}/song-add-playlists', 'Music\SongController@storeSongToPlaylists')->name('songAddToPlaylists.store');
     });
 });
 

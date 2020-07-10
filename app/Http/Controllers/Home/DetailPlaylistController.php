@@ -74,7 +74,7 @@ class DetailPlaylistController extends Controller
     public function storeSong(Request $request, $playlist_id)
     {
         $playlist = $this->playlistService->find($playlist_id);
-        $status = $this->detailPlaylistService->addSongPlaylist($request, $playlist);
+        $status = $this->detailPlaylistService->addSongsPlaylist($request, $playlist);
 
         if ($status) {
             \alert("Add Song Completed !", '', 'success')->autoClose(2000)->timerProgressBar();

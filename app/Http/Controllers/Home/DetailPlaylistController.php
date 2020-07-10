@@ -85,11 +85,12 @@ class DetailPlaylistController extends Controller
         $status = $this->detailPlaylistService->addSongPlaylist($request, $playlist);
 
         if ($status) {
-            $message = 'Add song completed';
-            Session::flash('success',$message);
-        }
+            \alert("Add Song Completed !", '', 'success')->autoClose(2000)->timerProgressBar();
 
-        return redirect(route('playlist.detail', ['playlist_id' => $playlist->id]));
+            return redirect(route('playlist.detail', ['playlist_id' => $playlist->id]));
+        } else {
+            return back();
+        }
     }
 
     public function deleteSong($playlist_id, $song_id)
@@ -97,8 +98,7 @@ class DetailPlaylistController extends Controller
         $playlist = $this->playlistService->find($playlist_id);
         $status = $this->detailPlaylistService->deleteSong($playlist, $song_id);
         if ($status) {
-            $message = 'Delete completed';
-            Session::flash('success',$message);
+            notify("Deleted Completed !", 'success');
 
             return back();
         } else {

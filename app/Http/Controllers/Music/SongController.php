@@ -63,14 +63,14 @@ class SongController extends Controller
     public function store(SongRequest $request)
     {
         $this->songService->create($request);
-        Session::flash('success', 'Add Completed');
+        \alert("Add Completed !", '', 'success')->autoClose(2000)->timerProgressBar();
         return redirect()->route('music.upload');
     }
 
     public function storeDashboard(SongRequest $request)
     {
         $this->songService->create($request);
-        Session::flash('success', 'Add Completed');
+        \alert("Add Completed !", '', 'success')->autoClose(2000)->timerProgressBar();
         return redirect()->route('song.dashboard.list');
     }
 
@@ -97,10 +97,10 @@ class SongController extends Controller
         for ($i = 0; $i < count($songs); $i++) {
             if ($i + 1 == count($songs)) {
                 $nextSong = $songs[0]->id;
-                return view('song.play', compact('song', 'nextSong', 'comments', 'likes', 'check'));
+                return view('song.play', compact('song', 'nextSong', 'comments', 'likes','check'));
             } elseif ($songs[$i]->id == Session::get('idCurrentSong')) {
                 $nextSong = $songs[$i + 1]->id;
-                return view('song.play', compact('song', 'nextSong', 'comments', 'likes', 'check'));
+                return view('song.play', compact('song', 'nextSong', 'comments', 'likes','check'));
             }
         }
     }
@@ -124,7 +124,7 @@ class SongController extends Controller
     {
         $song = $this->songService->find($id);
         $this->songService->update($song, $request);
-        Session::flash('success', 'Update Completed');
+        \alert("Update Completed !", '', 'success')->autoClose(2000)->timerProgressBar();
         $user = Auth::user();
         return redirect()->route('music.list.user', ['id' => $user->id]);
     }
@@ -134,7 +134,7 @@ class SongController extends Controller
     {
         $song = $this->songService->find($id);
         $song->delete();
-        Session::flash('success', 'Delete Completed');
+        notify("Deleted Completed !", 'success');
         $user = Auth::user();
         return redirect()->route('music.list.user', ['id' => $user->id]);
     }
@@ -143,7 +143,7 @@ class SongController extends Controller
     {
         $song = $this->songService->find($id);
         $song->delete();
-        Session::flash('success', 'Delete Completed');
+        notify("Deleted Completed !", 'success');
         return redirect()->route('song.dashboard.list');
     }
 

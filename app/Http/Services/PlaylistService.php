@@ -8,6 +8,7 @@ use App\Http\Repositories\DetailPlaylistRepository;
 use App\Http\Repositories\PlaylistRepository;
 use App\Playlist;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class PlaylistService
 {
@@ -70,6 +71,13 @@ class PlaylistService
 
         if (Auth::user()->id === $playlist->user->id) {
             $playlist->title = $request->title;
+            if ($request->hasFile('image')) {
+                if ($playlist->image !== 'images/default-playlist.jpg') {
+                    $oldImage = $playlist->image;
+                    Storage::delete('public/' . $oldImage);
+                }
+                $playlist->image = $request->image->store('images', 'public');
+            }
             $this->playlistRepository->save($playlist);
 
             return true;
@@ -84,6 +92,10 @@ class PlaylistService
 
         if (Auth::user()->id === $playlist->user->id) {
             $this->playlistRepository->moveToDetailPlaylist($playlist);
+            if ($playlist->image !== 'images/default-playlist.jpg') {
+                $oldImage = $playlist->image;
+                Storage::delete('public/' . $oldImage);
+            }
             $this->playlistRepository->delete($playlist);
             return true;
         } else {

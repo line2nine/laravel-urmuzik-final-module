@@ -64,4 +64,4 @@
         </div>
     </section>
 @endsection
-<@include('home.playlist.edit')
+@include('home.playlist.edit')

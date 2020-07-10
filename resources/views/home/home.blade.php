@@ -152,7 +152,7 @@
                         <!-- Single Album -->
                         @foreach($recentPlaylists as $key => $playlist)
                         <div class="single-album">
-                            <img src="{{asset('storage/' . $playlist->image)}}" alt="">
+                            <img src="{{asset('storage/' . $playlist->image)}}" alt="" style="width: 190px; height: 190px">
                             <div class="album-info">
                                 <a href="{{ route('playlist.detail',['playlist_id'=>$playlist->id]) }}">
                                     <h5>{{$playlist->title}}</h5>

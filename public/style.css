@@ -1285,6 +1285,9 @@ img {
           font-size: 18px;
           letter-spacing: 5px; } }
 
+.loginurm-area {
+    height: 100px; }
+
 /* :: 16.0 Blog Area CSS */
 .single-blog-post {
   position: relative;

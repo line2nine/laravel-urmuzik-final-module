@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{{asset('css/dropdown.css')}}">
     <link rel="stylesheet" href="{{asset('css/error.css')}}">
     <link rel="stylesheet" href="{{asset('css/customer-avatar.css')}}">
+    <link rel="stylesheet" href="{{asset('css/like.css')}}">
     @notify_css
     @notify_js
     <title>URMUZIK</title>

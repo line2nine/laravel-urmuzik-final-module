@@ -30,15 +30,15 @@
                                 <a href="{{route('music.play',['id'=>$nextSong])}}" class="pt-1 ml-3" title="Next"><i
                                         class="icon-next" style="color: white"></i></a>
                                 &emsp;
-                                <span data-title="{{ route('music.like',['id'=>$song->id]) }}" id="like" class="pt-1 like" style="color: white" title="Like">
+                                <a href="{{ route('music.like',['id'=>$song->id]) }}" id="like" class="pt-1 like" style="color: white" title="Like">
 {{--                                    @if(\Illuminate\Support\Facades\Auth::user()->like()->where('song_id',$song->id)->first())--}}
                                     @if($check == 0 )
                                     <i class="status-like icon-like"></i>
                                     @else
-                                        <i class="status-like fa fa-thumbs-o-down"></i>
+                                        <i class="status-liked status-like icon-like"></i>
                                     @endif
-                                    <ins>1</ins>
-                                </span>
+                                    <span class="totalLike">{{$likes}}</span>
+                                </a>
 
                                 &emsp;
                                 <a href="#" class="pt-1"

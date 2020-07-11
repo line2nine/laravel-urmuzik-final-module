@@ -1,5 +1,11 @@
 @extends('home.master')
 @section('login')
+    <!-- ##### Breadcumb Area Start ##### -->
+    <section class="breadcumb-area bg-img bg-overlay loginurm-area"
+             style="background-image: url({{asset('img/bg-img/breadcumb3.jpg')}});">
+    </section>
+    <!-- ##### Breadcumb Area End ##### -->
+
     <!-- ##### Login Area Start ##### -->
     <section class="login-area section-padding-100">
         <div class="container">
@@ -31,9 +37,8 @@
                             </form>
                             <br>
                             <p style="font-weight: bold">OR</p>
-                            <a href="{{route('auth.google')}}" class="btn btn-secondary btn-icon">
-                                <span class="btn-inner--icon"><img src="{{asset('img/icons/google.svg')}}"></span>
-                                <span class="btn-inner--text">Google</span>
+                            <a href="{{route('auth.google')}}" class="btn oneMusic-btn btn-icon">
+                                <span class="btn-inner--icon">Continue via <img src="{{asset('img/icons/google.svg')}}"></span>
                             </a>
                         </div>
                     </div>

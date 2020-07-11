@@ -5,7 +5,7 @@
             <textarea class="form-control" rows="2" name="comment"></textarea>
         </div>
         <div class="form-group text-right">
-            <button class="btn btn-primary" type="submit">Post</button>
+            <button class="btn btn-primary" id="comment-submit" type="submit">Post</button>
         </div>
     </form>
 </div>

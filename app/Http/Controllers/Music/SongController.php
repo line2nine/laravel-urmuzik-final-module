@@ -101,10 +101,10 @@ class SongController extends Controller
         for ($i = 0; $i < count($songs); $i++) {
             if ($i + 1 == count($songs)) {
                 $nextSong = $songs[0]->id;
-                return view('song.play', compact('song', 'nextSong', 'comments', 'likes', 'check'));
+                return view('song.play', compact('song', 'nextSong', 'comments', 'likes','check'));
             } elseif ($songs[$i]->id == Session::get('idCurrentSong')) {
                 $nextSong = $songs[$i + 1]->id;
-                return view('song.play', compact('song', 'nextSong', 'comments', 'likes', 'check'));
+                return view('song.play', compact('song', 'nextSong', 'comments', 'likes','check'));
             }
         }
     }
@@ -144,7 +144,6 @@ class SongController extends Controller
         } else {
             return abort(403);
         }
-
     }
 
     public function destroyDashboard($id)

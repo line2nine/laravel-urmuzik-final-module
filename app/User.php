@@ -44,4 +44,8 @@ class User extends Authenticatable
     function song(){
         return $this->hasMany('App\Song', 'user_id');
     }
+
+    function like(){
+        return $this->hasMany('App\Like');
+    }
 }

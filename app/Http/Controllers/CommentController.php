@@ -17,14 +17,15 @@ class CommentController extends Controller
     public function addNewCommentSong(Request $request, $song_id)
     {
         $this->commentsService->addNewCommentSong($request, $song_id);
+        $comment = $this->commentsService->getCommentOfSong($song_id);
 
-        return back();
-//    return response()->json(
-//        [
-//            'status' => 'success',
-//            'comment' => $comment
-//        ]
-//    );
+//        return back();
+    return response()->json(
+        [
+            'status' => 'success',
+            'comment' => $comment
+        ]
+    );
     }
 
 }

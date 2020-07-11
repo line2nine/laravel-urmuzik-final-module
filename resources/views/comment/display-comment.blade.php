@@ -1,6 +1,6 @@
 <div class="col-md-12" style="color: white">
     <div class="page-header">
-        <h1 style="color: white"><small class="pull-right">{{count($comments)}} comments</small> Comments </h1>
+        <h1 style="color: white"><small class="pull-right total-cmt">{{count($comments)}} comments</small> Comments </h1>
     </div>
     <div class="comments-list">
         @foreach($comments as $comment)

@@ -42,12 +42,17 @@ class SongRepository
 
     public function getSongArtist($id)
     {
-        return $this->song->where('artist_id','=',$id)->get();
+        return $this->song->where('artist_id', '=', $id)->get();
     }
 
     public function save($song)
     {
         $song->save();
+    }
+
+    public function delete($song)
+    {
+        $song->delete();
     }
 
     public function searchSong($keyword)
@@ -58,5 +63,20 @@ class SongRepository
     public function view($id)
     {
         return $this->find($id)->increment('view');
+    }
+
+    public function moveToDetailPlaylist($song)
+    {
+        $song->detailPlaylist()->delete();
+    }
+
+    public function moveToLikes($song)
+    {
+        $song->likes()->delete();
+    }
+
+    public function moveToComments($song)
+    {
+        $song->comments()->delete();
     }
 }

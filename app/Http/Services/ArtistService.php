@@ -45,12 +45,12 @@ class ArtistService
     public function update($request, $artist)
     {
         $oldFilePath = $artist->image;
-        $newFilePath = $request->image;
         $artist->name = $request->name;
-        if ($oldFilePath !== 'images/default-avatar.png' && $newFilePath !== null) {
-            Storage::delete("public/" . $oldFilePath);
-        }
+
         if ($request->hasFile('image')) {
+            if ($oldFilePath !== 'images/default-avatar.png') {
+                Storage::delete("public/" . $oldFilePath);
+            }
             $artist->image = $request->image->store('images', 'public');
         }
         $this->artistRepo->save($artist);

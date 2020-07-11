@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\SongRequest;
 use App\Http\Requests\UpdateSong;
 use App\Http\Services\ArtistService;
+use App\Http\Services\DetailPlaylistService;
 use App\Http\Services\LikeService;
 use App\Http\Services\CommentService;
 use App\Http\Services\PlaylistService;
@@ -15,6 +16,7 @@ use App\Http\Services\SongService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use function Composer\Autoload\includeFile;
 
 
 class SongController extends Controller
@@ -24,14 +26,16 @@ class SongController extends Controller
     protected $artistService;
     protected $likeService;
     protected $commentsService;
+    protected $detailPlaylistService;
 
-    public function __construct(SongService $songService, PlaylistService $playlistService, ArtistService $artistService, LikeService $likeService, CommentService $commentService)
+    public function __construct(SongService $songService, PlaylistService $playlistService, ArtistService $artistService, LikeService $likeService, CommentService $commentService, DetailPlaylistService $detailPlaylistService)
     {
         $this->songService = $songService;
         $this->playlistService = $playlistService;
         $this->artistService = $artistService;
         $this->likeService = $likeService;
         $this->commentsService = $commentService;
+        $this->detailPlaylistService = $detailPlaylistService;
     }
 
     public function index()
@@ -97,10 +101,10 @@ class SongController extends Controller
         for ($i = 0; $i < count($songs); $i++) {
             if ($i + 1 == count($songs)) {
                 $nextSong = $songs[0]->id;
-                return view('song.play', compact('song', 'nextSong', 'comments', 'likes', 'check'));
+                return view('song.play', compact('song', 'nextSong', 'comments', 'likes','check'));
             } elseif ($songs[$i]->id == Session::get('idCurrentSong')) {
                 $nextSong = $songs[$i + 1]->id;
-                return view('song.play', compact('song', 'nextSong', 'comments', 'likes', 'check'));
+                return view('song.play', compact('song', 'nextSong', 'comments', 'likes','check'));
             }
         }
     }
@@ -132,11 +136,14 @@ class SongController extends Controller
 
     public function destroy($id)
     {
-        $song = $this->songService->find($id);
-        $song->delete();
-        notify("Deleted Completed !", 'success');
-        $user = Auth::user();
-        return redirect()->route('music.list.user', ['id' => $user->id]);
+        $status = $this->songService->delete($id);
+        if ($status) {
+            notify("Deleted Completed !", 'success');
+            $user = Auth::user();
+            return redirect()->route('music.list.user', ['id' => $user->id]);
+        } else {
+            return abort(403);
+        }
     }
 
     public function destroyDashboard($id)
@@ -190,6 +197,27 @@ class SongController extends Controller
             default:
                 abort(404);
                 break;
+        }
+    }
+
+    public function addSongToPlaylists($song_id)
+    {
+        $playlists = $this->detailPlaylistService->getPlaylistNotExitSong($song_id);
+
+        return view('song.add-playlist', compact('playlists', 'song_id'));
+    }
+
+    public function storeSongToPlaylists($song_id, Request $request)
+    {
+        $song = $this->songService->find($song_id);
+        $status = $this->detailPlaylistService->addSongToPlaylists($request, $song);
+
+        if ($status) {
+            \alert("Add Song Completed !", '', 'success')->autoClose(2000)->timerProgressBar();
+
+            return redirect(route('music.index'));
+        } else {
+            return back();
         }
     }
 }

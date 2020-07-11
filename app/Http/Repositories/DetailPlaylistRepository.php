@@ -20,6 +20,11 @@ class DetailPlaylistRepository
         return $this->detailPlaylist->where('playlist_id', $playlist_id)->get();
     }
 
+    public function getPlaylistBySongId($song_id)
+    {
+        return $this->detailPlaylist->where('song_id', $song_id)->get();
+    }
+
     public function save($detailPlaylist)
     {
         $detailPlaylist->save();

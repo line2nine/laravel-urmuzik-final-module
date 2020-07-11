@@ -18,7 +18,13 @@ class CommentController extends Controller
     {
         $this->commentsService->addNewCommentSong($request, $song_id);
 
-        return back();
+//        return back();
+    return response()->json(
+        [
+            'status' => 'success',
+
+        ]
+    );
     }
 
 }

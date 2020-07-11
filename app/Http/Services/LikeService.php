@@ -39,4 +39,18 @@ class LikeService
     {
         $this->likeRepo->unlike($like);
     }
+
+    public function deleteAllLike($song_id) {
+        $likes = $this->likeRepo->getLikesOfSong($song_id);
+
+        foreach ($likes as $like) {
+            if (Auth::user()->id === $like->song->user_id){
+                $this->likeRepo->delete($like);
+            } else {
+                return false;
+            }
+        }
+
+        return true;
+    }
 }

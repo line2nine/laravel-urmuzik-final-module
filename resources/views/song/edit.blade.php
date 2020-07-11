@@ -28,15 +28,6 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">File <i><span
-                                                style="color: red">(.mp3)</span></i></label>
-                                    <input type="file" name="type" class="form-control" id="exampleInputEmail1">
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Image</label>
-                                    <input type="file" name="image" class="form-control" id="exampleInputEmail1">
-                                </div>
-                                <div class="form-group">
                                     <label for="exampleInputPassword1">Category</label>
                                     <select class="form-control" name="category">
                                         @foreach($categories as $category)
@@ -71,6 +62,10 @@
                                     @error('desc')
                                     <p class="error">{{ $message }}</p>
                                     @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Image</label>
+                                    <input type="file" name="image" class="form-control" id="exampleInputEmail1">
                                 </div>
                                 <button type="submit" class="btn oneMusic-btn mt-30">Update</button>
                             </form>

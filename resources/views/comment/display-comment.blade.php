@@ -7,7 +7,7 @@
             <div class="media mb-3" style="background-color: #383838; border-radius: 20px;">
                 &emsp;&emsp;&emsp;
                 @if($comment->user->google_id)
-                    <a class="media-left">
+                    <a class="media-left mt-2">
                         <img src="{{ $comment->user->avatar}}" class="rounded-circle" alt="Cinque Terre" width="70px">
                     </a>
                 @else
@@ -20,6 +20,7 @@
                     <div class="media-body">
                         <h4 class="media-heading user_name" style="color: red">{{$comment->user->name}}</h4>
                         <span style="font-size: 20px; color: white">{{$comment->desc}}</span>
+
                         <p class="pull-right mr-2" style="color: white"><small>{{date($comment->created_at)}}</small></p>
                     </div>
             </div>

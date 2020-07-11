@@ -40,4 +40,13 @@ class LikeRepository
         $unLike->delete();
     }
 
+    public function getLikesOfSong($song_id)
+    {
+        return $this->like->where('song_id', $song_id)->get();
+    }
+
+    public function delete($like)
+    {
+        $like->delete();
+    }
 }

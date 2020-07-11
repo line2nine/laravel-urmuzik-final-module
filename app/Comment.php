@@ -13,4 +13,9 @@ class Comment extends Model
         return $this->belongsTo(User::class);
     }
 
+    function song()
+    {
+        return $this->belongsTo(Song::class);
+    }
+
 }

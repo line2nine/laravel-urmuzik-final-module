@@ -19,11 +19,6 @@
                             class="fa fa-trash" style="color: red"></i></a>
                 @endif
             @endif
-            @if(\Illuminate\Support\Facades\Session::has('success'))
-                <p class="text-success">
-                    <i class="fa fa-check" aria-hidden="true"></i>{{ Session::get('success') }}
-                </p>
-            @endif
         </div>
     </section>
 
@@ -69,4 +64,4 @@
         </div>
     </section>
 @endsection
-<@include('home.playlist.edit')
+@include('home.playlist.edit')

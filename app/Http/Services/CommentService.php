@@ -39,4 +39,30 @@ class CommentService
     {
         return $this->commentsRepository->getCommentOfSong($song_id);
     }
+
+    public function deleteComment($id)
+    {
+        $comment = $this->commentsRepository->find($id);
+        if (Auth::user()->id === $comment->user_id) {
+            $this->commentsRepository->delete($comment);
+
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function deleteAllComment($song_id) {
+        $comments = $this->commentsRepository->getCommentOfSong($song_id);
+
+        foreach ($comments as $comment) {
+            if (Auth::user()->id === $comment->song->user_id){
+                $this->commentsRepository->delete($comment);
+            } else {
+                return false;
+            }
+        }
+
+        return true;
+    }
 }

@@ -54,6 +54,8 @@ Route::group(['prefix' => 'user'], function () {
         Route::group(['prefix' => 'comments'], function () {
             Route::post('{song_id}/', 'CommentController@addNewCommentSong')->name('comments.song');
         });
+        Route::get('{song_id}/song-add-playlists', 'Music\SongController@addSongToPlaylists')->name('songAddToPlaylists');
+        Route::post('{song_id}/song-add-playlists', 'Music\SongController@storeSongToPlaylists')->name('songAddToPlaylists.store');
     });
 });
 
@@ -73,7 +75,7 @@ Route::group(['prefix' => 'songs'], function () {
 });
 
 Route::group(['prefix'=>'artists'],function (){
-    Route::get('/', 'Music\ArtistController@index')->name('artist.index');
+    Route::get('/', 'Music\ArtistController@list')->name('artist.index');
     Route::get('/{id}/songs', 'Music\ArtistController@show')->name('artist.song');
     Route::get('/{artist_id}/songs/{song_id}/play','Music\ArtistController@play')->name('artist.play');
 });

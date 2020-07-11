@@ -80,17 +80,39 @@ class SongService
     public function update($song, $request)
     {
         $song->name = $request->name;
-        if ($request->hasFile('image')) {
-            $song->image = $request->image->store('images', 'public');
-        }
-        if ($request->hasFile('type')) {
-            $song->type = $request->type->store('songs', 'public');
-        }
         $song->category_id = $request->category;
         $song->artist_id = $request->artists;
         $song->desc = $request->desc;
+        $oldImage = $song->image;
+        if ($request->hasFile('image')) {
+            if ($oldImage !== 'images/default-song.png') {
+                Storage::delete('public/' . $oldImage);
+            }
+            $song->image = $request->image->store('images', 'public');
+        }
 
         $this->songRepo->save($song);
+    }
+
+    public function delete($id) {
+        $song = $this->songRepo->find($id);
+        if (Auth::user()->id = $song->user_id) {
+            $this->songRepo->moveToDetailPlaylist($song);
+            $this->songRepo->moveToLikes($song);
+            $this->songRepo->moveToComments($song);
+
+            if ($song->image !== 'images/default-song.png') {
+                $oldImage = $song->image;
+                Storage::delete('public/' . $oldImage);
+            }
+            $fileMp3 = $song->type;
+            Storage::delete('public/' . $fileMp3);
+            $this->songRepo->delete($song);
+
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public function searchByKeyword($request)

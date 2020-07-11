@@ -15,7 +15,6 @@ $(document).ready(function () {
                 }
                 console.log(result.likes);
                 $(this).children("ins").html(result.likes);
-
             }
         })
     })

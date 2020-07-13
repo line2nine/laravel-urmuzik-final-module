@@ -61,7 +61,7 @@
             <table class="table">
                 <tbody style="color: white;">
                 @forelse($listSong as $item)
-                    <tr>
+                    <tr id="user-song3-{{$item->id}}">
                         <td><img src="{{asset('storage/'.$item->song->image)}}" style="width: 70px;height: 70px"></td>
                         <td style="color: white;">{{$item->song->name}}</td>
                         <td class="text-right">
@@ -75,7 +75,7 @@
                             @if(\Illuminate\Support\Facades\Auth::user())&emsp;
                             @if(\Illuminate\Support\Facades\Auth::user()->id === $playlist->user->id)
                                 <a href="{{route('playlist.delete-song', ['playlist_id' => $playlist->id, 'song_id' => $item->song->id])}}"
-                                   title="delete song" onclick="return confirm('Do you want to delete the song?')">
+                                   title="delete song" class="delete-song3" data-id="{{$item->id}}">
                                     <i class="fa fa-trash" style="color: red;"></i>
                                 </a>
                                 @endif

@@ -45,9 +45,7 @@
                                         @if(\Illuminate\Support\Facades\Auth::user())
                                             @if(\Illuminate\Support\Facades\Auth::user()->id === $playlist->user->id)
                                                 <a href="{{route('playlist.delete-song', ['playlist_id' => $playlist->id, 'song_id' => $item->song->id])}}"
-                                                   title="Delete song" class="delete-song2" data-id="{{$item->id}}"
-                                                   onclick="return confirm('Are You Sure!?')"><i
-                                                        class="fa fa-trash"></i>
+                                                   title="Delete song" class="delete-song2" data-id="{{$item->id}}"><i class="fa fa-trash"></i>
                                                 </a>
                                             @endif
                                         @endif

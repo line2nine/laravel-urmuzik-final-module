@@ -21,7 +21,7 @@
         @endif
     @endif
     <div class="form-group">
-        <a href="{{route('user.create')}}" class="btn btn-success">Create New</a>
+        <a href="{{route('category.create')}}" class="btn btn-success">Create New</a>
     </div>
     <div class="col-12">
         <div class="card">

@@ -35,7 +35,7 @@ class HomeController extends Controller
             $song = $this->songService->find($likes[$i]->song_id);
             array_push($songLike, $song);
         }
-        return view(    'home.home', compact('songs', 'songsTrending', 'recentPlaylists', 'trendingPlaylists', 'songLike'));
+        return view('home.home', compact('songs', 'songsTrending', 'recentPlaylists', 'trendingPlaylists', 'songLike', 'likes'));
     }
 
     public function showContact()

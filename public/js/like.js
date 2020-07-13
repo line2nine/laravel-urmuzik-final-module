@@ -3,18 +3,25 @@ $(document).ready(function () {
         e.preventDefault();
         $.ajax({
             url: $(this).attr("href"),
-            type: 'get',
             dataType: 'json',
             success: function (result) {
-                console.log(result);
-                if (result.status == false) {
-                    $('.status-like').addClass("status-liked");
-                    $('.totalLike').html(result.likes);
-                } else {
-                    $('.status-like').removeClass("status-liked");
-                    $('.totalLike').html(result.likes);
+                if (result.status == 'success') {
+                    if (result.liked == false) {
+                        $('.status-like').addClass("status-liked");
+                        $('.totalLike').html(result.likes);
+                    } else {
+                        $('.status-like').removeClass("status-liked");
+                        $('.totalLike').html(result.likes);
+                    }
                 }
-                console.log(result.likes);
+            },
+            statusCode : {
+                401: function () {
+                    toastr.error('Please login to like this song', '', {
+                        timeOut: 1000,
+                        showMethod: 'slideDown'
+                    });
+                }
             }
         })
     });
@@ -23,7 +30,7 @@ $(document).ready(function () {
         var url = $(this).closest("form").attr("action");
         var comment = $(this).closest("form").find(".form-control").val();
         var token = $("input[name='_token']").val();
-        var data = "_token="+token+"&comment="+comment;
+        var data = "_token=" + token + "&comment=" + comment;
         $.ajax({
             url: url,
             type: 'post',
@@ -51,7 +58,7 @@ $(document).ready(function () {
                         type: 'GET',
                         success: function (result) {
                             $(".comments-list").html($(result).find(".comments-list").html());
-                            $(".total-cmt").html(count+" comments");
+                            $(".total-cmt").html(count + " comments");
                             $('textarea.form-control').val("");
                         }
                     })

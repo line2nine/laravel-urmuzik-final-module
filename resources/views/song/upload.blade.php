@@ -3,7 +3,6 @@
     <section class="breadcumb-area bg-img bg-overlay"
              style="background-image: url({{asset('img/bg-img/breadcumb3.jpg')}});">
         <div class="bradcumbContent">
-            <p>See what’s new</p>
             <h2>Upload Song</h2>
         </div>
     </section>
@@ -13,7 +12,6 @@
             <div class="row justify-content-center">
                 <div class="col-12 col-lg-8">
                     <div class="login-content">
-                        <h3>Welcome Back</h3>
                         @if(\Illuminate\Support\Facades\Session::has('success'))
                             <p class="text-success">
                                 <i class="fa fa-check" aria-hidden="true"></i>{{ Session::get('success') }}
@@ -29,16 +27,15 @@
                             <form action="{{ route('music.store') }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Name Song</label>
-                                    <input type="text" name="name" class="form-control" id="exampleInputEmail1"
-                                           placeholder="name song">
+                                    <label>Name Song</label>
+                                    <input type="text" name="name" class="form-control">
                                     @error('name')
                                     <p class="error">{{ $message }}</p>
                                     @enderror
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">Category</label>
+                                    <label>Category</label>
                                     <select class="form-control" name="category">
                                         @foreach($categories as $category)
                                             <option value="{{$category->id}}">{{ $category->name }}</option>
@@ -54,7 +51,7 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Description</label>
+                                    <label>Description</label>
                                     <textarea class="form-control" rows="4" name="desc"></textarea>
                                     @error('desc')
                                     <p class="error">{{ $message }}</p>
@@ -73,7 +70,7 @@
                                     <label>Image</label>
                                     <input type="file" name="image" class="form-control">
                                 </div>
-                                <button type="submit" class="btn oneMusic-btn mt-30">New</button>
+                                <button type="submit" class="btn oneMusic-btn mt-30">Upload</button>
                             </form>
                         </div>
                     </div>

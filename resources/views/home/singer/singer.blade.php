@@ -42,14 +42,12 @@
                 @forelse($artists as $artist)
                     <div class="col-12 col-sm-4 col-md-3 col-lg-2 single-album-item t c p">
                         <div class="single-album">
-                            <a href="#">
                                 <a href="{{ route('artist.song',['id'=>$artist->id]) }}">
-                                    <img src="{{asset('storage/' . $artist->image)}}" alt="" style="width: 190px; height: 190px"></a>
+                                    <img src="{{asset('storage/' . $artist->image)}}" alt=""></a>
                                 <div class="album-info">
                                     <a href="{{ route('artist.song',['id'=>$artist->id]) }}">
                                         <h5>{{ $artist->name }}</h5></a>
                                 </div>
-                            </a>
                         </div>
                     </div>
                 @empty

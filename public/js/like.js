@@ -68,59 +68,59 @@ $(document).ready(function () {
     });
     $('.table').on('click', '.delete-song', function (e) {
         var songId = $(this).attr('data-id')
+        var confirmDelete = confirm('Are You Sure!?');
         e.preventDefault();
-        $.ajax({
-            url: $(this).attr("href"),
-            dataType: 'json',
-            success: function (result) {
-                if (result.status == 'success') {
-                    let confirmDelete = confirm('Are You Sure!?');
-                    if (confirmDelete == true) {
+        if (confirmDelete == true) {
+            $.ajax({
+                url: $(this).attr("href"),
+                dataType: 'json',
+                success: function (result) {
+                    if (result.status == 'success') {
                         $('#user-song-' + songId).fadeOut('300');
                         toastr.success('Deleted Successfully', '', {
                             timeOut: 1000,
                         });
                     }
                 }
-            }
-        })
+            })
+        }
     });
     $('.table').on('click', '.delete-song2', function (e) {
-        var songId2 = $(this).attr('data-id')
+        var songId2 = $(this).attr('data-id');
+        var confirmDelete = confirm('Are You Sure!?');
         e.preventDefault();
-        $.ajax({
-            url: $(this).attr("href"),
-            dataType: 'json',
-            success: function (result) {
-                if (result.status == 'success') {
-                    let confirmDelete = confirm('Are You Sure!?');
-                    if (confirmDelete == true) {
+        if (confirmDelete == true) {
+            $.ajax({
+                url: $(this).attr("href"),
+                dataType: 'json',
+                success: function (result) {
+                    if (result.status == 'success') {
                         $('#user-song2-' + songId2).fadeOut('300');
                         toastr.success('Deleted Successfully', '', {
                             timeOut: 1000,
                         });
                     }
                 }
-            }
-        })
+            })
+        }
     });
     $('.table').on('click', '.delete-song3', function (e) {
         var songId3 = $(this).attr('data-id')
+        var confirmDelete = confirm('Are You Sure!?');
         e.preventDefault();
-        $.ajax({
-            url: $(this).attr("href"),
-            dataType: 'json',
-            success: function (result) {
-                if (result.status == 'success') {
-                    let confirmDelete = confirm('Are You Sure!?');
-                    if (confirmDelete == true) {
+        if (confirmDelete == true) {
+            $.ajax({
+                url: $(this).attr("href"),
+                dataType: 'json',
+                success: function (result) {
+                    if (result.status == 'success') {
                         $('#user-song3-' + songId3).fadeOut('300');
                         toastr.success('Deleted Successfully', '', {
                             timeOut: 1000,
                         });
                     }
                 }
-            }
-        })
+            })
+        }
     });
 })

@@ -31,8 +31,8 @@ return [
     ],
 
     'google' => [
-        'client_id' => '654636277275-93jb26mps4r5o2pq14kj8qk0n2dt0v7u.apps.googleusercontent.com',
-        'client_secret' => 'LJYqOeM2tCDY66O1h-3hikqQ',
+        'client_id' => '297685076834-jvt42r1fc2ggv0aidt3h34gu2tk0pda3.apps.googleusercontent.com',
+        'client_secret' => 'qVInqudEssHIloBR32ztAYBN',
         'redirect' => 'http://yourmusic.com/auth/google/callback',
     ],
 ];

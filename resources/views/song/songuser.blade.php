@@ -3,7 +3,7 @@
     <section class="breadcumb-area bg-img bg-overlay"
              style="background-image: url({{asset('img/bg-img/breadcumb3.jpg')}});">
         <div class="bradcumbContent">
-            <h2>Song</h2>
+            <h2>My Songs</h2>
             @if(\Illuminate\Support\Facades\Session::has('success'))
                 <p class="text-success">
                     <i class="fa fa-check" aria-hidden="true"></i>{{ Session::get('success') }}
@@ -15,10 +15,10 @@
     <section class="album-catagory section-padding-100-0">
         <div class="container">
 
-            <table class="table">
+            <table class="table user-song">
                 <tbody>
                 @forelse($songs as $song)
-                    <tr>
+                    <tr id="user-song-{{$song->id}}">
                         <td><img src="{{asset('storage/'.$song->image)}}" style="width: 70px; height: 70px"></td>
                         <td>{{$song->name}}</td>
                         <td>
@@ -32,7 +32,7 @@
                                     class="fa fa-edit"></i></a>
                             &emsp;&emsp;
                             <a href="{{ route('music.delete',['id'=>$song->id]) }}" title="Delete"
-                               onclick="return confirm('Are you sure delete?')"><i class="fa fa-trash"></i></a>
+                               onclick="return confirm('Are you sure delete?')" class="delete-song" data-id="{{$song->id}}"><i class="fa fa-trash"></i></a>
                         </td>
                     </tr>
                 @empty

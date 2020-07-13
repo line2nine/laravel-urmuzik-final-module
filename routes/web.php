@@ -23,6 +23,7 @@ Route::post('login', 'Auth\LoginController@login');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('register', 'UserController@create')->name('register');
 Route::post('register', 'UserController@store');
+Route::get('contact', 'Home\HomeController@showContact')->name('contact');
 Route::get('auth/google', 'Auth\GoogleController@redirectToGoogle')->name('auth.google');
 Route::get('auth/google/callback', 'Auth\GoogleController@handleGoogleCallback')->name('googleCallBack');
 

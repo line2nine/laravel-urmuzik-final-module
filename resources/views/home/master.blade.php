@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{{asset('css/error.css')}}">
     <link rel="stylesheet" href="{{asset('css/customer-avatar.css')}}">
     <link rel="stylesheet" href="{{asset('css/like.css')}}">
+    <link rel="stylesheet" href="{{asset('css/toastr.css')}}">
     @notify_css
     @notify_js
     <title>URMUZIK</title>
@@ -42,6 +43,8 @@
 @include('home.core.footer')
 
 @notify_render
+<script src="//code.jquery.com/jquery.min.js"></script>
+<script src="{{asset('js/toastr.js')}}"></script>
 <script src="{{asset('js/jquery/jquery-2.2.4.min.js')}}"></script>
 <!-- Popper js -->
 <script src="{{asset('js/bootstrap/popper.min.js')}}"></script>

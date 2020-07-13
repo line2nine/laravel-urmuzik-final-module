@@ -30,23 +30,23 @@
                         <table class="table">
                             <tbody>
                             @forelse($listSong as $item)
-                                <tr>
+                                <tr id="user-song2-{{$item->id}}">
                                     <td><img src="{{asset('storage/'.$item->song->image)}}"
                                              style="width: 70px; height: 70px"></td>
                                     <td>{{$item->song->name}}</td>
                                     <td class="text-right">
                                         <a href="{{ route('playlist.play',['playlist_id'=> $playlist->id, 'song_id' => $item->song->id]) }}"
-                                           title="play"><i
+                                           title="Play"><i
                                                 class="fa fa-play-circle"></i></a> &emsp;
                                         <a href="{{ route('playlist.play',['playlist_id'=> $playlist->id, 'song_id' => $item->song->id]) }}"
                                            target="_blank"
-                                           title="open new window"><i class="fa fa-external-link"></i></a>
+                                           title="Open new window"><i class="fa fa-external-link"></i></a>
                                         &emsp;
                                         @if(\Illuminate\Support\Facades\Auth::user())
                                             @if(\Illuminate\Support\Facades\Auth::user()->id === $playlist->user->id)
                                                 <a href="{{route('playlist.delete-song', ['playlist_id' => $playlist->id, 'song_id' => $item->song->id])}}"
-                                                   title="delete song"
-                                                   onclick="return confirm('Do you want to delete the song?')"><i
+                                                   title="Delete song" class="delete-song2" data-id="{{$item->id}}"
+                                                   onclick="return confirm('Are You Sure!?')"><i
                                                         class="fa fa-trash"></i>
                                                 </a>
                                             @endif

@@ -30,7 +30,6 @@ $(document).ready(function () {
             data: data,
             success: function (result) {
                 if (result.status == 'success') {
-                    console.log(result.comment);
                     // var cmt = '';
                     // $.each(result.comment, function (key, value) {
                     //     cmt += '<div class="media mb-3" style="background-color: #383838; border-radius: 20px;">\n' +
@@ -56,6 +55,38 @@ $(document).ready(function () {
                             $('textarea.form-control').val("");
                         }
                     })
+                }
+            }
+        })
+    });
+    $('.table').on('click', '.delete-song', function (e) {
+        var songId = $(this).attr('data-id')
+        e.preventDefault();
+        $.ajax({
+            url: $(this).attr("href"),
+            dataType: 'json',
+            success: function (result) {
+                if (result.status == 'success') {
+                    $('#user-song-' + songId).fadeOut('300');
+                    toastr.success('Deleted Successfully', '', {
+                        timeOut: 1000,
+                    });
+                }
+            }
+        })
+    });
+    $('.table').on('click', '.delete-song2', function (e) {
+        var songId2 = $(this).attr('data-id')
+        e.preventDefault();
+        $.ajax({
+            url: $(this).attr("href"),
+            dataType: 'json',
+            success: function (result) {
+                if (result.status == 'success') {
+                    $('#user-song2-' + songId2).fadeOut('300');
+                    toastr.success('Deleted Successfully', '', {
+                        timeOut: 1000,
+                    });
                 }
             }
         })

@@ -52,7 +52,7 @@
                             <a href="{{ route('playlist.play',['playlist_id'=>$playlist->id, 'song_id'=>$item->song->id]) }}"
                                target="_blank"
                                title="open new window"><i class="fa fa-external-link" style="color: white;"></i></a>
-                            &emsp;@if(\Illuminate\Support\Facades\Auth::user()->id === $playlist->user->id)
+                            @if(\Illuminate\Support\Facades\Auth::user() && \Illuminate\Support\Facades\Auth::user()->id == $playlist->user->id)
                                 <a href="{{route('playlist.delete-song', ['playlist_id' => $playlist->id, 'song_id' => $item->song->id])}}"
                                    title="delete song" onclick="return confirm('Do you want to delete the song?')">
                                     <i class="fa fa-trash" style="color: red;"></i>
@@ -72,6 +72,7 @@
         function autoNext() {
             let songs = '<?php echo $listSong ?>';
             let result = JSON.parse(songs);
+            console.log(songs);
             let song = '<?php echo $song ?>';
             let currentSong = JSON.parse(song);
             for (let i = 0; i < result.length; i++) {

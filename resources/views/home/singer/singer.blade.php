@@ -44,7 +44,7 @@
                         <div class="single-album">
                             <a href="#">
                                 <a href="{{ route('artist.song',['id'=>$artist->id]) }}">
-                                    <img src="{{asset('storage/' . $artist->image)}}" alt="" style="width: 190px; height: 220px"></a>
+                                    <img src="{{asset('storage/' . $artist->image)}}" alt="" style="width: 190px; height: 190px"></a>
                                 <div class="album-info">
                                     <a href="{{ route('artist.song',['id'=>$artist->id]) }}">
                                         <h5>{{ $artist->name }}</h5></a>

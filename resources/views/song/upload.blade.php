@@ -36,19 +36,6 @@
                                     <p class="error">{{ $message }}</p>
                                     @enderror
                                 </div>
-                                <div class="form-group">
-                                    <label>File <i><span
-                                                style="color: red">(.mp3)</span></i></label>
-
-                                    <input type="file" name="type" class="form-control">
-                                    @error('type')
-                                    <p class="error">{{ $message }}</p>
-                                    @enderror
-                                </div>
-                                <div class="form-group">
-                                    <label>Image</label>
-                                    <input type="file" name="image" class="form-control">
-                                </div>
 
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Category</label>
@@ -72,6 +59,19 @@
                                     @error('desc')
                                     <p class="error">{{ $message }}</p>
                                     @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label>File <i><span
+                                                style="color: red">(.mp3)</span></i></label>
+
+                                    <input type="file" name="type" class="form-control">
+                                    @error('type')
+                                    <p class="error">{{ $message }}</p>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label>Image</label>
+                                    <input type="file" name="image" class="form-control">
                                 </div>
                                 <button type="submit" class="btn oneMusic-btn mt-30">New</button>
                             </form>

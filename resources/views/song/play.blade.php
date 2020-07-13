@@ -41,7 +41,7 @@
                                 </a>
 
                                 &emsp;
-                                <a href="#" class="pt-1"
+                                <a href="{{ route('music.download',['id'=>$song->id]) }}" class="pt-1"
                                    title="Download"><i class="icon-download" style="color: white"></i></a>
                                 &emsp;
                                 <p><i class="fa fa-headphones"></i> {{$song->view}}</p>

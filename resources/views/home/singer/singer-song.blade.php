@@ -3,8 +3,7 @@
     <section class="breadcumb-area bg-img bg-overlay"
              style="background-image: url({{asset('img/bg-img/breadcumb3.jpg')}});">
         <div class="bradcumbContent">
-            <p>See what’s new</p>
-            <h2>Singer Songs</h2><br>
+            <h2>Singer's Songs</h2><br>
         </div>
     </section>
     <!-- ##### Album Catagory Area Start ##### -->
@@ -19,7 +18,7 @@
                         <td class="text-right">
                             <a href="{{ route('artist.play',['artist_id'=>$artist->id, 'song_id'=>$song->id]) }}" title="play"><i
                                     class="fa fa-play-circle"></i></a> &emsp;
-                            <a href="#" target="_blank"
+                            <a href="{{ route('artist.play',['artist_id'=>$artist->id, 'song_id'=>$song->id]) }}" target="_blank"
                                title="open new window"><i class="fa fa-external-link"></i></a>
                         </td>
                     </tr>

@@ -15,6 +15,7 @@
                         <!-- Section Heading -->
                         <div class="section-heading white text-left mb-30">
                             <h2>{{$song->name}}</h2>
+                            <p>{{ $song->artist->name }}</p>
                         </div>
                         <div class="song-play-area">
                             <div class="song-name">

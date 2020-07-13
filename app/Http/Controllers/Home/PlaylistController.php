@@ -35,6 +35,7 @@ class PlaylistController extends Controller
     public function create(CreatePlaylistRequest $request)
     {
         $this->playlistService->create($request);
+        \alert("Create Playlist Completed !", '', 'success')->autoClose(2000)->timerProgressBar();
 
         return redirect(route('my-playlist'));
     }

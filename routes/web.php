@@ -72,6 +72,7 @@ Route::group(['prefix' => 'songs'], function () {
     Route::middleware(['auth'])->group(function () {
         Route::get('/{id}/play/like','LikeController@like')->name('music.like');
         Route::get('/{id}/play/unlike','LikeController@unlike')->name('music.unlike');
+        Route::get('/{id}/download','Music\SongController@download')->name('music.download');
     });
 });
 

@@ -157,6 +157,7 @@
                             <div class="album-info">
                                 <a href="{{ route('music.play',['id'=>$song->id]) }}">
                                     <h5>{{$song->artist->name}}</h5>
+                                    <p>{{ $song->name }}</p>
                                 </a>
                             </div>
                         </div>

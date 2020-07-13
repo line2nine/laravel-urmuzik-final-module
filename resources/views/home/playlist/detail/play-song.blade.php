@@ -52,13 +52,14 @@
                             <a href="{{ route('playlist.play',['playlist_id'=>$playlist->id, 'song_id'=>$item->song->id]) }}"
                                target="_blank"
                                title="open new window"><i class="fa fa-external-link" style="color: white;"></i></a>
-                            &emsp;@if(\Illuminate\Support\Facades\Auth::user()->id === $playlist->user->id)
+                            @if(\Illuminate\Support\Facades\Auth::user())&emsp;
+                            @if(\Illuminate\Support\Facades\Auth::user()->id === $playlist->user->id)
                                 <a href="{{route('playlist.delete-song', ['playlist_id' => $playlist->id, 'song_id' => $item->song->id])}}"
                                    title="delete song" onclick="return confirm('Do you want to delete the song?')">
                                     <i class="fa fa-trash" style="color: red;"></i>
                                 </a>
                                 @endif
-                                &emsp;
+                                @endif&emsp;
                         </td>
                     </tr>
                 @empty

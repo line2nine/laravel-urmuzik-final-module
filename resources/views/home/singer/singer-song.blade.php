@@ -5,15 +5,11 @@
         <div class="bradcumbContent">
             <p>See what’s new</p>
             <h2>Singer Songs</h2><br>
-
         </div>
-
-
     </section>
     <!-- ##### Album Catagory Area Start ##### -->
     <section class="album-catagory section-padding-100-0">
         <div class="container">
-
             <table class="table">
                 <tbody>
                     @forelse($songs as $song)
@@ -34,7 +30,4 @@
             </table>
         </div>
     </section>
-    <!-- ##### Album Catagory Area End ##### -->
-
-
 @endsection

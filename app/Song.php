@@ -41,8 +41,8 @@ class Song extends Model
         return $this->hasMany(Comment::class, 'song_id');
     }
 
-    public function likes()
+    function likes()
     {
-        return $this->hasMany(Like::class, 'song_id');
+        return $this->hasMany(Like::class);
     }
 }

@@ -22,6 +22,11 @@ class LikeService
         return $this->likeRepo->getAll($id);
     }
 
+    public function getLiked()
+    {
+        return $this->likeRepo->getLiked();
+    }
+
     public function like($id)
     {
         $like = new Like();

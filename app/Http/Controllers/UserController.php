@@ -49,6 +49,7 @@ class UserController extends Controller
     public function storeAtDashboard(CreateUserRequest $request)
     {
         $this->userService->createNew($request);
+        \alert("Create Completed !", '', 'success')->autoClose(2000)->timerProgressBar();
         return redirect()->route('user.list');
     }
 
@@ -84,6 +85,7 @@ class UserController extends Controller
     {
         $user = $this->userService->find($id);
         $this->userService->updateNew($user, $request);
+        \alert("Update Successful", '', 'success')->autoClose(2000)->timerProgressBar();
         return redirect()->route('user.list');
     }
 

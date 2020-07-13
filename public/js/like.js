@@ -15,7 +15,7 @@ $(document).ready(function () {
                     }
                 }
             },
-            statusCode : {
+            statusCode: {
                 401: function () {
                     toastr.error('Please login to like this song', '', {
                         timeOut: 1000,
@@ -74,10 +74,13 @@ $(document).ready(function () {
             dataType: 'json',
             success: function (result) {
                 if (result.status == 'success') {
-                    $('#user-song-' + songId).fadeOut('300');
-                    toastr.success('Deleted Successfully', '', {
-                        timeOut: 1000,
-                    });
+                    let confirmDelete = confirm('Are You Sure!?');
+                    if (confirmDelete == true) {
+                        $('#user-song-' + songId).fadeOut('300');
+                        toastr.success('Deleted Successfully', '', {
+                            timeOut: 1000,
+                        });
+                    }
                 }
             }
         })
@@ -90,12 +93,34 @@ $(document).ready(function () {
             dataType: 'json',
             success: function (result) {
                 if (result.status == 'success') {
-                    $('#user-song2-' + songId2).fadeOut('300');
-                    toastr.success('Deleted Successfully', '', {
-                        timeOut: 1000,
-                    });
+                    let confirmDelete = confirm('Are You Sure!?');
+                    if (confirmDelete == true) {
+                        $('#user-song2-' + songId2).fadeOut('300');
+                        toastr.success('Deleted Successfully', '', {
+                            timeOut: 1000,
+                        });
+                    }
                 }
             }
         })
-    })
+    });
+    $('.table').on('click', '.delete-song3', function (e) {
+        var songId3 = $(this).attr('data-id')
+        e.preventDefault();
+        $.ajax({
+            url: $(this).attr("href"),
+            dataType: 'json',
+            success: function (result) {
+                if (result.status == 'success') {
+                    let confirmDelete = confirm('Are You Sure!?');
+                    if (confirmDelete == true) {
+                        $('#user-song3-' + songId3).fadeOut('300');
+                        toastr.success('Deleted Successfully', '', {
+                            timeOut: 1000,
+                        });
+                    }
+                }
+            }
+        })
+    });
 })

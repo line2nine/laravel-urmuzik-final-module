@@ -24,7 +24,7 @@ class EditPlaylistRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|regex:/^([a-zA-Z\.]+)(\s[a-zA-Z\.]+)*$/|min:2|max:15',
+            'title' => 'required|regex:/^([a-zA-Z0-9\.]+)(\s[a-zA-Z0-9\.]+)*$/|min:2|max:15',
         ];
     }
 }

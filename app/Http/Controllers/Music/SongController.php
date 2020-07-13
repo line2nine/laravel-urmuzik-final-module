@@ -16,9 +16,6 @@ use App\Http\Services\SongService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Storage;
-use function Composer\Autoload\includeFile;
-
 
 class SongController extends Controller
 {
@@ -91,13 +88,11 @@ class SongController extends Controller
         } else {
             $check = 0;
         }
-        // dem luot nghe bai hat
         $viewNumber = Session::get('viewKey' . $id);
         if (!Session::get('viewKey' . $id)) {
             Session::put('viewKey' . $id, 1);
             $this->songService->view($id);
         }
-        // lay ra bai hat tiep theo
         $songs = $this->songService->getAll();
         for ($i = 0; $i < count($songs); $i++) {
             if ($i + 1 == count($songs)) {
@@ -168,7 +163,7 @@ class SongController extends Controller
         }
     }
 
-    function search(Request $request) //dashboard
+    function search(Request $request)
     {
         if ($this->songService->searchByKeyword($request)) {
             $songs = $this->songService->searchByKeyword($request);
@@ -177,7 +172,7 @@ class SongController extends Controller
         return redirect()->route('song.dashboard.list');
     }
 
-    public function searchHome(Request $request) //home
+    public function searchHome(Request $request)
     {
         switch ($request->select) {
             case 'song':
@@ -224,5 +219,4 @@ class SongController extends Controller
             return back();
         }
     }
-
 }

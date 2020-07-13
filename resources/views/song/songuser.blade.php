@@ -32,7 +32,7 @@
                                     class="fa fa-edit"></i></a>
                             &emsp;&emsp;
                             <a href="{{ route('music.delete',['id'=>$song->id]) }}" title="Delete"
-                               onclick="return confirm('Are you sure delete?')" class="delete-song" data-id="{{$song->id}}"><i class="fa fa-trash"></i></a>
+                               class="delete-song" data-id="{{$song->id}}"><i class="fa fa-trash"></i></a>
                         </td>
                     </tr>
                 @empty

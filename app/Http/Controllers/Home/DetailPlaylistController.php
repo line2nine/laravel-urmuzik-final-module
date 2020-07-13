@@ -90,9 +90,11 @@ class DetailPlaylistController extends Controller
         $playlist = $this->playlistService->find($playlist_id);
         $status = $this->detailPlaylistService->deleteSong($playlist, $song_id);
         if ($status) {
-            notify("Deleted Completed !", 'success');
-
-            return back();
+            return response()->json(
+                [
+                    'status' => 'success'
+                ]
+            );
         } else {
             return abort(403);
         }

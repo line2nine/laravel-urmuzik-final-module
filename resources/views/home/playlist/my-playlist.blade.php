@@ -3,7 +3,7 @@
     <section class="breadcumb-area bg-img bg-overlay"
              style="background-image: url({{asset('img/bg-img/breadcumb3.jpg')}});">
         <div class="bradcumbContent">
-            <h2>My playlist</h2>
+            <h2>My playlists</h2>
             @if(\Illuminate\Support\Facades\Session::has('success'))
                 <p class="text-success">
                     <i class="fa fa-check" aria-hidden="true"></i>{{ Session::get('success') }}

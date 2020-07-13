@@ -35,7 +35,7 @@
                                 <h6 data-animation="fadeInUp" data-delay="100ms">Anh ngẩn ngơ cứ ngỡ</h6>
                                 <h2 data-animation="fadeInUp" data-delay="300ms">Đó chỉ là giấc mơ
                                     <span>Đó chỉ là giấc mơ</span></h2>
-                                <a data-animation="fadeInUp" data-delay="500ms" href="#" class="btn oneMusic-btn mt-50">Sơn Tùng-MTP
+                                <a data-animation="fadeInUp" data-delay="500ms" href="#" class="btn oneMusic-btn mt-50">Sơn Tùng M-TP
                                     <i class="fa fa-angle-double-right"></i></a>
                             </div>
                         </div>

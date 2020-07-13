@@ -28,4 +28,9 @@ class HomeController extends Controller
         return view('home.home', compact('songs', 'songsTrending', 'recentPlaylists', 'trendingPlaylists'));
     }
 
+    public function showContact()
+    {
+        return view('home.contact.contact');
+    }
+
 }

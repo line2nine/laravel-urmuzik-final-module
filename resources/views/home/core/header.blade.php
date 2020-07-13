@@ -41,7 +41,7 @@
                                 @endif
 
                                 <li><a href="{{route('artist.index')}}">Singer</a></li>
-                                <li><a href="#">Contact</a></li>
+                                <li><a href="{{route('contact')}}">Contact</a></li>
                                 <li><a href="{{route('music.index')}}"><i class="fa fa-music"></i> Song</a></li>
                                 <li><a href="{{route('music.upload')}}"><i class="fa fa-arrow-circle-up"></i> Upload</a>
                                 </li>

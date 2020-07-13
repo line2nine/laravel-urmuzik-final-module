@@ -17,7 +17,7 @@
                             <h2>{{$playlist->title}}</h2>
                             <p><i class="fa fa-headphones"></i> {{$playlist->view}}</p>
                         </div>
-                        <p id="desc">{{ $song->desc }}</p>
+                        <p>{{ $song->artist->name }}</p>
                         <div class="song-play-area">
                             <div class="song-name">
                                 <p id="name">{{ $song->name }}</p>
@@ -37,6 +37,25 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-12 col-md-5 col-lg-4">
+                </div>
+                <div class="col-12 col-md-7 col-lg-8">
+                    <div class="accordions" id="accordion" role="tablist" aria-multiselectable="true">
+                        <!-- single accordian area -->
+                        <div class="panel single-accordion">
+                            <h6>
+                                <a role="button" class="collapsed" aria-expanded="true" aria-controls="collapseTwo"
+                                   data-parent="#accordion" data-toggle="collapse" href="#collapseTwo">Lyrics
+                                    <span class="accor-open"><i class="fa fa-plus" aria-hidden="true"></i></span>
+                                    <span class="accor-close"><i class="fa fa-minus" aria-hidden="true"></i></span>
+                                </a>
+                            </h6>
+                            <div id="collapseTwo" class="accordion-content collapse">
+                                <pre>{{$song->desc}}</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <br>
             <table class="table">
@@ -52,11 +71,14 @@
                             <a href="{{ route('playlist.play',['playlist_id'=>$playlist->id, 'song_id'=>$item->song->id]) }}"
                                target="_blank"
                                title="open new window"><i class="fa fa-external-link" style="color: white;"></i></a>
-                            &emsp;@if(\Illuminate\Support\Facades\Auth::user()->id === $playlist->user->id)
+                            &emsp;
+                                 @if(\Illuminate\Support\Facades\Auth::user())
+                                     @if(\Illuminate\Support\Facades\Auth::user()->id ==$playlist->user->id)
                                 <a href="{{route('playlist.delete-song', ['playlist_id' => $playlist->id, 'song_id' => $item->song->id])}}"
                                    title="delete song" onclick="return confirm('Do you want to delete the song?')">
                                     <i class="fa fa-trash" style="color: red;"></i>
                                 </a>
+                                @endif
                                 @endif
                                 &emsp;
                         </td>

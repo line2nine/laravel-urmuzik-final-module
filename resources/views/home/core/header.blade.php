@@ -27,7 +27,8 @@
                         <div class="classynav">
                             <ul>
                                 <li><a href="/">Home</a></li>
-                                @if(\Illuminate\Support\Facades\Auth::user())
+                                <li><a href="{{route('music.index')}}">Song</a></li>
+                            @if(\Illuminate\Support\Facades\Auth::user())
                                     <li><a>Playlists</a>
                                         <ul class="dropdown">
                                             <li><a href="{{route('playlist.index')}}">Playlists</a></li>
@@ -42,7 +43,6 @@
 
                                 <li><a href="{{route('artist.index')}}">Artist</a></li>
                                 <li><a href="{{route('contact')}}">Contact</a></li>
-                                <li><a href="{{route('music.index')}}"><i class="fa fa-music"></i> Song</a></li>
                                 <li><a href="{{route('music.upload')}}"><i class="fa fa-arrow-circle-up"></i> Upload</a>
                                 </li>
                             </ul>

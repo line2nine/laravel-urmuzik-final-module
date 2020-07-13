@@ -836,7 +836,8 @@ img {
   transition-duration: 500ms;
   margin-bottom: 30px; }
   .single-album img {
-    width: 100%; }
+    width: 100%;
+    height: 160px; }
   .single-album .album-info {
     position: relative;
     z-index: 1;
@@ -1631,9 +1632,11 @@ img {
 .single-accordion .accordion-content {
   border-top: 0 solid transparent;
   box-shadow: none; }
-  .single-accordion .accordion-content p {
+  .single-accordion .accordion-content pre {
     padding: 20px 15px 5px;
-    margin-bottom: 0; }
+    margin-bottom: 0;
+    color: black;
+  }
 
 /* :: 20.3.0 Tabs Area CSS */
 .oneMusic-tabs-content {

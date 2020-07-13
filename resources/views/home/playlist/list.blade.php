@@ -42,7 +42,7 @@
                     <div class="col-12 col-sm-4 col-md-3 col-lg-2 single-album-item t c p">
                         <div class="single-album">
                             <a href="{{route('playlist.detail', ['playlist_id' => $playlist->id])}}">
-                                <img src="{{asset('storage/'. $playlist->image)}}" alt="" style="width: 190px; height: 190px">
+                                <img src="{{asset('storage/'. $playlist->image)}}" alt="">
                                 <div class="album-info">
                                     <h5>{{$playlist->title}}</h5>
                                     <p>Owner: {{$playlist->user->name}}</p>

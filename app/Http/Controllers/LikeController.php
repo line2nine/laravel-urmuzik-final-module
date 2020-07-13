@@ -39,7 +39,8 @@ class LikeController extends Controller
         }
         return response()->json(
             [
-                'status' => $liked,
+                'status' => 'success',
+                'liked' => $liked,
                 'likes' => count($this->likeService->getAll($id))
             ]
         );

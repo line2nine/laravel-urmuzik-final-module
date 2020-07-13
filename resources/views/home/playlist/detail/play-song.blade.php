@@ -93,14 +93,16 @@
         function autoNext() {
             let songs = '<?php echo $listSong ?>';
             let result = JSON.parse(songs);
+            console.log(result);
             let song = '<?php echo $song ?>';
             let currentSong = JSON.parse(song);
             for (let i = 0; i < result.length; i++) {
                 if (currentSong.id == result[i].song_id) {
                     let nextSong = result[i + 1];
+                    console.log(nextSong)
                     document.getElementById('autoNext').src = "http://yourmusic.com/storage/" + nextSong.song['type'];
                     document.getElementById('image').src = "http://yourmusic.com/storage/" + nextSong.song['image'];
-                    document.getElementById('desc').innerHTML = nextSong.song['desc'];
+                    // document.getElementById('desc').innerHTML = nextSong.song['desc'];
                     document.getElementById('name').innerHTML = nextSong.song['name'];
                     document.getElementById('view').innerHTML = '<i class="fa fa-headphones"></i> ' + nextSong.song['view'];
                     document.getElementById('next').load();

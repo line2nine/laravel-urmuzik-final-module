@@ -84,15 +84,12 @@
             let result = JSON.parse(songs);
             let song = '<?php echo $song ?>';
             let currentSong = JSON.parse(song);
-            console.log(currentSong.id)
-            console.log(result[0].id);
             for (let i = 0; i < result.length; i++) {
                 if (currentSong.id == result[i].id) {
                     let nextSong = result[i + 1];
-                    console.log(nextSong);
                     document.getElementById('autoNext').src = "http://yourmusic.com/storage/" + nextSong.type;
                     document.getElementById('image').src = "http://yourmusic.com/storage/" + nextSong.image;
-                    document.getElementById('desc').innerHTML = nextSong.desc;
+                    // document.getElementById('desc').innerHTML = nextSong.desc;
                     document.getElementById('name').innerHTML = nextSong.name;
                     document.getElementById('view').innerHTML = '<i class="fa fa-headphones"></i> ' + nextSong.view;
                     document.getElementById('next').load();

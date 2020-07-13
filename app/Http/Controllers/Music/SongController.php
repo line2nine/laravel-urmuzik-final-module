@@ -139,9 +139,12 @@ class SongController extends Controller
     {
         $status = $this->songService->delete($id);
         if ($status) {
-            notify("Deleted Completed !", 'success');
             $user = Auth::user();
-            return redirect()->route('music.list.user', ['id' => $user->id]);
+            return response()->json(
+                [
+                    'status' => 'success'
+                ]
+            );
         } else {
             return abort(403);
         }

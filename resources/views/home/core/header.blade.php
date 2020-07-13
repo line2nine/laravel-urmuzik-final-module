@@ -41,7 +41,7 @@
                                 @endif
 
                                 <li><a href="{{route('artist.index')}}">Singer</a></li>
-                                <li><a href="#">Contact</a></li>
+                                <li><a href="{{route('contact')}}">Contact</a></li>
                                 <li><a href="{{route('music.index')}}"><i class="fa fa-music"></i> Song</a></li>
                                 <li><a href="{{route('music.upload')}}"><i class="fa fa-arrow-circle-up"></i> Upload</a>
                                 </li>
@@ -54,7 +54,14 @@
                                     <div class="classynav">
                                         @if(\Illuminate\Support\Facades\Auth::user())
                                             <ul>
-                                                <li><a href="#" id="loginBtn">{{auth()->user()->name}}</a>
+                                                <li><a href="#" id="loginBtn"><img src="
+                                                        @if(!auth()->user()->google_id)
+                                                            {{asset('storage/' . auth()->user()->avatar)}}
+                                                        @else
+                                                        {{auth()->user()->avatar}}
+                                                        @endif
+                                                            " class="rounded-circle" alt="Cinque Terre" width="40px">
+                                                    </a>
                                                     <ul class="dropdown">
                                                         @if(auth()->user()->role == \App\Http\Controllers\Role::ADMIN)
                                                             <li>

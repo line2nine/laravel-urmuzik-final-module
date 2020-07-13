@@ -51,11 +51,6 @@
                                target="_blank"
                                title="open new window"><i class="fa fa-external-link" style="color: white;"></i></a>
                             &emsp;
-                            <a href="#"
-                               title="delete song" onclick="return confirm('Do you want to delete the song?')">
-                                <i class="fa fa-trash" style="color: red;"></i>
-                            </a>
-                            &emsp;
                         </td>
                     </tr>
                 @empty

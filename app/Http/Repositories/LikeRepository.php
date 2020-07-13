@@ -5,6 +5,7 @@ namespace App\Http\Repositories;
 
 
 use App\Like;
+use Illuminate\Support\Facades\DB;
 
 class LikeRepository
 {
@@ -33,6 +34,12 @@ class LikeRepository
     public function find($id, $user_id)
     {
         return $this->like->where('song_id','=',$id)->where('user_id','=',$user_id)->get();
+    }
+
+    public function getLiked()
+    {
+        return DB::table('likes')->select('song_id', DB::raw('count(user_id)'))->groupBy('song_id')
+            ->orderBy('count(user_id)','desc')->paginate(5);
     }
 
     public function unlike($unLike)

@@ -34,8 +34,12 @@ class PlaylistController extends Controller
 
     public function create(CreatePlaylistRequest $request)
     {
-        $this->playlistService->create($request);
-        \alert("Create Playlist Completed !", '', 'success')->autoClose(2000)->timerProgressBar();
+        $status = $this->playlistService->create($request);
+        if ($status) {
+            \alert("Create Playlist Completed !", '', 'success')->autoClose(2000)->timerProgressBar();
+        } else {
+            \alert("Playlist Already Exist !", 'Try Again', 'error')->autoClose(2000)->timerProgressBar();
+        }
 
         return redirect(route('my-playlist'));
     }

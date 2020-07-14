@@ -53,16 +53,24 @@ class PlaylistService
         $user = Auth::user();
         $playlist = new Playlist();
         $default = 0;
-        $playlist->title = $request->title;
-        if ($request->hasFile('image')) {
-            $playlist->image = $request->image->store('images', 'public');
+        if (count($this->playlistRepository->findPlaylist($request->title)) > 0) {
+            return false;
         } else {
-            $playlist->image = 'images/default-playlist.jpg';
-        }
-        $playlist->user_id = $user->id;
-        $playlist->view = $default;
+            $playlist->title = $request->title;
 
-        $this->playlistRepository->save($playlist);
+            if ($request->hasFile('image')) {
+                $playlist->image = $request->image->store('images', 'public');
+            } else {
+                $playlist->image = 'images/default-playlist.jpg';
+            }
+            $playlist->user_id = $user->id;
+            $playlist->view = $default;
+
+            $this->playlistRepository->save($playlist);
+
+            return true;
+        }
+
     }
 
     public function update($request, $id)

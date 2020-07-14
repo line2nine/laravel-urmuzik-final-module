@@ -6,7 +6,7 @@
     @include('comment.comments')
     @else
         <div class="container" style="text-align: center; font-size: 20px">
-            <span>Please <a href="{{route('login')}}" style="color: blue; text-decoration: underline">login</a> to comment</span>
+            <span>Please <a href="{{route('login')}}" style="color: #ff0000; text-decoration: underline">login</a> to comment</span>
         </div>
         <br>
     @endif
@@ -24,9 +24,9 @@
                              alt="Cinque Terre" width="70px">
                     </a>
                     @endif
-                    &emsp;&emsp;&emsp;&emsp;&emsp;
+                    &emsp;&emsp;&emsp;
                     <div class="media-body">
-                        <h4 class="media-heading user_name" style="color: red">{{$comment->user->name}}</h4>
+                        <h4 class="media-heading user_name" style="color: #1984ff">{{$comment->user->name}}</h4>
                         <span style="font-size: 20px; color: white">{{$comment->desc}}</span>
 
                         <p class="pull-right mr-2" style="color: white"><small>{{date($comment->created_at)}}</small></p>

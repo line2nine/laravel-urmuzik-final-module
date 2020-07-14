@@ -27,7 +27,8 @@
                             <form action="{{ route('music.store') }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
-                                    <label>Name Song</label>
+                                    <label>Name Song<span
+                                            style="color: red">*</span></label>
                                     <input type="text" name="name" class="form-control">
                                     @error('name')
                                     <p class="error">{{ $message }}</p>
@@ -51,7 +52,8 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label>Description</label>
+                                    <label>Lyrics<span
+                                            style="color: red">*</span></label>
                                     <textarea class="form-control" rows="4" name="desc"></textarea>
                                     @error('desc')
                                     <p class="error">{{ $message }}</p>
@@ -67,7 +69,8 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label>Image</label>
+                                    <label>Image<span
+                                            style="color: red">*</span></label>
                                     <input type="file" name="image" class="form-control">
                                 </div>
                                 <button type="submit" class="btn oneMusic-btn mt-30">Upload</button>

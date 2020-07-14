@@ -104,6 +104,7 @@
                     document.getElementById('image').src = "http://yourmusic.com/storage/" + nextSong.song['image'];
                     // document.getElementById('desc').innerHTML = nextSong.song['desc'];
                     document.getElementById('name').innerHTML = nextSong.song['name'];
+                    
                     document.getElementById('view').innerHTML = '<i class="fa fa-headphones"></i> ' + nextSong.song['view'];
                     document.getElementById('next').load();
                     document.getElementById('next').play();

@@ -17,7 +17,7 @@ class ArtistRepository
 
     public function getAll()
     {
-        return $this->artist->all();
+        return $this->artist->orderby('created_at', 'desc')->get();
     }
 
     public function find($id)

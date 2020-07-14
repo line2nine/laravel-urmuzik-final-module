@@ -26,14 +26,15 @@
                             <form action="{{route('user.edit.profile', $user->id)}}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <input name="image" type="file">
+                                <br>
+                                <br>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Email address</label>
+                                    <p style="font-size: 20px">{{$user->email}}</p>
+                                </div>
                                 <div class="form-group">
                                     <label>Name</label>
                                     <input name="name" type="text" class="form-control" value="{{$user->name}}">
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Email address</label>
-                                    <input name="email" type="email" class="form-control" value="{{$user->email}}" id="exampleInputEmail1"
-                                           aria-describedby="emailHelp">
                                 </div>
                                 <div class="form-group">
                                     <label>Phone</label>

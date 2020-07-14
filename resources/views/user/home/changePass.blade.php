@@ -22,7 +22,8 @@
                             <form action="{{route('user.changePass.profile', $user->id)}}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
-                                    <label>Current Password</label>
+                                    <label>Current Password<span
+                                            style="color: red">*</span></label>
                                     <input name="oldPass" type="password" class="form-control">
                                     @if(\Illuminate\Support\Facades\Session::has('error'))
                                         <span class="text-danger">{{\Illuminate\Support\Facades\Session::get('error')}}</span>
@@ -32,14 +33,16 @@
                                     @endif
                                 </div>
                                 <div class="form-group">
-                                    <label>New Password</label>
+                                    <label>New Password<span
+                                            style="color: red">*</span></label>
                                     <input name="newPass" type="password" class="form-control">
                                     @if($errors->first('newPass'))
                                         <span class="text-danger">{{$errors->first('newPass')}}</span>
                                     @endif
                                 </div>
                                 <div class="form-group">
-                                    <label>Confirm Password</label>
+                                    <label>Confirm Password<span
+                                            style="color: red">*</span></label>
                                     <input name="confirmPass" type="password" class="form-control">
                                     @if($errors->first('confirmPass'))
                                         <span class="text-danger">{{$errors->first('confirmPass')}}</span>

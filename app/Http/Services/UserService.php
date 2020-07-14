@@ -70,7 +70,6 @@ class UserService
     public function update($user, $request)
     {
         $user->name = $request->name;
-        $user->email = $request->email;
         $user->phone = $request->phone;
         $user->address = $request->address;
         $oldFilePath = $user->avatar;

@@ -18,7 +18,7 @@ class PlaylistRepository
 
     public function getAll()
     {
-        return $this->playlist->all();
+        return $this->playlist->orderby('created_at', 'desc')->get();
     }
 
     public function recentlyCreated()
@@ -34,6 +34,11 @@ class PlaylistRepository
     public function myPlaylist()
     {
         return $this->playlist->where('user_id', Auth::user()->id)->get();
+    }
+
+    public function findPlaylist($title)
+    {
+        return $this->playlist->where('title','=',$title)->where('user_id', Auth::user()->id)->get();
     }
 
     public function find($id)

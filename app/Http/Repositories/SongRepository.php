@@ -17,7 +17,7 @@ class SongRepository
 
     public function getAll()
     {
-        return $this->song->all();
+        return $this->song->orderby('created_at', 'desc')->get();
     }
 
     public function recentlyUploaded()

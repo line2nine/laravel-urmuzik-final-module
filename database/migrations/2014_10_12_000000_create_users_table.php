@@ -21,10 +21,10 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('avatar');
             $table->string('google_id')->nullable();
-            $table->string('phone');
-            $table->string('address');
-            $table->integer('role');
-            $table->string('status');
+            $table->string('phone')->nullable();
+            $table->string('address')->nullable();
+            $table->integer('role')->nullable();
+            $table->string('status')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

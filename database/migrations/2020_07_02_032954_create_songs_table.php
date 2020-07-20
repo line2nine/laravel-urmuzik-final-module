@@ -18,8 +18,8 @@ class CreateSongsTable extends Migration
             $table->string('name');
             $table->string('type');
             $table->string('image');
-            $table->string('desc');
-            $table->string('view');
+            $table->text('desc');
+            $table->string('view')->nullable();
             $table->unsignedBigInteger('artist_id');
             $table->foreign('artist_id')->references('id')->on('artists');
             $table->unsignedBigInteger('user_id');

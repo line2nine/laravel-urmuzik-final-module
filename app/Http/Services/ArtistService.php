@@ -61,8 +61,9 @@ class ArtistService
         return $this->artistRepo->filter($id);
     }
 
-    public function searchByKeyword($keyword)
+    public function searchByKeyword($request)
     {
+        $keyword = $request->keyword;
         if ($keyword) {
             return $this->artistRepo->search($keyword);
         }

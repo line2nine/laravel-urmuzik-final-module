@@ -25,7 +25,9 @@
                         <div class="login-form">
                             <form action="{{route('user.edit.profile', $user->id)}}" method="post" enctype="multipart/form-data">
                                 @csrf
+                                @if(!$user->google_id)
                                 <input name="image" type="file">
+                                @endif
                                 <br>
                                 <br>
                                 <div class="form-group">

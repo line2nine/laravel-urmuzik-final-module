@@ -65,4 +65,12 @@ class CommentService
 
         return true;
     }
+
+    public function destroy($idSong)
+    {
+        $comments = $this->commentsRepository->getComment($idSong);
+        foreach ($comments as $comment){
+            $comment->delete();
+        }
+    }
 }

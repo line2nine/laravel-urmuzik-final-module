@@ -148,6 +148,9 @@ class SongController extends Controller
     public function destroyDashboard($id)
     {
         $song = $this->songService->find($id);
+        $this->commentsService->destroy($song->id);
+        $this->likeService->destroy($song->id);
+        $this->detailPlaylistService->deleteSongAdmin($song->id);
         $song->delete();
         notify("Deleted Completed !", 'success');
         return redirect()->route('song.dashboard.list');

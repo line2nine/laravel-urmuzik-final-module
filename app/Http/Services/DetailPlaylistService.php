@@ -106,4 +106,10 @@ class DetailPlaylistService
             return false;
         }
     }
+
+    public function deleteSongAdmin($idSong)
+    {
+        $song = $this->detailPlaylistRepository->find($idSong);
+        $this->detailPlaylistRepository->deleteSongAdmin($song[0]);
+    }
 }

@@ -40,4 +40,9 @@ class CommentRepository
         $comment->delete();
     }
 
+    public function getComment($idSong)
+    {
+        return $this->comments->where('song_id', $idSong)->get();
+    }
+
 }

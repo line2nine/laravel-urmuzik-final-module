@@ -51,7 +51,5 @@ class LikeController extends Controller
         $user_id = Auth::user()->id;
         $unLike = $this->likeService->find($id, $user_id);
         $this->likeService->unlike($unLike[0]);
-//        return redirect()->route('music.play', ['id' => $id]);
-
     }
 }

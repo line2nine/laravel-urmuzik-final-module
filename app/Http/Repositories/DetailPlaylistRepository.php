@@ -34,4 +34,14 @@ class DetailPlaylistRepository
     {
         $detailPlaylist->detele();
     }
+
+    public function deleteSongAdmin($song)
+    {
+        $song->delete();
+    }
+
+    public function find($idSong)
+    {
+        return $this->detailPlaylist->where('song_id',$idSong)->get();
+    }
 }

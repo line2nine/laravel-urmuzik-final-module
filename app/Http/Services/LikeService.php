@@ -58,4 +58,12 @@ class LikeService
 
         return true;
     }
+
+    public function destroy($idSong)
+    {
+        $likes = $this->likeRepo->getLikesOfSong($idSong);
+        foreach ($likes as $like){
+            $like->delete();
+        }
+    }
 }

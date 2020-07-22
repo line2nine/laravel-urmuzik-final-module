@@ -110,6 +110,8 @@ class DetailPlaylistService
     public function deleteSongAdmin($idSong)
     {
         $song = $this->detailPlaylistRepository->find($idSong);
-        $this->detailPlaylistRepository->deleteSongAdmin($song[0]);
+        if (count($song) > 0){
+            $this->detailPlaylistRepository->deleteSongAdmin($song[0]);
+        }
     }
 }

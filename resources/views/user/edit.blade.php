@@ -15,7 +15,7 @@
                     </div>
                     <div class="form-group">
                         <label>Avatar</label>
-                        <input name="avatar" type="file" class="form-control">
+                        <input name="image" type="file" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="inputEmail4">Email</label>

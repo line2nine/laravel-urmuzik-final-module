@@ -29,13 +29,13 @@ class HomeController extends Controller
         $recentPlaylists = $this->playlistService->recentlyCreated();
         $trendingPlaylists = $this->playlistService->topTrending();
         $likes = $this->likeService->getLiked();
-        $songLike = [];
-        for ($i = 0; $i < 5; $i++)
-        {
-            $song = $this->songService->find($likes[$i]->song_id);
-            array_push($songLike, $song);
-        }
-        return view('home.home', compact('songs', 'songsTrending', 'recentPlaylists', 'trendingPlaylists', 'songLike', 'likes'));
+//        $songLike = [];
+//        for ($i = 0; $i < 5; $i++)
+//        {
+//            $song = $this->songService->find($likes[$i]->song_id);
+//            array_push($songLike, $song);
+//        }
+        return view('home.home', compact('songs', 'songsTrending', 'recentPlaylists', 'trendingPlaylists', 'likes'));
     }
 
     public function showContact()
